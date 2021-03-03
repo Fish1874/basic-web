@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./part2.css">
+</head>
+
+
+<body>
+  <header>
+    <nav class="nav">
+      <a class="nav__logo" href="#"><img src="../任务一/LOGO.jpg" alt="导航栏的Logo"></a>
+      <div class="nav__center">
+        <a href="/">Home</a>
+        <a href="/">Contact</a>
+        <a href="/">Blog</a>
+        <a href="/">About</a>
+      </div>
+      <button class="nav__login" type="button">login</button>
+    </nav>
+  </header>
+
+  <section class="article">
+    <div class="article__div">
+      <main class="article__main">
+        <h3>待处理</h3>
+        <ol>
+          <li>JavaScript</li>
+          <li>Sass</li>
+          <li>React</li>
+        </ol>
+      </main>
+
+      <aside>
+        <table border>
+          <caption>最外层标题</caption>
+          <thead>
+            <tr>
+              <th colspan="2">列标题</th>
+              <th scope="col">名称</th>
+              <th scope="col">价格</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th rowspan="2" scope="rowgroup">PC</th>
+              <th scope="col">行标题一</th>
+              <td>Imac</td>
+              <td>$3000</td>
+            </tr>
+            <tr>
+              <th scope="col">行标题二</th>
+              <td>NEC</td>
+              <td>$2000</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3">总价</td>
+              <td>$12790</td>
+            </tr>
+          </tfoot>
+        </table>
+      </aside>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="content__div">
+      <h3>表单提交</h3>
+      <form action="test.html" id="formId">
+        <label for="user">用户名：</label><input type="text" name="user"><br />
+        <label for="password">密码：</label><input type="password" name="password">
+      </form>
+      <label for="sex">
+        性别：
+      </label>
+      <input type="radio" name="sex">男
+      <input type="radio" name="sex">女
+      <br />
+
+      <label for="food">
+        讨厌：
+      </label>
+      <input type="checkbox" name="food">牛奶
+      <input type="checkbox" name="food">雪梨
+      <input type="checkbox" name="food">樱桃
+
+      <br />
+      <label for="pets">喜欢的食物：</label>
+      <select name="pets" id="pet-select">
+        <option value="">请选择</option>
+        <option value="apple">苹果</option>
+        <option value="banana">香蕉</option>
+      </select>
+
+      <br />
+      <label for="text">个性签名：</label>
+      <input type="textarea" name="text" minlength="0" maxlength="18" size="20">
+      <br>
+
+      <input class="content__file" type="file">
+      <br>
+
+      <div class="content__btn">
+        <button type="reset" form="formId">重置</button>
+        <button type="submit" form="formId">提交</button>
+      </div>
+    </div>
+
+  </section>
+
+  <footer>页面底部</footer>
+</body>
+
+
+</html>
