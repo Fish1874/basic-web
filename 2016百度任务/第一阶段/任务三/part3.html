@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>三栏式布局</title>
+</head>
+<style>
+  section {
+    display: flex;
+    width: 100%;
+    height: 500px;
+    box-sizing: border-box;
+    background-color: #eee;
+  }
+
+  .side {
+    width: 200px;
+    height: 100%;
+  }
+
+  .content {
+    flex: 1;
+    padding: 5px 20px;
+  }
+
+  .content__box {
+    min-width: 210px;
+  }
+
+  .content__box>p {
+    letter-spacing: 1px;
+  }
+</style>
+
+<body>
+  <section>
+    <div class="side" style="background-color: #3498db;"></div>
+    <div class="content">
+      <div class="content__box">
+        <h3>神童诗</h3>
+        <p>天子重英豪，文章教尔曹；万般皆下品，惟有读书高。</p>
+        <p>少小须勤学，文章可立身；满朝朱紫贵，尽是读书人。</p>
+        <p>学问勤中得，萤窗万卷书；三冬今足用，谁笑腹空虚。</p>
+        <p>自小多才学，平生志气高；别人怀宝剑，我有笔如刀。</p>
+        <p>朝为田舍郎，暮登天子堂；将相本无种，男儿当自强。</p>
+      </div>
+    </div>
+    <div class="side" style="background-color: #27ae60;"></div>
+  </section>
+</body>
+
+</html>

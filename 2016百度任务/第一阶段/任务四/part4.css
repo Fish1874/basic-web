@@ -1,0 +1,102 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0; }
+
+section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #ecf0f1; }
+
+.content {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .content .beforStyle, .content .content__box::before, .content .content__box::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    background-color: #f1c40f; }
+  .content__box {
+    position: relative;
+    min-width: 150px;
+    min-height: 150px;
+    margin: 15px;
+    background-color: #bdc3c7;
+    overflow: hidden; }
+    .content__box::before {
+      right: -50px;
+      bottom: -50px; }
+    .content__box::after {
+      top: -50px;
+      left: -50px; }
+
+.box1 {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+  background-color: #1abc9c; }
+
+.box2 {
+  /* （父容器的宽高 —— 子容器的宽高）÷ 2 */
+  margin: 50px;
+  width: 50px;
+  height: 50px;
+  background-color: #2ecc71; }
+
+.box3 {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .box3 p {
+    margin: 50px;
+    width: 50px;
+    height: 50px;
+    background-color: #3498db; }
+
+.box4 p {
+  margin: 0;
+  text-align: center;
+  line-height: 150px;
+  font-size: 12px;
+  color: #e67e22; }
+
+.box5 {
+  display: table;
+  height: 150px; }
+  .box5 p {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    width: 150px;
+    font-size: 12px;
+    color: #9b59b6; }
+
+.cont, .box1::before, .box2::before, .box3 p::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  color: #fff; }
+
+.box1::before {
+  content: "position"; }
+
+.box2::before {
+  content: "margin"; }
+
+.box3 p::before {
+  content: "flex"; }
+
+/*# sourceMappingURL=part4.css.map */
