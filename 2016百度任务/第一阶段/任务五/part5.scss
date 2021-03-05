@@ -1,0 +1,182 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul li {
+  list-style: none;
+}
+input {
+  outline: none;
+}
+a {
+  text-decoration: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid rgb(200, 200, 200);
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+}
+
+td,
+th {
+  padding: 10px;
+  background-color: rgb(235, 235, 235);
+}
+
+td {
+  text-align: center;
+}
+
+/* nth-child(even) 偶数 */
+tr:nth-child(even) td {
+  background-color: rgb(245, 245, 245);
+}
+
+/* nth-child(odd) 奇数 */
+tr:nth-child(odd) td {
+  background-color: #fff;
+}
+caption {
+  font-size: 22px;
+}
+
+$gbColor: #3498db;
+$font-sm: 14px;
+$font-med: 18px;
+$font-lg: 22px;
+
+body {
+  font-size: $font-sm;
+  background-color: #eee;
+  // min-height: calc(100vh - 175px); 
+  padding-bottom: 50px;
+}
+
+/* 
+  公用样式
+*/
+.flex-jc {
+  display: flex;
+  align-items: center;
+  &-sb {
+    @extend .flex-jc;
+    justify-content: space-between;
+  }
+  &-c {
+    @extend .flex-jc;
+    justify-content: center;
+  }
+}
+
+header {
+  .nav {
+    @extend .flex-jc-sb;
+    max-width: 1440px;
+    height: 75px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    background-color: #fff;
+    &__logo {
+      width: 180px;
+      height: 47px;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    &__center {
+      a {
+        margin: 0 1.28rem;
+        font-size: $font-med;
+        color: $gbColor;      
+      }
+    }
+    &__login {
+      margin: 2px;
+      padding: 4px 12px;
+    }
+  }
+}
+
+.article {
+  width: 100%;
+  margin: 20px 0;
+  &__div {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1440px;
+    height: calc(50vh - 75px);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    .article__main {
+      flex: 1;
+      width: 500px;
+      height: 100%;
+      padding: .5rem 1.5rem;
+      box-shadow: 0 2px 8px 0 rgba(77,79,168,.12);
+      background-color: bisque;
+    }
+
+    aside {
+      position: relative;
+      top: 0;
+      width: 400px;
+      padding: 0 0.5rem;
+      margin-left: 20px;
+      background-color: #1abc9c;   
+      transition: ease-in-out .8s;
+      &:hover {
+        position: relative;
+        top: 50%;
+      }   
+    }
+  }
+
+}
+
+.content {
+  max-width: 1440px;
+  height: 270px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  margin-bottom: 20px;
+  &__div {
+    padding: 1rem;
+    margin-bottom: 20px;
+    color: #fff;
+    border-radius: 20px;
+    background-color: #27ae60;
+
+    h3 {
+      margin: 0 0 12px 0;
+    }
+    label {
+      display: inline-block;
+      width: 90px;
+      margin-right: 20px;
+      text-align: end;
+    }
+  }
+  &__file {
+    margin: 2px 0;
+  }
+  &__btn {
+    margin: 10px 0;
+    button {
+      margin: 2px;
+      padding: 4px 12px;
+    }
+  }
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #3498db
+}
