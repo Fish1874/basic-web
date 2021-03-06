@@ -1,0 +1,455 @@
+*{
+  margin: 0;
+  padding: 0;  
+}
+
+body {
+  background-color: #eee;
+}
+.container {
+  width: 810px;
+  margin: 0 auto;  
+  padding: 0 45px;
+  background-color: #fff;
+}
+/* 
+  公用
+*/
+$lightColor: #fab1a0;
+$deepColor: #ff7675;
+$greenColor:#55efc4;
+$fontColor:rgb(187, 184, 184);
+
+.flex {
+  display: flex;
+  align-items: center;
+  &-jc-sb {
+    @extend .flex;
+    justify-content: space-between;
+  }
+  &-jc-sa {
+    @extend .flex;
+    justify-content: space-around;
+  }
+}
+
+
+
+header {
+  position: relative;
+  @extend .flex-jc-sb;
+  align-items: flex-end;
+  width: 100%;
+  height: 85px;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    border-bottom: 2px solid #636e72;
+  }
+  .header__box {
+    position: relative;
+    width: 215px;
+    height: 100%;
+    background-color: $deepColor;
+    span {
+      position: absolute;
+      left: 8px;
+      bottom: 5px;
+      color: #fff;
+    }
+  }
+  p {
+    padding-bottom: 5px;
+    color: $lightColor;
+  }
+}
+
+.oneSection {
+  @extend .flex-jc-sb;
+  margin-top: 30px;
+  height: 300px;
+
+  .banner {
+    flex: 1;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url(./photo640.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 50% 100%;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;      
+      width: 30%;
+      height: 100%;
+      background-color: #55efc4;
+      opacity: .5;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;      
+      width: 30%;
+      height: 100%;
+      background-color: #fd79a8;
+      opacity: .5;
+    }
+
+  }
+
+  .side {
+    position: relative;
+    width: 220px;
+    height: 100%;
+    margin-left: 30px;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;      
+      width: 100%;
+      height: 2px;
+      background-color: $deepColor;
+      opacity: .5;
+    }
+
+    &__top {
+      h3 {        
+        font: small-caps 24px / 40px 微软雅黑;
+        text-decoration: underline;
+        text-transform: capitalize;        
+        color: #000;
+      }
+      p {        
+        font: 12px / 10px 楷体;
+        color: rgb(212, 209, 209);
+      }
+    }
+
+    &__bottom {
+      @extend .flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+      position: absolute;
+      width: 100%;
+      top: 100px;
+      left: 0;
+      bottom: 0;
+      h3 {
+        position: relative;
+        left: -17px;
+        margin-right: 0.4em;
+        font-size: 6.5em;
+        font-style: italic;
+        color: $greenColor;
+      }
+      &__size {
+        @extend .flex;
+        align-items: flex-end;
+        color: $deepColor;
+        &__med {
+          margin-right: 6px;
+          font-size: 3em;
+          line-height: 40px;
+        }
+        &__small {
+          font-size: 12px;
+          .p1 {
+            position: relative;
+            top: 5px;
+            font-size: 1.5em;
+          }
+          .p2 {
+            color: #999;
+          }
+        }
+      }
+    }
+  }
+}
+
+.towSection {
+  @extend .flex;
+  padding-top: 20px;
+  margin-bottom: 20px;
+  height: 180px;
+  .box {
+    width: 200px;
+    height: 95%;
+    margin-right: 12px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;         //必须结合的属性，将对象作为弹性伸缩盒子模型显示
+    -webkit-line-clamp:10;        //控制文本的行数
+    -webkit-box-orient:vertical;  //必须结合的属性，设置或检索伸缩盒对象的子元素的排列方式
+   
+    .h3 {
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: underline;
+    }
+    p {
+      margin-top: 4px;
+      letter-spacing: 1px;
+      font-size: 12px;
+      color: $fontColor;
+    }
+    .color1{color: $greenColor;}
+    .color2{color: #fdcb6e;}    
+  }
+  .lastbox {
+    width: 135px;
+    height: 171px;
+    @extend .flex-jc-sb;
+    align-items: flex-start;
+    flex-direction: column;    
+
+    &__one {
+      width: 135px;
+      margin-right: 12px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;         //必须结合的属性，将对象作为弹性伸缩盒子模型显示
+      -webkit-line-clamp:5;        //控制文本的行数
+      -webkit-box-orient:vertical;  //必须结合的属性，设置或检索伸缩盒对象的子元素的排列方式
+      h3 {
+        font-weight: 600;
+        font-size: 16px;
+        text-decoration: underline;
+      }
+      .color3{color: $deepColor;}
+      p {margin-top: 4px;font-size: 14px;color: $fontColor;}
+    }
+
+    &__two {
+      font-size: 13px;
+      p {
+        color: #999;
+      }
+      span {
+        color: $deepColor;
+      }
+    }
+  }
+}
+
+
+
+.wrap {
+  margin-top: 50px;
+  padding: 20px 0;
+  @extend .flex;
+  &__left {
+    flex: 1;
+    margin-right: 20px;
+
+
+    .title {
+      font-size: 2em;
+      font-weight: 600;
+      color: #ffd32a;
+    }
+    &__headline {
+      font-size: 20px;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+      border-bottom: 2px solid #273c75;
+      p {
+        font-size: 1.5em;
+        font-weight: 600;
+        color: #273c75;
+        span {
+          font-style: italic;
+        }
+      }
+      
+    }
+    &__content {
+      color: $fontColor;
+      font-size: 12px;
+      .title {
+        float: left;
+        width: 50px;
+        padding: 0 4px;
+        font-size: 4em;
+        font-weight: 100;
+      }
+      .img {
+        padding: 8px 0 5px  5px;
+        float: right;
+        clear: both;
+      }
+    }
+
+
+  }
+  &__right {
+    flex: 1;    
+    line-height: 180%;
+    &__box1 {
+      position: relative;
+      width: 400px;
+      height: 225px;
+      &__img  {
+        z-index: 1;
+        position: absolute;
+        width: 100%;
+        img {
+          width: 100%;
+        }
+      }
+      &__text {
+        @extend .flex;
+        align-items: flex-end;
+        z-index: 10;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 8px 0;        
+        color: #fff;
+        background-color: rgba(36, 35, 35, 0.5);
+
+        p {
+          position: relative;
+          margin-left: 40px;
+          font-size: 20px;
+          &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -10px;
+            transform: translateY(-50%);
+            width: 2px;
+            height: 90%;
+            background-color: $greenColor;
+          }
+        }
+        span {
+          margin-left: 10px;
+          font-size: 12px;
+          font-style: italic;
+          color: $greenColor;
+        }
+
+      }
+    }
+
+    &__box2 {
+      position: relative;
+      margin-top: 20px;      
+      background-color: #EEEED6;
+
+      &__list {
+        padding: 18px;
+        p {
+          position: relative;
+          padding-left: 20px;
+          &::before {
+            content: '';
+            position: absolute;
+            top: 49%;
+            left: 0px;        
+            transform: translateY(-50%);
+            border: 6px solid transparent;
+            border-top: none;
+            border-bottom-color: #273c75;
+          }
+        }
+      }
+
+      &__bottom {
+        position: relative;
+        height: 125px;
+        &__zero {
+          @extend .flex;
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          padding: 6px;                
+          width: 210px;
+          height: 120px;
+          color: #fff;
+          background-color: $deepColor;
+          h3 {
+            position: relative;
+            font-size: 5em;
+            margin-right: 8px;
+            &::before {
+              content: '';
+              position: absolute;
+              top: 50%;
+              right: -5px;
+              transform: translateY(-50%);
+              width: 2px;
+              height: 80px;
+              background-color: #fff;
+            }         
+          }
+          &__p {
+            font-size: 12px;
+            line-height: 12px;
+
+            .zero__p1 {
+              font-size: 16px;
+              font-style: italic;
+            }
+            .zero__p2 {
+              margin-top: 8px;
+            }
+          }
+        }
+        &__comma {
+          float: right;
+          width: 40%;
+          height: 100%;
+          font-size: 12px;
+          line-height: 20px;
+          text-indent: 3em;
+          word-wrap: break-word;
+          letter-spacing: 1px;
+          font-style: italic;
+          color: #999;
+          span {
+            position: relative;
+            &::before {
+              content: '“';
+              position: absolute;
+              top: -15px;
+              left: -35px;
+              font: 72px 黑体;
+              text-indent: -40px;
+              color: rgb(212, 93, 92);
+            }
+            &::after {
+              content: '”';
+              position: absolute;
+              top: 72px;
+              right: -160px;
+              font: 72px 黑体;
+              text-indent: 0px;
+              color: rgb(212, 93, 92);
+            }
+          }
+        }
+      }
+    }
+    
+  }
+
+}
+
+footer {
+  border-top: 1px solid #000;
+  text-align: end;
+  padding-bottom: 40px;
+  color: $deepColor;
+}
