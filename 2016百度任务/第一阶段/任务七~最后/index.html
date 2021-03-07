@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- 设置完美视口 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>练习响应式页面</title>
+  <link rel="stylesheet" href="./styles/reset.css">
+  <link rel="stylesheet" href="./styles/Home.css">
+  <link rel="stylesheet" href="./styles/iconfont.css">
+  <link rel="stylesheet" href="./styles/swiper.min.css">
+
+
+
+</head>
+
+<body>
+
+  <div class='header'>
+
+    <div class='header-column'>
+      <div class='header-content'>
+        <span>English</span>
+        <span>网站地图</span>
+        <span>加盟耀达</span>
+        <span>服务热线：<em>1111111111</em></span>
+      </div>
+    </div>
+
+    <div class='nav'>
+      <div class='nav-img'><img src="./imges/logo.png"></div>
+      <div class='nav-content'>
+        <ul class='nav-mt'>
+          <i class='iconfont icon-list'></i>
+          <div id='nav-mt-active'>
+            <ul>
+              <li>首页</li>
+              <li>临建工程</li>
+              <li>永久建筑</li>
+              <li>功能配套</li>
+              <li>精选案例</li>
+              <li>关于耀达</li>
+              <li>新闻中心</li>
+              <li>联系我们</li>
+            </ul>
+          </div>
+        </ul>
+        <ul class='nav-pc'>
+          <li class='nav-active'>首页</li>
+          <li>临建工程</li>
+          <li>永久建筑</li>
+          <li>功能配套</li>
+          <li>精选案例</li>
+          <li>关于耀达</li>
+          <li>新闻中心</li>
+          <li>联系我们</li>
+        </ul>
+      </div>
+      <div class='nav-icon'>
+        <i class='iconfont icon-sousuo'></i>
+      </div>
+    </div>
+  </div>
+
+  <div class='banner'>
+    <div class='banner-containers'>
+      <div class='banner-container'>
+        <p class='underline'></p>
+        <br>
+        <p class='en'>Light steel villas,<br>
+          BUILDING IS LIKE BUILDING BLOCKS
+        </p>
+
+        <br>
+        <p class='cn'>轻钢别墅，建房就像达积木</p>
+      </div>
+    </div>
+    <div class="swiper-container" id='swiper1'>
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="./imges/banner1.jpg"></div>
+        <div class="swiper-slide"><img src="./imges/banner2.jpg"></div>
+        <div class="swiper-slide"><img src="./imges/banner3.jpg"></div>
+        <div class="swiper-slide"><img src="./imges/banner4.jpg"></div>
+      </div>
+      <div class='prev-next'>
+        <div class="swiper-button-prev" id='swiper1-button-prev'></div>
+        <!--左箭头。如果放置在swiper-container外面，需要自定义样式。-->
+        <div class="swiper-button-next" id='swiper1-button-next'></div>
+        <!--右箭头。如果放置在swiper-container外面，需要自定义样式。-->
+      </div>
+    </div>
+  </div>
+
+
+  <div class='house-column'>
+    <div class='house-introduce'>
+      <div class='introduce-top'>
+        <div>
+          <p class='introduce-title'>耀达房屋</p>
+          <p class='introduce-a'>建筑材料企业最具影响力品牌</p>
+          <p class='introduce-b'>融智能科技与绿色环保为一体，为人类创造美好空间</p>
+        </div>
+        <a href="#">浏览更多+</a>
+      </div>
+
+      <div class='introduce-bottom'>
+        <div>
+          <a href="#" class='introduce-bottom-active'>
+            <p>临建工程</p>
+          </a>
+          <a href="#">
+            <p>永久建筑</p>
+          </a>
+          <a href="#">
+            <p>功能配套</p>
+          </a>
+        </div>
+        <div class='introduce-bottom-text'><span>B</span>UILT-IN HOUSING</div>
+      </div>
+    </div>
+
+    <div class="swiper-container" id='swiper2'>
+      <div class="swiper-wrapper" id='introduce-banner'>
+        <div class="swiper-slide"><img src="./imges/photo4.png"></div>
+        <div class="swiper-slide"><img src="./imges/photo2.png"></div>
+        <div class="swiper-slide"><img src="./imges/photo3.png"></div>
+        <div class="swiper-slide"><img src="./imges/photo1.png"></div>
+      </div>
+      <div class='prev-next'>
+        <div class='prev-next-text'>
+          <p>活动板房K房</p>
+          <p>活动板房A房</p>
+        </div>
+        <div class="swiper-button-prev" id='swiper2-button-prev'></div>
+        <!--左箭头。如果放置在swiper-container外面，需要自定义样式。-->
+        <div class="swiper-button-next" id='swiper2-button-next'></div>
+        <!--右箭头。如果放置在swiper-container外面，需要自定义样式。-->
+      </div>
+    </div>
+  </div>
+
+
+  <div class='yaoda-services'>
+    <div class='yaoda-service'>
+      <div class='yaoda-service-left'>
+        <p class='yaoda-service-left-title'><span>耀达</span>能做什么？</p>
+        <h3>WHAT CAN WE DO?</h3>
+        <p class='yaoda-service-left-text'>WHY CHOOSE YAODA HOUSING TECHNOLOGY?</p>
+      </div>
+      <div class='yaoda-service-right'>
+        <div class='yaoda-service-right-sidebar1'>
+          <h2>01</h2>
+          <span>多年的技术经验</span>
+          <p>耀达凭借多年的技术经验被佛山市南海区人民政府颁发“雄鹰计划”重点扶持企业，并荣获国家“高新技术企业”称号（证书编号：GR201744011331）。</p>
+          <img src="./imges/logo1.png">
+        </div>
+        <div class='yaoda-service-right-sidebar2'>
+          <h2>02</h2>
+          <span>丰富的行业资源</span>
+          <p>耀达凭借多年的技术经验被佛山市南海区人民政府颁发“雄鹰计划”重点扶持企业，并荣获国家“高新技术企业”称号（证书编号：GR201744011331）。</p>
+          <img src="./imges/logo2.png">
+        </div>
+        <div class='yaoda-service-right-sidebar3'>
+          <h2>03</h2>
+          <span>良好的品牌口碑</span>
+          <p>耀达凭借多年的技术经验被佛山市南海区人民政府颁发“雄鹰计划”重点扶持企业，并荣获国家“高新技术企业”称号（证书编号：GR201744011331）。</p>
+          <img src="./imges/logo3.png">
+        </div>
+        <div class='yaoda-service-right-sidebar4'>
+          <h2>04</h2>
+          <span>贴心的售后服务</span>
+          <p>耀达凭借多年的技术经验被佛山市南海区人民政府颁发“雄鹰计划”重点扶持企业，并荣获国家“高新技术企业”称号（证书编号：GR201744011331）。</p>
+          <img src="./imges/logo4.png">
+        </div>
+      </div>
+    </div>
+
+    <div class='yaoda-service-img'></div>
+  </div>
+
+
+  <div class='dynamic-display'>
+    <div class='dynamic-display-left'>
+      <div class='dynamic-display-left-top'>
+        <h3>房屋科技的标杆企业铸造</h3>
+        <span>动态展示</span>
+      </div>
+      <div class='dynamic-display-left-bottom'>
+        <h3 id='dynamic-display-left-bottom-headline'>佛山地铁工程活动房</h3>
+        <p class='dynamic-display-left-bottom-text'>根据客户需求和环境条件量身订制的集装箱产品，同时适用于商业类和住宿类需求。</p>
+        <div class='dynamic-display-left-bottom-prev'>
+          <p>
+            <span id='dynamicId'>01</span>
+            <span>/03</span>
+          </p>
+          <span class='line'></span>
+          <a class='iconfont icon-zuojiantou' id='prev'></a>
+          <a class='iconfont icon-youjiantou' id='next'></a>
+        </div>
+        <a href='#' class='dynamic-display-left-bottom-more'>浏览更多+</a>
+      </div>
+    </div>
+
+    <div class='dynamic-display-right'><img id='dynamic-display-img' src="./imges/photo3.png"></div>
+
+  </div>
+
+
+  <div class='new-dynamic-display'>
+    <div class='new-dynamic-display-left'>
+      <div class='title'>
+        <img src="./imges/logo5.png">
+        <span>最新动态</span>
+      </div>
+      <div class='new-dynamic-display-img'><img src='./imges/photo4.png'></div>
+      <div class='new-dynamic-display-text'>
+        <h3>耀达轻钢 ·上｜为什么许多人选择建轻钢别墅</h3>
+        <p>随看经济的发展，人民的生活水平也跟看日益提高，对自己所居住的环境也有着更高追求，不再是普通的“青砖红瓦”；现在农村的新房是一家比一家好看，乡村里别墅成群...</p>
+        <span>2020-05-20</span>
+      </div>
+    </div>
+    <div class='share'>
+      <div class='share-title'>
+        <div><img src="./imges/logo6.png"></div>
+        <p class='headline'>耀达动态</p>
+        <a href='#'>浏览更多+</a>
+      </div>
+      <div class='share-texts'>
+        <div class='share-text1'>
+          <h3>耀达轻钢 ·上｜为什么许多...</h3>
+          <p>随看经济的发展，人民的生活水平也跟看日益提高，对自己所居住的环境也有着更高追求，不再是普通的“青砖红瓦”...</p>
+          <span>2020-01-14</span>
+        </div>
+        <div class='share-text2'>
+          <h3>耀达轻钢 ·上｜为什么许多...</h3>
+          <p>随看经济的发展，人民的生活水平也跟看日益提高，对自己所居住的环境也有着更高追求，不再是普通的“青砖红瓦”...</p>
+          <span>2020-01-14</span>
+        </div>
+        <div class='share-text3'>
+          <h3>耀达轻钢 ·上｜为什么许多...</h3>
+          <p>随看经济的发展，人民的生活水平也跟看日益提高，对自己所居住的环境也有着更高追求，不再是普通的“青砖红瓦”...</p>
+          <span>2020-01-14</span>
+        </div>
+        <div class='share-text4'>
+          <h3>耀达轻钢 ·上｜为什么许多...</h3>
+          <p>随看经济的发展，人民的生活水平也跟看日益提高，对自己所居住的环境也有着更高追求，不再是普通的“青砖红瓦”...</p>
+          <span>2020-01-14</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class='video-container'>
+    <div class='video'>
+      <div><img src="./imges/play.png"></div>
+    </div>
+    <video controls id='yaoda-video'>
+      <source src='./movies/movie02.mp4'>
+      您的浏览器暂不支持播放该视频，请升级至最新版浏览器。
+    </video>
+    <i class='iconfont icon-icon-cross-squre' id='video-close'></i>
+  </div>
+
+  <div class='walkInto'>
+    <h3>耀达<span>集装房屋智造专家</span></h3>
+    <p class='walkInto-text1'>耀达房屋科技集团始创于1995年，至2018年已有23年的辉煌历史，发展至今已成为中国轻钢集成房屋行业的领航企业和中国活动房屋行业中最具影响力的品牌。</p>
+    <p class='walkInto-text2'>
+      <span>多年来开发升级及自主研发项目技术和产品数十个，享有多个科技创新产品和国家发明专利产品。集团产品类型多样，从轻钢结构配件、建筑板材到活动房屋、箱式房屋、轻钢别墅、仓库、厂房等轻钢结构的房屋产品体系一应俱全。</span>
+    </p>
+    <div class='walkInto-yaodas'>
+      <a href="#" class='walkInto-yaoda'>
+        走进耀达
+        <img src="./imges/右箭头.png">
+      </a>
+    </div>
+  </div>
+
+
+
+  <div class='cooperation'>
+    <div class='cooperation-left'>
+      <div class='cooperation-text'>
+        <img src="./imges/logo7.png">
+        <p>合作伙伴</p>
+      </div>
+      <div class='cooperation-left-img'>
+        <div><img src="./imges/advertising (1).jpg"></div>
+        <div><img src="./imges/advertising (2).jpg"></div>
+        <div><img src="./imges/advertising (3).jpg"></div>
+        <div><img src="./imges/advertising (4).jpg"></div>
+        <div><img src="./imges/advertising (5).jpg"></div>
+        <div><img src="./imges/advertising (6).jpg"></div>
+        <div><img src="./imges/advertising (7).jpg"></div>
+        <div><img src="./imges/advertising (8).jpg"></div>
+        <div><img src="./imges/advertising (9).jpg"></div>
+      </div>
+    </div>
+
+    <div class='cooperation-right'>
+      <div class='cooperation-right-text'>
+        <img src="./imges/logo8.png">
+        项目咨询
+      </div>
+
+      <div class='cooperation-right-bottom'>
+        <p class='cooperation-right-bottom-text'>
+          尊敬的客户，如果您对模块化建筑有任何需求<br>
+          请填写项目信息及个人信息，我们将第一时间为您提供专业优质的服务
+        </p>
+        <form action="#">
+          <div class='cooperation-right-bottom-from'>
+            <div class='cooperation-right-o' id='provinces'>
+              <p>广东省</p>
+            </div>
+            <div class='cooperation-right-o' id='citys'>
+              <p>佛山市</p>
+            </div>
+            <div class='cooperation-right-o' id='chooses'>
+              <p>请选择类型</p>
+            </div>
+          </div>
+          <div id='cooperation-right-o'>
+            <p>请选择占地面积</p>
+          </div>
+
+          <div class='cooperation-right-bottom-from'>
+            <div class='cooperation-right-i'><input type="text" placeholder="姓名" id=""> </div>
+            <div class='cooperation-right-i' id='i-2'>
+              <span>*</span>
+              <input type="text" placeholder="电话" required />
+            </div><!-- required 表示这个input必须要输入 -->
+            <div class='cooperation-right-i'><input type="text" placeholder="邮箱" required /></div>
+          </div>
+          <div class='cooperation-right-i' id='cooperation-right-i-content'><input type="text" placeholder="内容"></div>
+
+          <a href="#">提交资讯</a>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <div class='footers'>
+    <div class='footer'>
+
+      <div class='footer-1'>
+        <h3>
+          全国服务热线：<br>
+          <strong>0757-85407788</strong>
+        </h3>
+        <p>招商加盟</p>
+      </div>
+
+      <div class='footer-2'>
+        <h2>产品解决方案</h2>
+        <p>
+          <span>>别墅</span>
+          <span>>岗亭</span>
+          <span>>洗手间</span>
+          <span>>工地营地</span>
+          <span>>旅游度假</span>
+        </p>
+      </div>
+      <div class='footer-3'>
+        <h2>最受欢迎产品</h2>
+        <p>
+          <span>>乐安居25平米</span>
+          <span>>乐安居46平米</span>
+          <span>>乐安居60平米</span>
+          <span>>乐安居70平米</span>
+          <span>>乐安居80平米</span>
+          <span>>乐安居95平米</span>
+          <span>>乐安居110平米</span>
+        </p>
+      </div>
+      <div class='footer-4'>
+        <h2>联系我们</h2>
+        <div><img src="./imges/二维码.jpg"><br></div>
+      </div>
+
+      <div class='footer-5'>
+        <div>
+          <p>手机<span>13929956668</span></p>
+          <p>传真<span>0757-85407733</span></p>
+          <p>
+            地址
+            <span id='footer-5-span'>广东省佛山市南海区丹灶镇镇政府侧桂丹路58号</span>
+          </p>
+        </div>
+      </div>
+
+      <div class='footer-6'>
+        <p>
+          网站地图 | 分享至：
+          <i class='iconfont icon-weixin'></i>
+          <i class='iconfont icon-weibo1'></i>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- 弹出层 -->
+  <div class='address-container'>
+    <div class='overlay'></div>
+    <div class='address'>
+      <h2>请选择省份</h2>
+      <p>
+        <span>河北</span>
+        <span>山西</span>
+        <span>辽宁</span>
+        <span>吉林</span>
+        <span>浙江</span>
+        <span>江苏</span>
+        <span>安徽</span>
+        <span>福建</span>
+        <span>江西</span>
+        <span>广东</span>
+        <span>海南</span>
+      </p>
+      <i class='iconfont icon-icon-cross-squre' id='address-close'></i>
+    </div>
+  </div>
+
+
+
+  <div class='actGotop'>
+    <a href="#">
+      <i class='iconfont icon-zuojiantou'></i>
+    </a>
+  </div>
+
+
+</body>
+<script src='./scripts/swiper.min.js'></script>
+<script src='./scripts/Home.js'></script>
+<script src='./scripts/jquery-2.1.1.min.js'></script>
+<script src='./scripts/mock.js'></script>
+
+
+
+</html>

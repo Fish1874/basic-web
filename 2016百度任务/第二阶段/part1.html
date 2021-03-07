@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>IFE JavaScript Task 01</title>
+</head>
+
+<body>
+
+  <label>请输入北京今天空气质量：<input id="aqi-input" type="text"></label>
+  <button id="button">确认填写</button>
+  <div>您输入的值是：<span id="aqi-display" aaa-bind='aaa'>尚无录入</span></div>
+  <br />
+  <label>进阶——双向数据绑定:</label><input aaa-model='aaa' type="text">
+
+  <script type="text/javascript">
+    "use strict";
+
+    function getElm(val) {
+      return document.querySelectorAll(val)
+    }
+
+    (function () {
+      /*	
+      在注释下方写下代码
+      给按钮button绑定一个点击事件
+      在事件处理函数中
+      获取aqi-input输入的值，并显示在aqi-display中
+      */
+
+      const elem = getElm('#button')[0];
+      elem.addEventListener('click', function () {
+        getElm('#aqi-display')[0].innerHTML = getElm('#aqi-input')[0].value
+      })
+    })();
+
+
+    /*
+      使用代理实现双向数据绑定
+    */
+    function View() {
+      let proxy = new Proxy({}, {
+        get() { },
+        set(obj, property, value) {
+          getElm(`[aaa-model="${property}"]`).forEach(item => {
+            item.value = value;
+          })
+          getElm(`[aaa-bind="${property}"]`).forEach(item => {
+            item.innerHTML = value;
+          })
+          return true;
+        }
+      })
+      this.init = function () {
+        const elms = getElm('[aaa-model]');
+        elms.forEach(v => {
+          v.addEventListener('keyup', function () {
+            // 获取双向绑定的属性——aaa
+            proxy[this.getAttribute('aaa-model')] = this.value
+          })
+        })
+      }
+    }
+    new View().init();
+
+  </script>
+</body>
+
+</html>
