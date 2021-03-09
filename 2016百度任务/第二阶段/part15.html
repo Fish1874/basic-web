@@ -30,6 +30,7 @@
   <button id="sort-btn">排序</button>
 
   <script type="text/javascript">
+
     let $ = function (v, type = 'single') {
       if (type == 'single') {
         return document.querySelector(v);
@@ -114,9 +115,7 @@
       // document.querySelector('#sort-btn').addEventListener('click', btnHandle)
       $('#sort-btn').onclick = throttle(btnHandle, 1000);
     }
-
     init();
-
 
 
 
