@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>模拟队列</title>
+</head>
+
+<body>
+  <div>
+    <input type="text">
+    <a>
+      <button type="button" data-type="左侧入">左侧入</button>
+      <button type="button" data-type="右侧入">右侧入</button>
+      <button type="button" data-type="左侧出">左侧出</button>
+      <button type="button" data-type="右侧出">右侧出</button>
+    </a>
+    <h2></h2>
+  </div>
+</body>
+<script>
+
+  const $ = function (val, type = 'single') {
+    if (type == 'single') return document.querySelector(val);
+    return document.querySelectorAll(val);
+  }
+
+  const input = $('input');
+  const h2 = $('h2');
+
+  $('button', 'all').forEach(v => {
+    v.addEventListener('click', (e) => {
+      btn(e.target.dataset.type);
+    })
+  })
+
+  let queue = [];
+  function btn(type) {
+    let val = input.value.trim();
+    const span = document.createElement('span');
+    span.style = "border:1px solid #eee;margin: 5px;padding:5px;";
+    span.innerHTML = val;
+
+    switch (type) {
+      case '左侧入':
+        queue.unshift(val);
+        h2.insertBefore(span, h2.childNodes[0])
+        // h2.insertBefore(span, h2.firstChild)
+        break;
+      case '右侧入':
+        queue.push(val);
+        h2.appendChild(span)
+        break;
+      case '左侧出':
+        queue.shift(val);
+        h2.removeChild(h2.firstChild)
+        // h2.removeChild(h2.childNodes[0])
+        break;
+      case '右侧出':
+        queue.pop();
+        h2.removeChild(h2.lastChild)
+        break;
+    }
+    console.log(queue);
+  }
+
+</script>
+
+</html>

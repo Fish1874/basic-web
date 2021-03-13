@@ -270,10 +270,11 @@
 
     if (pageState.nowGraTime === 'day') {
       chartData = currentData;
-    } else if (pageState.nowGraTime === 'week') {
+    }
+    else if (pageState.nowGraTime === 'week') {
       chartData = {};
       for (const k in currentData) {
-        count += currentData[k];   // 空气质量总数
+        count += currentData[k];      // 空气质量总数
         days++;                       // 91天
         if ((new Date(k)).getDay() == 6) {
           weeks++;
@@ -287,12 +288,12 @@
         weeks++;
         chartData[`第${weeks}周`] = Math.floor(count / days);
       }
-    } else if (pageState.nowGraTime === 'month') {
+    }
+    else if (pageState.nowGraTime === 'month') {
       chartData = {};
       for (const k in currentData) {
         count += currentData[k];   // 空气质量总数
         days++;                    // 91天
-        console.log('1', (new Date(k)).getMonth());
         if ((new Date(k)).getMonth() !== months) {
           months++;
           chartData[`第${months}月`] = Math.floor(count / days);
@@ -301,6 +302,7 @@
           days = 0;
         }
       }
+      console.log('days', days);
       // 逻辑回周
       if (days != 0) {
         months++;
