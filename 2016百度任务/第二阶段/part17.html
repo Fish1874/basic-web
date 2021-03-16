@@ -128,20 +128,19 @@
     return document.querySelectorAll(val);
   }
 
-
   // 以下两个函数用于随机模拟生成测试数据
   function getDateStr(dat) {
     var y = dat.getFullYear();
     var m = dat.getMonth() + 1;
-    m = m < 10 ? '0' + m : m;
     var d = dat.getDate();
+    m = m < 10 ? '0' + m : m;
     d = d < 10 ? '0' + d : d;
     return y + '-' + m + '-' + d;
   }
   function randomBuildData(seed) {
     var returnData = {};
-    var dat = new Date("2016-01-01");
-    var datStr = ''
+    var dat = new Date('2016-01-01');
+    var datStr = '';
     for (var i = 1; i < 92; i++) {
       datStr = getDateStr(dat);
       returnData[datStr] = Math.ceil(Math.random() * seed);
@@ -162,43 +161,35 @@
     "沈阳": randomBuildData(500)
   };
 
-  // 用于渲染图表的数据
+  // 用于渲染图标的数据
   var chartData = {};
 
   // 记录当前页面的表单选项
   var pageState = {
     nowSelectCity: '北京',
-    nowGraTime: "day"
+    nowGraTime: 'day'
   }
-
 
   /**
    *  随机获取颜色
    */
-  function getColor(type = 1) {
-    let arrColor = ['#1abc9c', '#2ecc71', '#3498db', '#9b59b6', '#34495e', '#f1c40f', '#e67e22', '#e74c3c', '#0984e3', '#e84393'];
-    if (true == 1) {
-      const index = Math.floor(Math.random() * (arrColor.length));
-      return arrColor[index];
-    } else {
-      return `#${Math.floor(Math.random() * 0xFFFFFF).toString(16)}`
-    }
+  function getColor() {
+    return `#${Math.floor(Math.random() * 0xFFFFFF).toString(16)}`
   }
 
-
   /**
-   * 渲染图表
+   *  渲染图表
    */
   function renderChart() {
-    let text = '';
-    for (const i in chartData) {
-      text += `<div data-title="${i}" data-aqi="[AQI]:${chartData[i]}" style="height:${chartData[i]}px;background-color:${getColor()};flex:1;"></div>`
+    let content = '';
+    for (const key in chartData) {
+      content += `<div data-title="${key}" data-aqi="[AQI]:${chartData[key]}" style="height:${chartData[key]}px;background-color:${getColor()};flex:1;"></div>`
     }
-    $('.aqi-chart-wrap').innerHTML = text;
+    $('.aqi-chart-wrap').innerHTML = content;
   }
 
   /**
-   * 日、周、月的radio事件点击时的处理函数
+   *  日、周、月的radio事件点击时的处理函数
    */
   function graTimeChange(val) {
     // 确定是否选项发生了变化
@@ -231,6 +222,7 @@
     renderChart();
   }
 
+
   /**
    * 初始化日、周、月的radio事件，当点击时，调用函数graTimeChange
    */
@@ -241,7 +233,6 @@
       })
     })
   }
-
   /**
    * 初始化城市Select下拉选择框中的选项
    */
@@ -258,59 +249,64 @@
     })
   }
 
+
+
   /**
    * 初始化图表需要的数据格式
    */
   function initAqiChartData() {
     // 将原始的源数据处理成图表需要的数据格式
     // 处理好的数据存到 chartData 中
-    let currentData = aqiSourceData[pageState.nowSelectCity];
-
+    let currentData = aqiSourceData[pageState.nowSelectCity]
     let count = 0, days = 0, weeks = 0, months = 0;
 
     if (pageState.nowGraTime === 'day') {
       chartData = currentData;
     }
+
     else if (pageState.nowGraTime === 'week') {
       chartData = {};
-      for (const k in currentData) {
-        count += currentData[k];      // 空气质量总数
-        days++;                       // 91天
-        if ((new Date(k)).getDay() == 6) {
+
+      for (const key in currentData) {
+        count += currentData[key]; // 空气质量总数
+        days++;                    // 7天
+        if ((new Date(key).getDay()) === 6) { //getDay 星期几
           weeks++;
           chartData[`第${weeks}周`] = Math.floor(count / days);
           count = 0;
           days = 0;
         }
       }
+
       if (days != 0) {
-        // 保证最后一周不满6天也算一周
+        // 保证最后一周不到星期六也算一周
         weeks++;
         chartData[`第${weeks}周`] = Math.floor(count / days);
       }
     }
+
     else if (pageState.nowGraTime === 'month') {
       chartData = {};
-      for (const k in currentData) {
-        count += currentData[k];   // 空气质量总数
-        days++;                    // 91天
-        if ((new Date(k)).getMonth() !== months) {
+
+      for (const key in currentData) {
+        count += currentData[key];   // 空气质量总数
+        days++;                      // 32天
+        if ((new Date(key)).getMonth() !== months) {
           months++;
-          chartData[`第${months}月`] = Math.floor(count / days);
-          console.log(chartData);
+          chartData[`第${months}月`] = Math.floor(count / (days - 1));
           count = 0;
           days = 0;
         }
       }
-      console.log('days', days);
-      // 逻辑回周
+
       if (days != 0) {
         months++;
-        chartData[`第${months}月`] = Math.floor(count / days);
+        chartData[`第${months}月`] = Math.floor(count / (days + 1));
       }
-    }
 
+    }
   }
+
 
   /**
    * 初始化函数
@@ -323,8 +319,6 @@
   }
 
   init();
-
-
 
 </script>
 

@@ -36,134 +36,134 @@
     <a>
       <button type="button">左侧入</button>
       <button type="button">右侧入</button>
-      <button type="button">左侧出</button>
-      <button type="button">右侧出</button>
+      <button type="button" id="out">左侧出</button>
+      <button type="button" id="out">右侧出</button>
       <button type="button" id="sort">冒泡</button>
-      <button type="button" id="btn">随机50个数字</button>
+      <button type="button" id="nums">随机50个数字</button>
     </a>
   </div>
   <div id="wrap"></div>
 </body>
 <script>
-
-  const $ = function (val, type = "single") {
-    if (type === 'single') return document.querySelector(val);
-    return document.querySelectorAll(val);
+  // 兼容浏览器差异
+  function addEvent(elem, event, func) {
+    if (elem.addEventListener) {
+      elem.addEventListener(event, func)
+    }
+    else if (elem.attachEvent) {
+      elem.attachEvent('on' + event, func)
+    }
+    else {
+      elem['on' + event] = func
+    }
   }
+  const $ = function (val, type = 'single') {
+    if (type === 'single') return document.querySelector(val)
+    return document.querySelectorAll(val)
+  };
+
+  const divs = $('#wrap');
   const input = $('input');
-  const div = $('#wrap');
 
-
-  $('a').addEventListener('click', e => {
-    // console.log('e', e.target);
+  // 事件委托
+  addEvent($('a'), 'click', e => {
     const restrict = input.value > 10 && input.value < 100 ? true : false;
     if (!restrict) {
       return alert('输入的数字必须在10-100之间!')
-    } else if (div.childNodes.length > 59) {
+    } else if (divs.childNodes.length > 59) {
       return alert('元素数量最多60个!')
     }
 
-    let p = document.createelem('p');
-    p.innerHTML = input.value;
-    p.style = `height:${input.value}%;`;
+    let p = document.createElement('p');
+    p.style = `height:${input.value}%`;
+    p.dataset.height = `${input.value}`;
+    p.innerHTML = `${input.value}`;
 
     switch (e.target.innerHTML) {
       case '左侧入':
-        div.insertBefore(p, div.firstChild)
-        break;
-      case '左侧出':
-        div.removeChild(div.childNodes[0])
+        divs.insertBefore(p, divs.childNodes[0]);
         break;
       case '右侧入':
-        div.appendChild(p)
+        divs.appendChild(p);
+        break;
+      case '左侧出':
+        divs.removeChild(divs.firstChild);
         break;
       case '右侧出':
-        div.removeChild(div.lastChild)
+        divs.removeChild(divs.lastChild);
         break;
     }
   })
 
 
-  // 排序节点
-  function sortNodelist() {
-    let arr = Array.from(div.childNodes).sort((a, b) => a.innerHTML - b.innerHTML)
-    let fragment = document.createDocumentFragment();
-    arr.forEach(v => {
-      fragment.appendChild(v)
+
+
+
+  // 排序函数
+  function sort() {
+    // 第一种方法：
+    [...divs.childNodes].sort((a, b) => {
+      return a.dataset.height - b.dataset.height
+    }).forEach(v => {
+      divs.appendChild(v)
     })
-    div.innerHTML = '';
-    div.appendChild(fragment);
+
+    // 第二种方法：
+    // let arr = Array.from(divs.childNodes).sort((a, b) => a.dataset.height - b.dataset.height);
+    // let fragment = document.createDocumentFragment();
+    // arr.forEach(v => {
+    //   fragment.appendChild(v);
+    // })
+    // divs.innerHTML = '';
+    // divs.appendChild(fragment)
   }
 
-
-
-  // 获取随机50个数
-  function getNums(n1, n2, nums) {
+  // 获取随机数函数
+  function randomNum(n1, n2, nums) {
     let arr = [];
-    let m = n2 - n1 + 1; // +1 为了取到100
+    let m = n2 - n1 + 1;
 
     for (let i = 0; arr.length < nums; i++) {
-      let randomNumBer = Math.floor(Math.random() * m + n1);
-      if (arr.includes(randomNumBer)) { // 判断数组是否有重复
+      let number = Math.floor(Math.random() * m + n1);
+      if (arr.includes(number)) {
         i--;
         continue;
       }
-      arr.push(randomNumBer)
+      arr.push(number)
     }
-    return arr
+    return arr;
   }
-
-  // 创建节点
-  function createSpan(arr) {
+  // 创建n个节点
+  function createNode(arr) {
     let content = '';
     arr.forEach(v => {
       content += `<p style="height:${v}%" data-height="${v}">${v}</p>`;
     })
-    return content;
+    divs.innerHTML = content;
   }
-
-  function btn() {
-    let arr = getNums(10, 100, 50); // 获取10-100之间 50个数
-    let content = createSpan(arr);
-    div.innerHTML = content;
-  }
-
-  $('#btn').addEventListener('click', e => {
-    e.stopPropagation();      // 阻止事件冒泡
-    btn();
-  });
-
-  $('#sort').addEventListener('click', e => {
-    e.stopPropagation();
-    sortNodelist();
-  });
-
-  //事件绑定函数，兼容浏览器差异
-  function addEvent(elem, event, func) {
-    if (elem.addEventListener) {
-      elem.addEventListener(event, func);
-    }
-    else if (elem.attachEvent) {
-      elem.attachEvent("on" + event, func);
-    }
-    else {
-      elem["on" + event] = func;
-    }
-  }
-  // 删除当前节点
+  // 点击某个节点删除
   function delNode(val) {
-    div.childNodes.forEach(v => {
-      if (val === v.dataset.height) {
-        div.removeChild(v)
-      }
+    [...divs.childNodes].forEach(v => {
+      if (val === v.dataset.height) divs.removeChild(v)
     })
-
   }
-  addEvent(div, 'click', e => {
+
+
+  addEvent($('#sort'), 'click', e => {
+    e.stopPropagation();
+    sort();
+  })
+  addEvent($('#nums'), 'click', e => {
+    e.stopPropagation();
+    createNode(randomNum(10, 100, 50));
+  })
+  addEvent($('#wrap'), 'click', e => {
     delNode(e.target.dataset.height)
   })
 
-</script>
 
+
+
+</script>
 
 </html>
