@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<style>
+  .wrap p {
+    display: inline-block;
+    margin: 8px;
+    padding: 2px 6px;
+    color: #fff;
+    background-color: #2ecc71;
+  }
+
+  .wrap p:hover {
+    cursor: pointer;
+  }
+</style>
+
+<body>
+  <div>
+    <p id="search">
+      <label for="tag">Tag：</label>
+      <input type="text" id="tag">
+    </p>
+    <h2 class="wrap"></h2>
+  </div>
+</body>
+<script>
+  // 兼容浏览器差异
+  function addEvent(elem, event, func) {
+    if (elem.addEventListener) {
+      elem.addEventListener(event, func)
+    } else if (elem.attachEvent) {
+      elem.attachEvent('on' + event, func)
+    } else {
+      elem['on' + event] = func
+    }
+  }
+  const $ = function (val, type = 'single') {
+    if (type === 'single') return document.querySelector(val)
+    return document.querySelectorAll(val)
+  };
+  let tagInput = $('#tag'),
+    tagContent = $('.wrap');
+
+  let tagObj = new CreateQueue(tagInput);
+
+  // 构造函数
+  function CreateQueue() {
+    this.queue = [];
+    this.render = function (showList) {
+      let content = '';
+      this.queue = [... new Set(this.queue)];
+      if (this.queue.length > 10) {
+        this.queue.shift()
+      }
+
+      this.queue.forEach(v => {
+        content += `<p>${v}</p>`
+      })
+      showList.innerHTML = content;
+    };
+  }
+
+
+
+  // Tag输入框事件
+  addEvent(tagInput, 'keyup', function (e) {
+    if (e.keyCode == 13 || e.keyCode == 32 || e.keyCode == 188) {
+      let str = this.value.split(/[,，\n\s]+/)[0];
+      this.value = '';
+      if (str.length != 0) {
+        tagObj.queue.push(str);
+        tagObj.render(tagContent)
+      }
+    }
+  })
+  // Tag内容移入事件
+  addEvent(tagContent, 'mouseover', e => {
+    if (e.target.nodeName == 'P') {
+      e.target.innerText = `点击删除: ${e.target.innerHTML}`
+      e.target.style.color = '#e74c3c'
+    }
+  })
+  // Tag内容移出事件
+  addEvent(tagContent, 'mouseout', e => {
+    if (e.target.nodeName == 'P') {
+      e.target.innerText = e.target.innerText.replace('点击删除: ', ' ')
+      e.target.style.color = '#fff'
+    }
+  })
+  // Tag 点击删除
+  addEvent(tagContent, 'click', e => {
+    let str = e.target.innerText.replace('点击删除: ', '')
+    let index = tagObj.queue.indexOf(str);
+    tagObj.queue = tagObj.queue.filter(v => {
+      return v != str
+    })
+    tagObj.render(tagContent)
+  })
+
+  // 判断键盘编码
+  // document.addEventListener("keydown", keydown);
+  // function keydown(event) {
+  //   document.write(event.keyCode);
+  // }
+
+</script>
+
+</html>
