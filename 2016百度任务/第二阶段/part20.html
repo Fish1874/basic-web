@@ -1,74 +1,116 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <title>task20</title>
   <meta charset="UTF-8">
-  <style type="text/css">
-    #result {
-      display: -webkit-flex;
-      display: -ms-flexbox;
-      display: flex;
-    }
-
-    #result div {
-      background-color: pink;
-      height: 30px;
-      line-height: 30px;
-      min-width: 30px;
-      text-align: center;
-      margin: 5px;
-    }
-
-    #result span {
-      background-color: red;
-    }
-  </style>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 
+<style>
+  #wrap p {
+    display: inline-block;
+    margin: 8px;
+    padding: 2px 6px;
+    color: #fff;
+    background-color: #2ecc71;
+  }
+
+  #wrap p:hover {
+    cursor: pointer;
+  }
+</style>
+
 <body>
-  <div class="ctrl">
-    <textarea rows="5" cols="20" placeholder="请输入字符并用不同符号分隔" id="textArea"></textarea>
-    <button id="insert">插入</button>
-    <button id="search">查询</button>
-    <input id="searchInput"></input>
+  <div>
+
+    <textarea id="textarea" type="text" style="resize:none;" cols="30" rows="8"></textarea>
+    <a>
+      <button type="button">左侧入</button>
+      <button type="button">右侧入</button>
+      <span id="out">
+        <button type="button">左侧出</button>
+        <button type="button">右侧出</button>
+      </span>
+    </a>
+    <span id="search">
+      <button id="searchBtn">查询</button>
+      <input id="search-input" type="text">
+    </span>
   </div>
-  <div id="result"></div>
-  <script type="text/javascript">
-    $ = function (el) {
-      return document.querySelector(el);
-    }
-
-    var arrData = [];
-
-    $('#insert').onclick = function () {
-      var str = $('#textArea').value.trim();
-      var arrWord = str.split(/[^0-9a-zA-Z\u4e00-\u9fa5]+/).filter(function (e) {
-        if (e != null && e.length > 0) {
-          return true;
-        } else {
-          return false;
-        }
-      });
-      arrData = arrData.concat(arrWord);
-
-      render();
-    }
-
-    $('#search').onclick = function () {
-      var str = $('#searchInput').value.trim();
-      render(str);
-    }
-
-    function render(str) {
-      $('#result').innerHTML = arrData.map(function (d) {
-        if (str != null && str.length > 0) {
-          d = d.replace(new RegExp(str, "g"), "<span class='select'>" + str + "</span>");
-        }
-        return '<div>' + d + '</div>';
-      }).join('');
-    }
-  </script>
+  <h2 id="wrap"></h2>
 </body>
+<script>
+  // 兼容浏览器差异
+  function addEvent(elem, event, func) {
+    if (elem.addEventListener) {
+      elem.addEventListener(event, func)
+    }
+    else if (elem.attachEvent) {
+      elem.attachEvent('on' + event, func)
+    }
+    else {
+      elem['on' + event] = func
+    }
+  }
+
+  const $ = function (val, type = 'single') {
+    if (type === 'single') return document.querySelector(val)
+    return document.querySelectorAll(val)
+  };
+
+
+  const divs = $('#wrap');
+  const input = $('#textarea');
+  const search = $('#search-input');
+  let pList = [];
+
+  // 事件委托
+  addEvent($('a'), 'click', e => {
+    let text = '';
+    if (input.value) {
+      let arr = input.value.trim().split(/[^a-zA-Z0-9\u4e00-\u9fa5一-]/g).filter(v => {
+        return v.length != 0
+      })
+      arr.forEach((v, i) => {
+        text += `<p>${v}</p>`;
+      })
+    }
+    switch (e.target.innerHTML) {
+      case '左侧入':
+        pList.unshift(text)
+        divs.innerHTML = pList.join('')
+        break;
+      case '右侧入':
+        pList.push(text)
+        divs.innerHTML = pList.join('')
+        break;
+    }
+  })
+
+  addEvent($('#out'), 'click', e => {
+    e.stopPropagation();
+    if (!divs.childNodes.length) return;
+    switch (e.target.innerHTML) {
+      case '左侧出':
+        divs.removeChild(divs.firstChild);
+        break;
+      case '右侧出':
+        divs.removeChild(divs.lastChild);
+        break;
+    }
+  })
+  addEvent($('#searchBtn'), 'click', e => {
+    let str = (search.value).trim();
+    divs.innerHTML = pList.map(v => {
+      return v.replace(new RegExp(str, 'g'), `<span style="color:#8e44ad;">${str}</span>`)
+    }).join('')
+
+  })
+
+
+
+</script>
 
 </html>
