@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  div {
+    background: #fff;
+  }
+
+  #root {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px auto;
+    padding: 20px;
+    width: 1000px;
+    height: 300px;
+    border: 1px solid #000;
+  }
+
+  .child_1 {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    width: 450px;
+    height: 260px;
+    border: 1px solid #000;
+  }
+
+  .child_2 {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    width: 170px;
+    height: 220px;
+    border: 1px solid #999;
+  }
+
+  .child_3 {
+    display: flex;
+    padding: 20px;
+    width: 35px;
+    height: 180px;
+    border: 1px solid #888;
+    justify-content: space-between;
+  }
+</style>
+
+<body>
+  <div id="root">
+    <div class="child_1">
+      <div class="child_2">
+        <div class="child_3"></div>
+        <div class="child_3"></div>
+      </div>
+      <div class="child_2">
+        <div class="child_3"></div>
+        <div class="child_3"></div>
+      </div>
+    </div>
+    <div class="child_1">
+      <div class="child_2">
+        <div class="child_3"></div>
+        <div class="child_3"></div>
+      </div>
+      <div class="child_2">
+        <div class="child_3"></div>
+        <div class="child_3"></div>
+      </div>
+    </div>
+  </div>
+
+  <a>
+    <button id="preorder">前序遍历</button>
+    <button id="inorder">中序遍历</button>
+    <button id="postorder">后序遍历</button>
+    <button id="bfs">广度优先遍历</button>
+    <button id="dfs">深度优先遍历</button>
+  </a>
+</body>
+<script>
+
+  const $ = function (val, type = 'single') {
+    if (type === 'single') return document.querySelector(val)
+    return document.querySelectorAll(val)
+  }
+  function addEvent(elem, event, func) {
+    if (elem.addEventListener) {
+      elem.addEventListener(event, func)
+    }
+    else if (elem.attachEvent) {
+      elem.attachEvent('on' + event, func)
+    }
+    else {
+      elem['on' + event] = func
+    }
+  }
+
+  const root = $('#root');
+  const a = $('a');
+
+
+  let stack = [];
+  let timer = 0;
+  let interval = false;  // 用于判断当前是否执行完成
+
+
+  // 前序
+  function preorder(root) {
+    if (!root) { return };
+    stack.push(root);
+    preorder(root.firstElementChild); // 不会返回文本节点
+    preorder(root.lastElementChild);
+  }
+  // 中序
+  function inorder(root) {
+    if (!root) { return };
+    preorder(root.firstElementChild);
+    stack.push(root);
+    preorder(root.lastElementChild);
+  }
+  // 中序
+  function postorder(root) {
+    if (!root) { return };
+    preorder(root.firstElementChild);
+    preorder(root.lastElementChild);
+    stack.push(root);
+  }
+  // 广度优先遍历
+  function bfs(root) {
+    let queue = [root];
+    while (queue.length) {
+      const n = queue.shift();
+      stack.push(n);
+      [...n.children].forEach(v => {
+        queue.push(v);
+      })
+    }
+  }
+  // 深度优先遍历
+  function dfs(root) {
+    stack.push(root);
+    [...root.children].forEach(v => {
+      dfs(v);
+    })
+  }
+
+
+  // 还原样式
+  function reset() {
+    stack = [];
+    clearInterval(timer);
+  }
+
+  function render(delay = 500) {
+    let i = 0;
+    stack[i].style.backgroundColor = '#c7ecee';
+    timer = setInterval(function () {
+      i++;
+      if (i < stack.length) {
+        stack[i - 1].style.backgroundColor = '#fff'
+        stack[i].style.backgroundColor = '#c7ecee'
+      } else {
+        clearInterval(timer);
+        interval = false;
+        stack[stack.length - 1].style.backgroundColor = '#fff';
+      }
+    }, delay)
+  }
+
+
+
+  addEvent(a, 'click', e => {
+    if (!interval) {
+      interval = true;
+      switch (e.target.id) {
+        case 'preorder':
+          reset();
+          preorder(root);
+          render();
+          break;
+        case 'inorder':
+          reset();
+          inorder(root);
+          render();
+          break;
+        case 'postorder':
+          reset();
+          postorder(root);
+          render();
+          break;
+        case 'bfs':
+          reset();
+          bfs(root);
+          render();
+          break;
+        case 'dfs':
+          reset();
+          dfs(root);
+          render();
+          break;
+      }
+    }
+  })
+
+
+
+</script>
+
+</html>
