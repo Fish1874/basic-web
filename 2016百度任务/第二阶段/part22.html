@@ -123,7 +123,7 @@
     stack.push(root);
     preorder(root.lastElementChild);
   }
-  // 中序
+  // 后序
   function postorder(root) {
     if (!root) { return };
     preorder(root.firstElementChild);
