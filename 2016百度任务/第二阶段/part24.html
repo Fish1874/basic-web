@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  div {
+    border: 1px solid #999;
+    background: #fff;
+  }
+
+  #root {
+    display: flex;
+    justify-content: space-around;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #000;
+  }
+
+  p {
+    display: inline-block;
+  }
+
+
+  .child_1 {
+
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+
+  }
+
+  .child_2 {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    margin: 0 10px;
+    padding: 20px;
+
+  }
+
+  .child_3 {
+    display: flex;
+    margin: 0 10px;
+    padding: 20px;
+    justify-content: space-around;
+  }
+</style>
+
+<body>
+  <div id="root">根
+    <div class="child_1">a
+      <div class="child_2">b
+        <div class="child_3">3</div>
+        <div class="child_3">b</div>
+      </div>
+      <div class="child_2">v
+        <div class="child_3">c</div>
+        <div class="child_3">d</div>
+      </div>
+      <div class="child_2">d
+        <div class="child_3">e</div>
+      </div>
+    </div>
+    <div class="child_1">e
+      <div class="child_2">d
+        <div class="child_3">a</div>
+        <div class="child_3">b</div>
+      </div>
+      <div class="child_2">e</div>
+      <div class="child_2">f</div>
+      <div class="child_2">g</div>
+    </div>
+  </div>
+
+  查找节点：
+  <input id="input1" type="text">
+  <a>
+    <button id="bfs">广度优先遍历</button>
+    <button id="dfs">深度优先遍历</button>
+  </a>
+  <br />
+  <input id="input2" type="text">
+  <p>
+    <button id="add">插入</button>
+    <button id="del">删除</button>
+  </p>
+</body>
+<script>
+
+  const $ = function (val, type = 'single') {
+    if (type === 'single') return document.querySelector(val)
+    return document.querySelectorAll(val)
+  }
+  function addEvent(elem, event, func) {
+    if (elem.addEventListener) {
+      elem.addEventListener(event, func)
+    }
+    else if (elem.attachEvent) {
+      elem.attachEvent('on' + event, func)
+    }
+    else {
+      elem['on' + event] = func
+    }
+  }
+
+  const root = $('#root');
+  const a = $('a');
+  const input = $('#input1');
+  const input2 = $('#input2')
+
+
+  let stack = [];
+  let timer = 0;
+  let interval = false;  // 用于判断当前是否执行完成
+
+  // 广度优先遍历
+  function bfs(root) {
+    let queue = [root];
+    while (queue.length) {
+      const n = queue.shift();
+      stack.push(n);
+      [...n.children].forEach(v => {
+        queue.push(v);
+      })
+    }
+  }
+  // 深度优先遍历
+  function dfs(root) {
+    stack.push(root);
+    [...root.children].forEach(v => {
+      dfs(v);
+    })
+  }
+
+
+  // 还原样式
+  function reset() {
+    stack = [];
+    clearInterval(timer);
+    $('div', 'all').forEach(v => {
+      v.style.backgroundColor = '#fff';
+      v.style.color = '#000';
+      delete v.dataset.select; // 删除data-select属性
+    })
+  }
+  // 数组渲染
+  function render(val, delay = 500) {
+    let i = 0;
+    stack[i].style.backgroundColor = '#c7ecee';
+    timer = setInterval(function () {
+      i++;
+      if (i < stack.length) {
+        stack[i - 1].style.backgroundColor = '#fff'
+        stack[i].style.backgroundColor = '#c7ecee'
+        if (stack[i - 1].firstChild.nodeValue.trim() === val) {
+          stack[i - 1].style.backgroundColor = 'red';
+          stack[i - 1].style.color = '#000';
+        }
+      } else {
+        clearInterval(timer);
+        interval = false;
+        stack[stack.length - 1].style.backgroundColor = '#fff';
+        if (stack[i - 1].firstChild.nodeValue.trim() === val) {
+          stack[i - 1].style.backgroundColor = 'red';
+          stack[i - 1].style.color = '#000';
+        }
+      }
+    }, delay)
+  }
+
+
+
+  addEvent(a, 'click', e => {
+    if (!interval) {
+      interval = true;
+      let v = input.value.trim();
+      switch (e.target.id) {
+        case 'bfs':
+          reset();
+          bfs(root);
+          render(v);
+          break;
+        case 'dfs':
+          reset();
+          dfs(root);
+          render(v);
+          break;
+      }
+    }
+  })
+
+  addEvent(root, 'click', e => {
+    reset();
+    e.target.dataset.select = 'current';
+    e.target.style.backgroundColor = 'yellow'
+  })
+
+  addEvent($('p'), 'click', e => {
+    let v = input2.value.trim();
+    let elem = document.createElement('div');
+    elem.innerHTML = v;
+    elem.style.margin = '5px';
+    let nowElem = $('[data-select="current"]');
+
+    switch (e.target.id) {
+      case 'add':
+        if (!nowElem) return alert('请先选择一个节点，再插入！');
+        nowElem.appendChild(elem);
+        input2.value = null;
+        break;
+      case 'del':
+        if (!nowElem) return alert('请先选择一个节点，再删除！');
+        let parentElem = nowElem.parentNode;  // 先找到要删除节点的父节点
+        parentElem.removeChild(nowElem);      // 再删除我们要删除的节点
+        break;
+    }
+  })
+
+</script>
+
+</html>
