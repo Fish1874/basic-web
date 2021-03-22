@@ -1,0 +1,78 @@
+fieldset {
+  display: inline-block;
+  padding: 10px 20px; }
+
+h3 {
+  letter-spacing: 1px; }
+  h3 span {
+    color: #f0932b; }
+
+ul li {
+  list-style: none;
+  padding: 0px;
+  margin: 0px; }
+
+ul {
+  padding-left: 24px; }
+
+.root__node {
+  display: inline-block;
+  margin: 5px 0;
+  position: relative;
+  padding-left: 10px; }
+  .root__node:hover .root__node-title {
+    color: #30336b; }
+  .root__node-title {
+    font-size: 18px;
+    color: #6ab04c;
+    cursor: pointer; }
+  .root__node:hover a {
+    display: inline-block; }
+  .root__node a {
+    display: none;
+    margin-left: 8px;
+    font-size: 12px; }
+    .root__node a span {
+      padding: 0 8px;
+      border: 1px solid #95afc0;
+      border-radius: 10px;
+      cursor: pointer; }
+  .root__node-add:hover {
+    color: #22a6b3; }
+  .root__node-del:hover {
+    color: #eb4d4b; }
+
+.node-visible {
+  display: flex;
+  flex-direction: column; }
+
+.node-hidden {
+  display: none; }
+
+.triangleR {
+  position: relative;
+  padding-left: 10px; }
+  .triangleR::before {
+    content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 5px;
+    left: 0;
+    border: 7px solid transparent;
+    border-left-color: #999; }
+
+.triangleB {
+  position: relative;
+  padding-left: 10px; }
+  .triangleB::before {
+    content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 9px;
+    left: -8px;
+    border: 6px solid transparent;
+    border-top-color: #999; }
+
+/*# sourceMappingURL=part25.css.map */
