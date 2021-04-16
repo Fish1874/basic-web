@@ -1,0 +1,94 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "猫之家",
+				"enablePullDownRefresh": true,
+				"onReachBottomDistance": 50 // 距离底部50px触发触底事件
+			}
+		}
+	    ,{
+            "path" : "pages/community/community",
+            "style" :                                                                                    
+            {
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/user/user",
+            "style" :                                                                                    
+            { 
+                "enablePullDownRefresh": false
+            }            
+        }
+        ,{
+            "path" : "pages/index/components/adoptionCenter",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }            
+        }
+        ,{
+            "path" : "pages/index/components/petShop",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }            
+        },		
+		{
+		    "path" : "pages/test1/test1",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "测试",
+		        "enablePullDownRefresh": false
+		    }		    
+		}    
+        ,{
+            "path" : "pages/city/city",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "猫之家",
+		"navigationBarBackgroundColor": "#F0B300",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"list": [
+			{
+				"text":"首页",
+				"pagePath":"pages/index/index",
+				"iconPath":"static/ico/首页-未选中.png",
+				"selectedIconPath":"static/ico/首页-已选中.png"
+			},
+			{
+				"text":"社区",
+				"pagePath":"pages/community/community",
+				"iconPath":"static/ico/社区-未选中.png",
+				"selectedIconPath":"static/ico/社区-已选中.png"				
+			},
+			{
+				"text":"个人中心",
+				"pagePath":"pages/user/user",
+				"iconPath":"static/ico/个人中心.png",
+				"selectedIconPath":"static/ico/个人中心-已选中.png"				
+			},
+			{
+				"text":"测试",
+				"pagePath":"pages/test1/test1",
+				"iconPath":"static/ico/赠品规则管理.png",
+				"selectedIconPath":"static/ico/赠品规则管理.png"				
+			}		
+		]
+	}
+}

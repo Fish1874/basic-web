@@ -1,0 +1,1 @@
+<view><text>我是社区页</text><text>{{a}}</text></view>

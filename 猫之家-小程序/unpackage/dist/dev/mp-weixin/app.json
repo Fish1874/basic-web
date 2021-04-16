@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/community/community",
+    "pages/user/user",
+    "pages/index/components/adoptionCenter",
+    "pages/index/components/petShop",
+    "pages/test1/test1",
+    "pages/city/city"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "猫之家",
+    "navigationBarBackgroundColor": "#F0B300",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/index",
+        "iconPath": "static/ico/首页-未选中.png",
+        "selectedIconPath": "static/ico/首页-已选中.png"
+      },
+      {
+        "text": "社区",
+        "pagePath": "pages/community/community",
+        "iconPath": "static/ico/社区-未选中.png",
+        "selectedIconPath": "static/ico/社区-已选中.png"
+      },
+      {
+        "text": "个人中心",
+        "pagePath": "pages/user/user",
+        "iconPath": "static/ico/个人中心.png",
+        "selectedIconPath": "static/ico/个人中心-已选中.png"
+      },
+      {
+        "text": "测试",
+        "pagePath": "pages/test1/test1",
+        "iconPath": "static/ico/赠品规则管理.png",
+        "selectedIconPath": "static/ico/赠品规则管理.png"
+      }
+    ]
+  },
+  "permission": {},
+  "usingComponents": {}
+}

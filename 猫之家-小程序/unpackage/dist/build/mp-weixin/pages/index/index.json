@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "猫之家",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "usingComponents": {
+    "adoption-center": "/pages/index/components/adoptionCenter",
+    "pet-shop": "/pages/index/components/petShop"
+  }
+}
