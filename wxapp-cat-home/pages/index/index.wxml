@@ -1,0 +1,52 @@
+<!-- index.wxml -->
+<view class="home">
+  <view class="home__nav">
+    <view class="home__nav-site">
+      <image src="/static/img/ico/地址.png" />
+      <text>佛山市</text>
+    </view>
+    <view class="home__nav-search">
+      <input placeholder="搜索领养中心、宠物店名称" type="String" />
+    </view>
+  </view>
+  <!-- 轮播图 -->
+  <view class="home__swiper">
+    <swiper class="swiper" indicator-dots="true" indicator-active-color="#F0B300">
+      <swiper-item class="swiper__item1">
+        <view class="swiper__item1-left" hover-class="btnStyle">
+          <view class="swiper__item1-left-p">助力给猫咪一个家</view>
+          <view class="swiper__item1-left-h2">猫之家社区</view>
+          <text class="swiper__item1-left-btn">立即加入</text>
+        </view>
+        <view class="swiper__item1-right">
+          <image src="/static/img/pic1.jpg" mode="aspectFill" />
+        </view>
+      </swiper-item>
+      <swiper-item class="swiper__item">
+        <image src="/static/img/pic2.jpg" mode="scaleToFill" />
+      </swiper-item>
+      <swiper-item class="swiper__item">
+        <image src="/static/img/pic1.jpg" mode="widthFix" />
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- 导航栏 -->
+  <view class="home__bar">
+    <view class="home__bar__box" v-for="(item,index) of barList" :key="index + 'barList'">
+      <image :src="item.img" :mode="item.mode" />
+      <text>{{item.text}}</text>
+    </view>
+  </view>
+  <!-- 列表 -->
+  <view class="home__list">
+    <view v-for="(item,index) in componentList" :key="index+'componentList'" :class="{'currentStyle': nowComponent===index}" bindtap="cutover(index)">
+      {{item}}
+    </view>
+  </view>
+  <!-- <view wx:if="nowComponent===0">
+    <adoption-center :listAdop="adoptionList"></adoption-center>
+  </view>
+  <view wx:else>
+    <pet-shop :listPet="petList"></pet-shop>
+  </view> -->
+</view>
