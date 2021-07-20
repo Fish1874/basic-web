@@ -1,0 +1,104 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 2661691 */
+  src: url('~@/static/fonts/iconfont.ttf');
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-qucan:before {
+  content: "\e625";
+}
+
+.icon-dingdan:before {
+  content: "\e60c";
+}
+
+.icon-wode:before {
+  content: "\e60d";
+}
+
+.icon-zhuye:before {
+  content: "\e62d";
+}
+
+.icon-add:before {
+  content: "\e664";
+}
+
+.icon-arrow-up-circle:before {
+  content: "\e665";
+}
+
+.icon-ashbin:before {
+  content: "\e666";
+}
+
+.icon-arrow-right:before {
+  content: "\e667";
+}
+
+.icon-browse:before {
+  content: "\e668";
+}
+
+.icon-bottom:before {
+  content: "\e669";
+}
+
+.icon-back:before {
+  content: "\e66a";
+}
+
+.icon-arrow-double-right:before {
+  content: "\e66b";
+}
+
+.icon-copy:before {
+  content: "\e66c";
+}
+
+.icon-elipsis:before {
+  content: "\e66e";
+}
+
+.icon-eye-close:before {
+  content: "\e66f";
+}
+
+.icon-hide:before {
+  content: "\e673";
+}
+
+.icon-home:before {
+  content: "\e674";
+}
+
+.icon-map:before {
+  content: "\e677";
+}
+
+.icon-notification:before {
+  content: "\e679";
+}
+
+.icon-minus:before {
+  content: "\e67a";
+}
+
+.icon-search:before {
+  content: "\e67d";
+}
+
+.icon-select:before {
+  content: "\e67e";
+}
+
+.icon-setting:before {
+  content: "\e67f";
+}
+
