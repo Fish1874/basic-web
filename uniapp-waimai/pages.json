@@ -3,7 +3,7 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationStyle": "custom", // 去除头部导航
+				// "navigationStyle": "custom", // 去除头部导航
 				"navigationBarTitleText": "基础操作"
 			}
 		},
@@ -17,7 +17,7 @@
         },
 	    {
             "path" : "pages/order/index",
-            "style" :                                                                                    
+            "style" :
             {
                 "navigationBarTitleText": "订单",
                 "enablePullDownRefresh": true
@@ -43,6 +43,7 @@
 		"selectedColor": "#7355BE",
 		"borderStyle": "black",
 		"backgroundColor": "#ffffff",
+		//导航
 		"list": [
 			{
 				"text": "首页",

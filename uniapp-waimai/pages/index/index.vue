@@ -1,19 +1,17 @@
 <template>
 	<view class="content">
 
-		<!-- #ifdef H5  -->
 		<view class="top-nav">
 			<view class="location">
 				<text class="iconfont icon-map"></text>	
 				<view class="location-text">汇合东平大厦</view>
 				<text class="iconfont icon-arrow-right"></text>
 			</view>
-			<view class="search">
+			<view class="search" @click="onShowPopup">
 				<text class="iconfont icon-search"></text>
-				<input  ref="searchInput" class="text" @focus="onFocus" @blur="onBlur" type="text" :value="searchValue" placeholder="发现更多美食" />
+				<text class="text">发现更多美食</text>
 			</view>
 		</view>
-		<!--  #endif  -->
 		
 		<view class="banner-wrap"><!-- 轮播图 -->
 			<swiper :indicator-dots="true" indicator-color="#999" indicator-active-color="#000" :autoplay="false" :interval="3000" :duration="1000" circular="true">
@@ -43,14 +41,21 @@
 		</view>
 		
 
+	    <search-page :show="showSearch" @close="onClose"></search-page>
+
 	</view>
 </template>
 
 <script>
+	import SearchPage from '@/components/search';
 	export default {
+		components: {
+			SearchPage
+		},
 		data() {
 			return {
 				searchValue: '',
+				showSearch: false,
 				images: [
 					{id:1 ,img: '../../static/home/banner1.jpg'},
 					{id:2 ,img: '../../static/home/banner2.jpg'},
@@ -92,19 +97,16 @@
 		},
 		onTabItemTap() {// 
 			console.log('每次点击当前页的TAB时显示！')
-		},		
+		},
 
 		methods: {
-			onFocus() {
-				// console.log('获取焦点了',this.$refs.searchInput);
-				this.$refs.searchInput.$el.className = 'focus-text'
-				this.isDisplay = 'block'
+			
+			onShowPopup() {
+				this.showSearch = true;
 			},
-			onBlur() {
-				// console.log('失去焦点了')
-				this.$refs.searchInput.$el.className = 'text'
-				this.isDisplay = 'none'
-			},
+			onClose() {
+				this.showSearch = false;
+			}
 
 		},
 		computed: {
@@ -178,8 +180,9 @@
 						color: #000;
 					}
 					.text {
-						max-width: 100px;
-						transition: ease-out .6s;
+						padding: 2px 6px;
+						color: #999;
+						font-size: 14px;
 					}
 					.focus-text {
 						max-width: 140px;
@@ -188,7 +191,6 @@
 				}
 			}
 		}
-		
 		.banner-wrap {
 			position: fixed;
 			top: 0;
@@ -209,8 +211,8 @@
 		
 		.area-wrap {
 			position: relative;
-			top: 220px;
-			height: 100vh;
+			top: 170px;
+			// height: 87vh;
 			padding: 0 16px;
 			border-top-left-radius: 20px;
 			border-top-right-radius: 20px;

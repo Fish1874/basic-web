@@ -97,9 +97,9 @@
   color: #000;
 }
 .content .top-nav .search .text {
-  max-width: 100px;
-  -webkit-transition: ease-out .6s;
-  transition: ease-out .6s;
+  padding: 2px 6px;
+  color: #999;
+  font-size: 14px;
 }
 .content .top-nav .search .focus-text {
   max-width: 140px;
@@ -119,8 +119,7 @@
 }
 .content .area-wrap {
   position: relative;
-  top: 220px;
-  height: 100vh;
+  top: 170px;
   padding: 0 16px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
