@@ -41,7 +41,9 @@
 		</view>
 		
 
-	    <search-page :show="showSearch" @close="onClose"></search-page>
+		<uni-popup ref="popup" type="right">
+			<search-page @close="onClose"></search-page>
+		</uni-popup>
 
 	</view>
 </template>
@@ -54,8 +56,6 @@
 		},
 		data() {
 			return {
-				searchValue: '',
-				showSearch: false,
 				images: [
 					{id:1 ,img: '../../static/home/banner1.jpg'},
 					{id:2 ,img: '../../static/home/banner2.jpg'},
@@ -102,10 +102,10 @@
 		methods: {
 			
 			onShowPopup() {
-				this.showSearch = true;
+				this.$refs.popup.open('right');
 			},
 			onClose() {
-				this.showSearch = false;
+				this.$refs.popup.close();
 			}
 
 		},
@@ -212,7 +212,7 @@
 		.area-wrap {
 			position: relative;
 			top: 170px;
-			// height: 87vh;
+			height: 87vh;
 			padding: 0 16px;
 			border-top-left-radius: 20px;
 			border-top-right-radius: 20px;

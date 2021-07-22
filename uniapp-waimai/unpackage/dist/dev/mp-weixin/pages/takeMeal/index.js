@@ -203,35 +203,9 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--16-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/page-meta.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/components/search.vue?vue&type=template&id=039252a3& ***!
   \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns, recyclableRender, components */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  var s0 = _vm.__get_style([_vm.show ? _vm.tsf : ""])
-
-  _vm.$mp.data = Object.assign(
-    {},
-    {
-      $root: {
-        s0: s0
-      }
-    }
-  )
-}
-var recyclableRender = false
-var staticRenderFns = []
-render._withStripped = true
-
-
+throw new Error("Module build failed (from ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js):\nError: Compile failed at components/search.vue\n    at compile (C:\\Users\\我的软件\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-template-compiler\\lib\\index.js:140:13)\n    at actuallyCompile (C:\\Users\\我的软件\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\vue-cli-plugin-uni\\packages\\@vue\\component-compiler-utils\\dist\\compileTemplate.js:70:96)\n    at compileTemplate (C:\\Users\\我的软件\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\vue-cli-plugin-uni\\packages\\@vue\\component-compiler-utils\\dist\\compileTemplate.js:31:16)\n    at Object.module.exports (C:\\Users\\我的软件\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\vue-cli-plugin-uni\\packages\\vue-loader\\lib\\loaders\\templateLoader.js:46:20)");
 
 /***/ }),
 /* 28 */
@@ -279,24 +253,44 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
-  props: {
-    show: {
-      type: Boolean,
-      default: false } },
-
-
   data: function data() {
     return {
       value: '',
       list: ['西餐', '麻辣烫', '粤菜', '海底捞', '小肥牛', '家乡味'],
-      tsf: { transform: 'translateX(0)' } };
+      activeTab: 0,
+      options: {
+        height: '44px',
+        lineHeight: '2px',
+        activeColor: "#7452A3",
+        lineColor: "#7452A3",
+        bold: false } };
+
 
   },
   methods: {
     onGoblack: function onGoblack() {
       this.$emit('close');
+    },
+    onSearch: function onSearch() {
+      console.log('搜索：', this.value);
+    },
+    swipeChange: function swipeChange(e, index) {
+      console.log('当前状态：' + open + '，下标：' + index);
+    },
+    changeTab: function changeTab(index) {
+      console.log('当前选中的项：' + index);
     } } };exports.default = _default;
 
 /***/ }),

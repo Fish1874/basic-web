@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "v-tabs": "/components/v-tabs/v-tabs"
+  },
   "component": true
 }

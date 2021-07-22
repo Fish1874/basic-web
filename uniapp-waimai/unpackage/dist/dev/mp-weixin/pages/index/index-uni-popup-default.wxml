@@ -1,0 +1,1 @@
+<search-page bind:close="__e" vue-id="8dd740cc-2" data-event-opts="{{[['^close',[['onClose']]]]}}" bind:__l="__l"></search-page>

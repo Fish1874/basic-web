@@ -1,11 +1,11 @@
 <template>
-	<view class="search-wrap" :style="[show ? tsf : '']">
+	<view class="search-wrap">
 		<view class="search__top">
 			<image src="../static/icon/ic_back_white.png" @click="onGoblack" mode=""></image>
-			<input type="text" :value="value" placeholder="发现更多美食" placeholder-style="color:#9499A2;" />
-			<image src="../static/icon/ic_nav_search.png" mode=""></image>
+			<input v-model="value" type="text" placeholder="发现更多美食" placeholder-style="color:#9499A2;" />
+			<image src="../static/icon/ic_nav_search.png" @click="onSearch" mode=""></image>
 		</view>
-		<view class="search__content">
+		<view class="search__content" v-show="false">
 			<view class="content-title">
 				<text>历史搜索</text>
 				<image src="../static/icon/ic_delete.png" mode=""></image>
@@ -17,27 +17,47 @@
 				</view>
 			</view>
 		</view>
+
+		<v-tabs v-model="activeTab" :scroll="false" :tabs="['商品', '选项卡']"  @change="changeTab" v-bind="options"></v-tabs>
+		
+		<view class="" value="商品">
+			123
+		</view>
+		<view class="" value="选项卡">
+			123
+		</view>
+		
 	</view>
 </template>
 
 <script>
 export default {
-	props: {
-		show: {
-			type: Boolean,
-			default: false
-		}
-	},
 	data() {
 		return {
 			value: '',
 			list: ['西餐','麻辣烫','粤菜','海底捞','小肥牛','家乡味'],
-			tsf: {transform: 'translateX(0)'}
+			activeTab: 0,
+			options: {
+				height: '44px',
+				 lineHeight: '2px',
+				 activeColor:"#7452A3",
+				 lineColor:"#7452A3",
+				 bold: false,
+			}
 		}
 	},
 	methods: {
 		onGoblack() {
 			this.$emit('close');
+		},
+		onSearch() {
+			console.log('搜索：', this.value);
+		},
+		swipeChange(e,index){
+		  console.log('当前状态：'+ open +'，下标：' + index)
+		},
+		changeTab(index) {
+		  console.log('当前选中的项：' + index)
 		}
 	}
 }
@@ -48,21 +68,11 @@ export default {
 $iconSize: 20px;
 
 .search-wrap {
-	z-index: 999;
-	position: fixed;
-	top: 0px;
-	// #ifdef H5
-	top: 44px;
-	// #endif
-	left: 0;
-	right: 0;
-	bottom: 0;
-	width: 100%;
+	width: 100vw;
 	height: 100%;
 	background-color: #fff;
-	transform: translateX(100vh);
-	transition: ease-in-out .5s;
 	.search {
+		
 		&__top {
 			@extend %flex-jc-sb, %flex-ai-c;
 
@@ -123,5 +133,7 @@ $iconSize: 20px;
 
 		}
 	}
+
+
 }
 </style>
