@@ -57,26 +57,26 @@
 		data() {
 			return {
 				images: [
-					{id:1 ,img: '../../static/home/banner1.jpg'},
-					{id:2 ,img: '../../static/home/banner2.jpg'},
-					{id:3 ,img: '../../static/home/banner3.jpg'},
+					{id:1 ,img: require('@/static/home/banner1.jpg')},
+					{id:2 ,img: require('@/static/home/banner2.jpg')},
+					{id:3 ,img: require('@/static/home/banner3.jpg')},
 				],
 				icons: [
-					{icon:'../../static/icon/ic_scan.png', text: '扫一扫'},
-					{icon:'../../static/icon/ic_bulk.png', text: '附近团购'},
-					{icon:'../../static/icon/ic_take_out.png', text: '外卖自提'},
-					{icon:'../../static/icon/ic_eat_in.png', text: '堂食点餐'},
-					{icon:'../../static/icon/ic_buying_agent.png', text: '跑腿代购'},
-					{icon:'../../static/icon/ic_department.png', text: '商品百货'},
-					{icon:'../../static/icon/ic_discount.png', text: '折扣优惠'},
-					{icon:'../../static/icon/ic_lightning.png', text: '闪电秒抢'},
-					{icon:'../../static/icon/ic_lightning.png', text: '闪电秒抢'},
+					{icon:require('@/static/icon/ic_scan.png'), text: '扫一扫'},
+					{icon:require('@/static/icon/ic_bulk.png'), text: '附近团购'},
+					{icon:require('@/static/icon/ic_take_out.png'), text: '外卖自提'},
+					{icon:require('@/static/icon/ic_eat_in.png'), text: '堂食点餐'},
+					{icon:require('@/static/icon/ic_buying_agent.png'), text: '跑腿代购'},
+					{icon:require('@/static/icon/ic_department.png'), text: '商品百货'},
+					{icon:require('@/static/icon/ic_discount.png'), text: '折扣优惠'},
+					{icon:require('@/static/icon/ic_lightning.png'), text: '闪电秒抢'},
+					{icon:require('@/static/icon/ic_lightning.png'), text: '闪电秒抢'},
 				],
 				shops: [
-					{img: '../../static/home/banner1.jpg'},
-					{img: '../../static/home/banner2.jpg'},
-					{img: '../../static/home/banner3.jpg'},
-					{img: '../../static/home/banner4.png'},
+					{img: require('@/static/home/banner1.jpg')},
+					{img: require('@/static/home/banner2.jpg')},
+					{img: require('@/static/home/banner3.jpg')},
+					{img: require('@/static/home/banner4.png')},
 				]
 			}
 		},

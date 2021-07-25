@@ -76,18 +76,20 @@ $uni-color-paragraph: #3F536E; // 文章段落颜色
 $uni-font-size-paragraph:30rpx;
 
 
-$bgColor: #7452A3; // 主题色
+$bgColor: #7452A3; // 主题色 rgba(116,82,163, 1)
+$prColor: #E34C63;
+$grColor: #7F8590;
 
 %flex {
   display: flex;
-  &-jc-c { display: flex; justify-content: center; }
-  &-jc-sa { display: flex; justify-content: space-around; }
-  &-jc-sb { display: flex; justify-content: space-between; }
-  &-ai-c { display: flex; align-items: center; }
-  &-ai-fs { align-items: flex-start; }
-  &-ai-fe { align-items: flex-end; }
-  &-fw-w { flex-wrap: wrap; }
-  &-fd-w { flex-direction: column; }
+  &-jc-c { @extend %flex; justify-content: center; }
+  &-jc-sa { @extend %flex; justify-content: space-around; }
+  &-jc-sb { @extend %flex; justify-content: space-between; }
+  &-ai-c { @extend %flex; align-items: center; }
+  &-ai-fs { @extend %flex; align-items: flex-start; }
+  &-ai-fe { @extend %flex; align-items: flex-end; }
+  &-fw-w { @extend %flex; flex-wrap: wrap; }
+  &-fd-w { @extend %flex; flex-direction: column; }
   &-jc-sa__ai-c { @extend %flex, %flex-jc-sa, %flex-ai-c;}
   &-jc-sb__ai-c { @extend %flex, %flex-jc-sb, %flex-ai-c;}
 }
@@ -96,5 +98,13 @@ $bgColor: #7452A3; // 主题色
 %text-overflow {
 	overflow: hidden;
 	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+%text-wrap-overflow {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 	text-overflow: ellipsis;
 }

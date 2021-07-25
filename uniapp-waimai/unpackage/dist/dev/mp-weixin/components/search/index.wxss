@@ -24,23 +24,17 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.search-wrap .search__content .content-history {
+.search-wrap .search__top, .search-wrap .search__content .content-title, .search-wrap .search__content .content-history, .search-wrap .operate {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
 }
 .search-wrap .search__top, .search-wrap .search__content .content-title {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
           justify-content: space-between;
 }
 .search-wrap .search__top, .search-wrap .search__content .content-title {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
   -webkit-box-align: center;
   -webkit-align-items: center;
           align-items: center;
@@ -102,5 +96,17 @@
   box-sizing: border-box;
   color: #7F8590;
   background-color: #fff;
+}
+.search-wrap .operate {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  height: 100%;
+}
+.search-wrap .operate .uni-icons {
+  font-size: 20px !important;
 }
 

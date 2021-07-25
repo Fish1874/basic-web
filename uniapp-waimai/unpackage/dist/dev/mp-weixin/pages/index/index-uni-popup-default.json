@@ -1,8 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "index-uni-popup-default": "/pages/index/index-uni-popup-default",
-    "uni-popup": "/uni_modules/uni-popup/components/uni-popup/uni-popup",
-    "search-page": "/components/search"
-  }
-}
