@@ -20,7 +20,7 @@
 
 		
 		<view class="search-list" v-show="!isHistory">
-			<v-tabs :value="currentTab" :scroll="false" :tabs="['商品', '选项卡']"  @change="changeTab" height="44px" lineHeight="2px" activeColor="#7452A3" lineColor="#7452A3" :bold="false"></v-tabs>
+			<v-tabs :value="currentTab" :scroll="false" :tabs="['商品', '店铺']"  @change="changeTab" height="44px" lineHeight="2px" activeColor="#7452A3" lineColor="#7452A3" :bold="false"></v-tabs>
 			
 			<view value="商品" v-show="!currentTab">
 				<FoodList :foods="foodList">
@@ -31,8 +31,28 @@
 					</template>
 				</FoodList>
 			</view>
-			<view value="选项卡" v-show="currentTab">
-				123
+			<view class="shop-wrap" value="店铺" v-show="currentTab" >
+				<view
+					 class="shop"
+					 v-for="(shop, index) of shopsList"
+					 :key="index"
+				>
+					<view class="shop__left">
+						<image :src="shop.photo" mode="aspectFit"></image>
+					</view>
+
+					<view class="shop__center">
+						<view class="title">{{shop.title}}</view>
+						<view class="tag-box">
+							<view v-show="shop.tags.length" class="tag" v-for="(tag,i) of shop.tags" :key="i">{{tag}}</view>
+						</view>
+					</view>
+
+					<view class="shop__right">
+						<button type="default" @click="goShop(shop)">进店看看</button>
+					</view>
+					
+				</view>
 			</view>
 		</view>
 	</view>
@@ -50,24 +70,7 @@ export default {
 			value: '',
 			currentTab: 0,
 			list: ['西餐','麻辣烫','粤菜','海底捞','小肥牛','家乡味'],
-			foodList: []
-		}
-	},
-	methods: {
-		onGoblack() {
-			this.clearSearch();
-			this.$emit('close');
-		},
-		/* 
-		 *  输入框事件 
-		 */
-		onBlur(el) {
-			this.isHistory = !el.detail.value.length ? true : false;
-		},
-		onSearch() {
-			console.log('搜索：', this.value);
-			this.isHistory = !this.value.length ? true : false;
-			this.foodList = [
+			foodList: [
 				{
 					photo: require('@/static/food/pic1.png'),
 					title: "醋漬鮮鯖魚寿司",
@@ -82,11 +85,42 @@ export default {
 					describe: '當天進貨 保證新鮮 口感細膩',
 					discount: 38.8, // 优惠价
 					original: 38    // 原价
+				}
+			],
+			shopsList: [
+				{
+					photo: require('@/static/home/logo1.png'),
+					title: "九宮庭川式火鍋",
+					tags: ['火锅', '特色九宫格火锅'],
 				},
+				{
+					photo: require('@/static/home/logo2.png'),
+					title: "We Eat Fit 輕食沙拉",
+					tags: ['沙拉', '减脂套餐'],
+				}
 			]
+		}
+	},
+	methods: {
+		onGoblack() {
+			this.clearSearch();
+			this.$emit('close');
+		},
+		goShop(v) {
+			console.log(v)
+		},
+		/* 
+		 *  输入框事件 
+		 */
+		onBlur(el) {
+			this.isHistory = !el.detail.value.length ? true : false;
+		},
+		onSearch() {
+			console.log('搜索：', this.value);
+			this.isHistory = !this.value.length ? true : false;
 		},
 		clearSearch() {
-			this.isHistory = false;
+			this.isHistory = true;
 			this.value = '';
 		},
  
@@ -181,5 +215,67 @@ $iconSize: 20px;
 			font-size: 20px !important;
 		}
 	}
+	
+	.shop-wrap {
+		background-color: #F9FAFC;
+		.shop {
+			@extend %flex;
+			padding: 8px 16px;
+			margin-bottom: 8px;
+			height: 80px;
+			background-color: #fff;
+			&__left {
+				margin-right: 8px;
+				image {
+					width: 80px;
+					height: 80px;
+				}
+			}
+			&__center {
+				@extend %flex-fd-w;
+				// justify-content: space-between;
+				margin-right: 4px;
+				width: 190px;
+				.title {
+					@extend %text-overflow;
+					font-size: 16px;
+					font-weight: 600;
+				}
+				
+				.tag-box {
+					@extend %flex;
+					flex-wrap: wrap;
+					justify-content: flex-start;
+					.tag {
+						padding: 0 4px;
+						margin-top: 14px;
+						margin-right: 8px;
+						height: 16px;
+						font-size: 12px;
+						color: $bgColor;
+						background-color: rgba(116,82,163,.1);
+					}
+				}
+				
+			}
+			&__right {
+				flex: 1;
+				position: relative;
+				top: 25px;
+				width: 100%;
+				height: 32px;
+				button {
+					width: 80px;
+					height: 32px;
+					line-height: 22px;
+					padding: 6px 12px;
+					font-size: 12px;
+					color: #fff;
+					background-color: $bgColor;
+				}
+			}
+		}
+	}
+
 }
 </style>

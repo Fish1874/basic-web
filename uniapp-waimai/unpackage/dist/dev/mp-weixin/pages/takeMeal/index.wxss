@@ -24,7 +24,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.search-wrap .search__top, .search-wrap .search__content .content-title, .search-wrap .search__content .content-history, .search-wrap .operate {
+.search-wrap .search__top, .search-wrap .search__content .content-title, .search-wrap .shop-wrap .shop__center, .search-wrap .search__content .content-history, .search-wrap .operate, .search-wrap .shop-wrap .shop, .search-wrap .shop-wrap .shop__center .tag-box {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -38,6 +38,17 @@
   -webkit-box-align: center;
   -webkit-align-items: center;
           align-items: center;
+}
+.search-wrap .shop-wrap .shop__center {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+}
+.search-wrap .shop-wrap .shop__center .title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .search-wrap {
   width: 100vw;
@@ -108,5 +119,63 @@
 }
 .search-wrap .operate .uni-icons {
   font-size: 20px !important;
+}
+.search-wrap .shop-wrap {
+  background-color: #F9FAFC;
+}
+.search-wrap .shop-wrap .shop {
+  padding: 8px 16px;
+  margin-bottom: 8px;
+  height: 80px;
+  background-color: #fff;
+}
+.search-wrap .shop-wrap .shop__left {
+  margin-right: 8px;
+}
+.search-wrap .shop-wrap .shop__left image {
+  width: 80px;
+  height: 80px;
+}
+.search-wrap .shop-wrap .shop__center {
+  margin-right: 4px;
+  width: 190px;
+}
+.search-wrap .shop-wrap .shop__center .title {
+  font-size: 16px;
+  font-weight: 600;
+}
+.search-wrap .shop-wrap .shop__center .tag-box {
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+}
+.search-wrap .shop-wrap .shop__center .tag-box .tag {
+  padding: 0 4px;
+  margin-top: 14px;
+  margin-right: 8px;
+  height: 16px;
+  font-size: 12px;
+  color: #7452A3;
+  background-color: rgba(116, 82, 163, 0.1);
+}
+.search-wrap .shop-wrap .shop__right {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  position: relative;
+  top: 25px;
+  width: 100%;
+  height: 32px;
+}
+.search-wrap .shop-wrap .shop__right button {
+  width: 80px;
+  height: 32px;
+  line-height: 22px;
+  padding: 6px 12px;
+  font-size: 12px;
+  color: #fff;
+  background-color: #7452A3;
 }
 

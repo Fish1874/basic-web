@@ -1,8 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "index-food-list-default": "/components/search/index-food-list-default",
-    "v-tabs": "/components/v-tabs/v-tabs",
-    "food-list": "/components/food-list/index"
-  }
-}

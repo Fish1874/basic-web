@@ -224,7 +224,7 @@ var components
 try {
   components = {
     vTabs: function() {
-      return __webpack_require__.e(/*! import() | components/v-tabs/v-tabs */ "components/v-tabs/v-tabs").then(__webpack_require__.bind(null, /*! @/components/v-tabs/v-tabs.vue */ 85))
+      return __webpack_require__.e(/*! import() | components/v-tabs/v-tabs */ "components/v-tabs/v-tabs").then(__webpack_require__.bind(null, /*! @/components/v-tabs/v-tabs.vue */ 65))
     }
   }
 } catch (e) {
@@ -323,6 +323,26 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
   components: {
     FoodList: FoodList },
@@ -333,24 +353,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
       value: '',
       currentTab: 0,
       list: ['西餐', '麻辣烫', '粤菜', '海底捞', '小肥牛', '家乡味'],
-      foodList: [] };
-
-  },
-  methods: {
-    onGoblack: function onGoblack() {
-      this.clearSearch();
-      this.$emit('close');
-    },
-    /* 
-        *  输入框事件 
-        */
-    onBlur: function onBlur(el) {
-      this.isHistory = !el.detail.value.length ? true : false;
-    },
-    onSearch: function onSearch() {
-      console.log('搜索：', this.value);
-      this.isHistory = !this.value.length ? true : false;
-      this.foodList = [
+      foodList: [
       {
         photo: __webpack_require__(/*! @/static/food/pic1.png */ 42),
         title: "醋漬鮮鯖魚寿司",
@@ -365,11 +368,42 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
         describe: '當天進貨 保證新鮮 口感細膩',
         discount: 38.8, // 优惠价
         original: 38 // 原价
-      }];
+      }],
 
+      shopsList: [
+      {
+        photo: __webpack_require__(/*! @/static/home/logo1.png */ 91),
+        title: "九宮庭川式火鍋",
+        tags: ['火锅', '特色九宫格火锅'] },
+
+      {
+        photo: __webpack_require__(/*! @/static/home/logo2.png */ 92),
+        title: "We Eat Fit 輕食沙拉",
+        tags: ['沙拉', '减脂套餐'] }] };
+
+
+
+  },
+  methods: {
+    onGoblack: function onGoblack() {
+      this.clearSearch();
+      this.$emit('close');
+    },
+    goShop: function goShop(v) {
+      console.log(v);
+    },
+    /* 
+        *  输入框事件 
+        */
+    onBlur: function onBlur(el) {
+      this.isHistory = !el.detail.value.length ? true : false;
+    },
+    onSearch: function onSearch() {
+      console.log('搜索：', this.value);
+      this.isHistory = !this.value.length ? true : false;
     },
     clearSearch: function clearSearch() {
-      this.isHistory = false;
+      this.isHistory = true;
       this.value = '';
     },
 

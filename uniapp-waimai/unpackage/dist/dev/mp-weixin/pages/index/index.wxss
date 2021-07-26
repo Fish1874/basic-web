@@ -122,11 +122,13 @@
   overflow-x: hidden;
 }
 .content .area-wrap .area {
+  z-index: 99;
   position: -webkit-sticky;
   position: sticky;
   top: 0px;
   padding: 22px 0 0;
   height: 150px;
+  background: #fff;
 }
 .content .area-wrap .area swiper {
   width: 100%;
@@ -160,10 +162,10 @@
 .content .area-wrap .shop {
   -webkit-flex-wrap: wrap;
           flex-wrap: wrap;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-          justify-content: space-between;
+  -webkit-justify-content: space-around;
+          justify-content: space-around;
   margin-top: 28px;
+  padding-bottom: 50px;
   width: 100%;
 }
 .content .area-wrap .shop__box {

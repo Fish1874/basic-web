@@ -236,6 +236,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
       { img: __webpack_require__(/*! @/static/home/banner1.jpg */ 17) },
       { img: __webpack_require__(/*! @/static/home/banner2.jpg */ 18) },
       { img: __webpack_require__(/*! @/static/home/banner3.jpg */ 19) },
+      { img: __webpack_require__(/*! @/static/home/banner4.png */ 28) },
+      { img: __webpack_require__(/*! @/static/home/banner4.png */ 28) },
       { img: __webpack_require__(/*! @/static/home/banner4.png */ 28) }] };
 
 

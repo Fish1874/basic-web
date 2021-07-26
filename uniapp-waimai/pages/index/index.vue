@@ -77,6 +77,8 @@
 					{img: require('@/static/home/banner2.jpg')},
 					{img: require('@/static/home/banner3.jpg')},
 					{img: require('@/static/home/banner4.png')},
+					{img: require('@/static/home/banner4.png')},
+					{img: require('@/static/home/banner4.png')},
 				]
 			}
 		},
@@ -219,10 +221,12 @@
 			background-color: #fff;
 			overflow-x: hidden;
 			.area {
+				z-index: 99;
 				position: sticky;
 				top: 0px;
 				padding: 22px 0 0;
 				height: 150px;
+				background: #fff;
 				swiper {
 					width: 100%;
 					height: 106%;
@@ -254,8 +258,9 @@
 			.shop {
 				@extend %flex;
 				flex-wrap: wrap;
-				justify-content: space-between;
+				justify-content: space-around;
 				margin-top: 28px;
+				padding-bottom: 50px;
 				width: 100%;
 				// height: 200px;
 				&__box {
