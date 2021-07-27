@@ -1,6 +1,6 @@
 <script>
 	export default {
-
+	
 	}
 </script>
 
@@ -10,6 +10,7 @@
 	/* #ifdef H5 */
 	body {
 		font-family: PingFang SC;
+		background-color: #F9FAFC;
 	}
 	/* #endif */
 </style>

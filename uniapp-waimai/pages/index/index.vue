@@ -25,7 +25,7 @@
 			<view class="area">
 				<swiper :indicator-dots="true" indicator-active-color="#7452A3">
 					<swiper-item v-for="(item,index) of pages" :key="index">
-						<view class="box" v-for="(list,i) of item" :key="i">
+						<view class="box" v-for="(list,i) of item" :key="i" @click="toIcon(list)">
 							<image :src="list.icon"></image>
 							<text>{{list.text}}</text>
 						</view>
@@ -79,7 +79,16 @@
 					{img: require('@/static/home/banner4.png')},
 					{img: require('@/static/home/banner4.png')},
 					{img: require('@/static/home/banner4.png')},
-				]
+				],
+				iconArea: new Map([
+					['附近团购', ''],
+					['外卖自提', '/pages/takeout/pickUp'],
+					['堂食点餐', ''],
+					['跑腿代购', ''],
+					['商品百货', ''],
+					['折扣优惠', ''],
+					['闪电秒抢', ''],
+				])
 			}
 		},
 		onLoad() {//---- 监听页面加载
@@ -108,6 +117,12 @@
 			},
 			onClose() {
 				this.$refs.popup.close();
+			},
+			// icon跳转到对应的页面
+			toIcon(item) {
+				console.log(item.text);
+				let url = this.iconArea.get(item.text);
+				uni.navigateTo({url});
 			}
 
 		},

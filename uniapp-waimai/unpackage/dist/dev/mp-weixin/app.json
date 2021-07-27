@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/takeMeal/index",
     "pages/order/index",
-    "pages/user/index"
+    "pages/user/index",
+    "pages/takeout/pickUp"
   ],
   "subPackages": [],
   "window": {
@@ -44,6 +45,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap73.json"
+  "usingComponents": {}
 }

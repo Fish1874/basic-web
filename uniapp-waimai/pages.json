@@ -30,7 +30,17 @@
                 "navigationBarTitleText": "我的",
                 "enablePullDownRefresh": false
             }
+        },
+		{
+            "path" : "pages/takeout/pickUp",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "外卖自提",
+                "enablePullDownRefresh": false
+            }
+            
         }
+
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
