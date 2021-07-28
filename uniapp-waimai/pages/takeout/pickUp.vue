@@ -8,10 +8,9 @@
 				<image src="~@/static/icon/ic_more_in.png" mode=""></image>
 			</view>
 			
-			<view class="drop-down">
-				下拉菜单
-			<!--<HM-filterDropdown :menuTop="0" :filterData="filterData" :defaultSelected="defaultSelected"
-					:updateMenuName="true" @confirm="confirm" dataFormat="Object"></HM-filterDropdown> -->
+			<view class="drop-down-wrap">
+				<HM-filterDropdown class="drop-down" :filterData="filterData" :defaultSelected="defaultSelected"
+					:updateMenuName="true" @confirm="confirm" dataFormat="Object"></HM-filterDropdown>
 			</view>			
 		</view>
 		
@@ -42,12 +41,13 @@
 </template>
 
 <script>
+	import data from '@/mixin/data';
 	export default {
 		name: 'PickUp',
+		mixins: [ data ],
 		data() {
 			return {
 				// 下拉菜单
-				filterData: [],
 				defaultSelected: [],
 				shops: [
 					{
@@ -92,7 +92,7 @@
 			filterDis(val) {
 			  return val >= 1000 ? `${val / 1000}km` : val
 			}
-		}
+		},
 	}
 </script>
 
@@ -127,7 +127,33 @@
 			}
 		}
 		// 下拉菜单
-		.drop-down {
+		.drop-down-wrap {
+			position: relative;
+			height: 50%;
+			.drop-down {
+				z-index: 1000;
+				top:90px;
+				/deep/ .mask {
+					top: 90px;
+				}
+				/deep/ .nav .first-menu.on,
+				/deep/ .sub-menu-list.not-first .sub-menu.on,
+				/deep/ .iconfont,
+				/deep/ .filter .btn-box .reset {
+					color: $bgColor;
+				}
+				/deep/ .filter .btn-box .reset,
+				/deep/ .filter .btn-box .submit {
+					border-color: $bgColor;
+				}
+				/deep/ .filter .btn-box .submit {
+					background-color: $bgColor;
+				}
+				/deep/ .filter .menu-box .box .labels .on {
+					border-color: $bgColor;
+					background-color: $bgColor;
+				}
+			}
 		}
 	}
 	.box {

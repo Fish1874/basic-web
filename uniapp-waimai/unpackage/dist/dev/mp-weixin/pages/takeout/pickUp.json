@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "外卖自提",
   "enablePullDownRefresh": false,
-  "usingComponents": {}
+  "usingComponents": {
+    "h-m-filter-dropdown": "/uni_modules/HM-filterDropdown/components/HM-filterDropdown/HM-filterDropdown"
+  }
 }

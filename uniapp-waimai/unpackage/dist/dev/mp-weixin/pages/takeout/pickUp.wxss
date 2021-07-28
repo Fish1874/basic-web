@@ -68,6 +68,34 @@
   font-size: 18px;
   font-weight: 600;
 }
+.pick-up .top .drop-down-wrap {
+  position: relative;
+  height: 50%;
+}
+.pick-up .top .drop-down-wrap .drop-down {
+  z-index: 1000;
+  top: 90px;
+}
+.pick-up .top .drop-down-wrap .drop-down .mask {
+  top: 90px;
+}
+.pick-up .top .drop-down-wrap .drop-down .nav .first-menu.on,
+.pick-up .top .drop-down-wrap .drop-down .sub-menu-list.not-first .sub-menu.on,
+.pick-up .top .drop-down-wrap .drop-down .iconfont,
+.pick-up .top .drop-down-wrap .drop-down .filter .btn-box .reset {
+  color: #7452A3;
+}
+.pick-up .top .drop-down-wrap .drop-down .filter .btn-box .reset,
+.pick-up .top .drop-down-wrap .drop-down .filter .btn-box .submit {
+  border-color: #7452A3;
+}
+.pick-up .top .drop-down-wrap .drop-down .filter .btn-box .submit {
+  background-color: #7452A3;
+}
+.pick-up .top .drop-down-wrap .drop-down .filter .menu-box .box .labels .on {
+  border-color: #7452A3;
+  background-color: #7452A3;
+}
 .pick-up .box {
   padding: 8px 16px;
   margin-top: 8px;

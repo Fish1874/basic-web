@@ -122,7 +122,9 @@
 			toIcon(item) {
 				console.log(item.text);
 				let url = this.iconArea.get(item.text);
-				uni.navigateTo({url});
+				uni.navigateTo({
+					url
+				});
 			}
 
 		},

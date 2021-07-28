@@ -22,7 +22,7 @@
                 "navigationBarTitleText": "订单",
                 "enablePullDownRefresh": true
             }
-        },
+        },	
 	    {
             "path" : "pages/user/index",
             "style" :                                                                                    
@@ -40,7 +40,6 @@
             }
             
         }
-
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
