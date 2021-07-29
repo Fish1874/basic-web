@@ -1,7 +1,7 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/index/index",
+			"path": "pages/home/index",
 			"style": {
 				// "navigationStyle": "custom", // 去除头部导航
 				"navigationBarTitleText": "基础操作"
@@ -32,14 +32,25 @@
             }
         },
 		{
-            "path" : "pages/takeout/pickUp",
+            "path" : "pages/takeOut/pickUp",
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "外卖自提",
                 "enablePullDownRefresh": false
             }
             
-        }
+        },
+		{
+			"path" : "pages/shop/index",
+			"style" :                                                                                    
+			{
+				"navigationStyle": "custom",
+				"navigationBarTitleText": "店铺页",
+				"enablePullDownRefresh": false
+			}
+			
+		}
+
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
@@ -56,7 +67,7 @@
 		"list": [
 			{
 				"text": "首页",
-				"pagePath":"pages/index/index",
+				"pagePath":"pages/home/index",
 				"iconPath":"static/icon/home.png",
 				"selectedIconPath":"static/icon/home_select.png"
 			},

@@ -14,7 +14,7 @@
 			</view>			
 		</view>
 		
-		<view class="box" v-for="(shop, index) of shops" :key="index">
+		<view class="box" v-for="(shop, index) of shops" :key="index" @click="goShop(shop)">
 			<view class="box__left">
 				<image :src="shop.photo" mode="aspectFit"></image>
 			</view>
@@ -72,9 +72,12 @@
 			};
 		},
 		methods: {
+			goShop(shop) {
+				uni.navigateTo({url: '/pages/shop/index'});
+			},
 			confirm() {
 				
-			}
+			},
 		},
 		filters: {
 			filterNums(val) {

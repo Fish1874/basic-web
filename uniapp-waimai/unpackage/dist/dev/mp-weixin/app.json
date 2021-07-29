@@ -1,10 +1,11 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/home/index",
     "pages/takeMeal/index",
     "pages/order/index",
     "pages/user/index",
-    "pages/takeout/pickUp"
+    "pages/takeOut/pickUp",
+    "pages/shop/index"
   ],
   "subPackages": [],
   "window": {
@@ -21,7 +22,7 @@
     "list": [
       {
         "text": "首页",
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/home/index",
         "iconPath": "static/icon/home.png",
         "selectedIconPath": "static/icon/home_select.png"
       },
@@ -45,6 +46,7 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap28.json"
+  "usingComponents": {
+    "nav-bar": "/components/zhouWei-navBar/index"
+  }
 }

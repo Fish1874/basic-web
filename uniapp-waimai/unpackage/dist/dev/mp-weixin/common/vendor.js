@@ -2050,7 +2050,7 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 106:
+/***/ 112:
 /*!********************************************************************************************************************************!*\
   !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/uni_modules/uni-transition/components/uni-transition/createAnimation.js ***!
   \********************************************************************************************************************************/
@@ -2187,39 +2187,6 @@ function createAnimation(option, _this) {
   return new MPAnimation(option, _this);
 }
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
-
-/***/ }),
-
-/***/ 17:
-/*!********************************************************************************!*\
-  !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/home/banner1.jpg ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/static/home/banner1.jpg";
-
-/***/ }),
-
-/***/ 18:
-/*!********************************************************************************!*\
-  !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/home/banner2.jpg ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/static/home/banner2.jpg";
-
-/***/ }),
-
-/***/ 19:
-/*!********************************************************************************!*\
-  !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/home/banner3.jpg ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/static/home/banner3.jpg";
 
 /***/ }),
 
@@ -8271,7 +8238,40 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 20:
+/***/ 23:
+/*!********************************************************************************!*\
+  !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/home/banner1.jpg ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/static/home/banner1.jpg";
+
+/***/ }),
+
+/***/ 24:
+/*!********************************************************************************!*\
+  !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/home/banner2.jpg ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/static/home/banner2.jpg";
+
+/***/ }),
+
+/***/ 25:
+/*!********************************************************************************!*\
+  !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/home/banner3.jpg ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/static/home/banner3.jpg";
+
+/***/ }),
+
+/***/ 26:
 /*!********************************************************************************!*\
   !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/icon/ic_scan.png ***!
   \********************************************************************************/
@@ -8282,7 +8282,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV
 
 /***/ }),
 
-/***/ 21:
+/***/ 27:
 /*!********************************************************************************!*\
   !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/icon/ic_bulk.png ***!
   \********************************************************************************/
@@ -8293,7 +8293,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV
 
 /***/ }),
 
-/***/ 22:
+/***/ 28:
 /*!************************************************************************************!*\
   !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/icon/ic_take_out.png ***!
   \************************************************************************************/
@@ -8304,7 +8304,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV
 
 /***/ }),
 
-/***/ 23:
+/***/ 29:
 /*!**********************************************************************************!*\
   !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/icon/ic_eat_in.png ***!
   \**********************************************************************************/
@@ -8312,61 +8312,6 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,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"
-
-/***/ }),
-
-/***/ 24:
-/*!****************************************************************************************!*\
-  !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/icon/ic_buying_agent.png ***!
-  \****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,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"
-
-/***/ }),
-
-/***/ 25:
-/*!**************************************************************************************!*\
-  !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/icon/ic_department.png ***!
-  \**************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,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"
-
-/***/ }),
-
-/***/ 26:
-/*!************************************************************************************!*\
-  !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/icon/ic_discount.png ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,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"
-
-/***/ }),
-
-/***/ 27:
-/*!*************************************************************************************!*\
-  !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/icon/ic_lightning.png ***!
-  \*************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,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"
-
-/***/ }),
-
-/***/ 28:
-/*!********************************************************************************!*\
-  !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/home/banner4.png ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/static/home/banner4.png";
 
 /***/ }),
 
@@ -8401,6 +8346,61 @@ module.exports = g;
 
 /***/ }),
 
+/***/ 30:
+/*!****************************************************************************************!*\
+  !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/icon/ic_buying_agent.png ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,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"
+
+/***/ }),
+
+/***/ 31:
+/*!**************************************************************************************!*\
+  !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/icon/ic_department.png ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,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"
+
+/***/ }),
+
+/***/ 32:
+/*!************************************************************************************!*\
+  !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/icon/ic_discount.png ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,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"
+
+/***/ }),
+
+/***/ 33:
+/*!*************************************************************************************!*\
+  !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/icon/ic_lightning.png ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,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"
+
+/***/ }),
+
+/***/ 34:
+/*!********************************************************************************!*\
+  !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/home/banner4.png ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/static/home/banner4.png";
+
+/***/ }),
+
 /***/ 4:
 /*!*******************************************************************!*\
   !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/pages.json ***!
@@ -8412,7 +8412,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 42:
+/***/ 48:
 /*!*****************************************************************************!*\
   !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/food/pic1.png ***!
   \*****************************************************************************/
@@ -8423,7 +8423,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAYAAACL
 
 /***/ }),
 
-/***/ 43:
+/***/ 49:
 /*!*****************************************************************************!*\
   !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/food/pic2.png ***!
   \*****************************************************************************/
@@ -8434,7 +8434,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAYAAACL
 
 /***/ }),
 
-/***/ 44:
+/***/ 50:
 /*!******************************************************************************!*\
   !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/home/logo1.png ***!
   \******************************************************************************/
@@ -8445,7 +8445,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAYAAAA5
 
 /***/ }),
 
-/***/ 45:
+/***/ 51:
 /*!******************************************************************************!*\
   !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/home/logo2.png ***!
   \******************************************************************************/
@@ -8456,7 +8456,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAYAAAA5
 
 /***/ }),
 
-/***/ 69:
+/***/ 75:
 /*!******************************************************************************!*\
   !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/home/logo3.png ***!
   \******************************************************************************/
@@ -8467,7 +8467,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB4CAYAAAA5
 
 /***/ }),
 
-/***/ 70:
+/***/ 76:
 /*!******************************************************************************!*\
   !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/home/logo4.png ***!
   \******************************************************************************/
