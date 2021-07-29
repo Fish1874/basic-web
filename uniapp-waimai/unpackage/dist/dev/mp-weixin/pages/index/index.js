@@ -103,7 +103,7 @@ var components
 try {
   components = {
     uniPopup: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 70))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 73))
     }
   }
 } catch (e) {
@@ -217,7 +217,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       images: [
-      { id: 1, img: __webpack_require__(/*! @/static/home/banner1.jpg */ 97) },
+      { id: 1, img: __webpack_require__(/*! @/static/home/banner1.jpg */ 17) },
       { id: 2, img: __webpack_require__(/*! @/static/home/banner2.jpg */ 18) },
       { id: 3, img: __webpack_require__(/*! @/static/home/banner3.jpg */ 19) }],
 
@@ -233,7 +233,7 @@ __webpack_require__.r(__webpack_exports__);
       { icon: __webpack_require__(/*! @/static/icon/ic_lightning.png */ 27), text: '闪电秒抢' }],
 
       shops: [
-      { img: __webpack_require__(/*! @/static/home/banner1.jpg */ 97) },
+      { img: __webpack_require__(/*! @/static/home/banner1.jpg */ 17) },
       { img: __webpack_require__(/*! @/static/home/banner2.jpg */ 18) },
       { img: __webpack_require__(/*! @/static/home/banner3.jpg */ 19) },
       { img: __webpack_require__(/*! @/static/home/banner4.png */ 28) },

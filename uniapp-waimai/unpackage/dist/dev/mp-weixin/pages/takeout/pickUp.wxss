@@ -82,7 +82,9 @@
 .pick-up .top .drop-down-wrap .drop-down .nav .first-menu.on,
 .pick-up .top .drop-down-wrap .drop-down .sub-menu-list.not-first .sub-menu.on,
 .pick-up .top .drop-down-wrap .drop-down .iconfont,
-.pick-up .top .drop-down-wrap .drop-down .filter .btn-box .reset {
+.pick-up .top .drop-down-wrap .drop-down .menu-name > .iconfont,
+.pick-up .top .drop-down-wrap .drop-down .filter .btn-box .reset,
+.pick-up .top .drop-down-wrap .drop-down .sub-menu-list.alone .sub-menu.on {
   color: #7452A3;
 }
 .pick-up .top .drop-down-wrap .drop-down .filter .btn-box .reset,
@@ -95,6 +97,9 @@
 .pick-up .top .drop-down-wrap .drop-down .filter .menu-box .box .labels .on {
   border-color: #7452A3;
   background-color: #7452A3;
+}
+.pick-up .top .drop-down-wrap .HMfilterDropdown {
+  top: 45px;
 }
 .pick-up .box {
   padding: 8px 16px;

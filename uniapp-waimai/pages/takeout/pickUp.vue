@@ -139,7 +139,9 @@
 				/deep/ .nav .first-menu.on,
 				/deep/ .sub-menu-list.not-first .sub-menu.on,
 				/deep/ .iconfont,
-				/deep/ .filter .btn-box .reset {
+				/deep/ .menu-name > .iconfont,
+				/deep/ .filter .btn-box .reset,
+				/deep/ .sub-menu-list.alone .sub-menu.on {
 					color: $bgColor;
 				}
 				/deep/ .filter .btn-box .reset,
@@ -154,6 +156,11 @@
 					background-color: $bgColor;
 				}
 			}
+			/* #ifdef MP-WEIXIN */
+			.HMfilterDropdown {
+				top: 45px;
+			}
+			/* #endif */
 		}
 	}
 	.box {
