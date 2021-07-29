@@ -13,7 +13,7 @@
 		background-color: #F9FAFC;
 	}
 	/* #endif */
-	
+	 
 	/* #ifdef MP-WEIXIN */
 	page {
 		background-color: #F9FAFC;
