@@ -104,7 +104,7 @@
 .pick-up {
 	.top {
 		padding: 16px;
-		height: 90px;
+		height: 95px;
 		box-sizing: border-box;
 		background-color: #fff;
 		

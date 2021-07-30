@@ -79,6 +79,22 @@ $uni-font-size-paragraph:30rpx;
 $bgColor: #7452A3; // 主题色 rgba(116,82,163, 1)
 $prColor: #E34C63;
 $grColor: #7F8590;
+$yeColor: #F5A623;
+
+
+
+
+%tag {
+	padding: 0 4px;
+	margin-right: 8rpx;
+	height: 16px;
+	font-size: 12px;
+	color: $bgColor;
+	background-color: rgba(116,82,163,.1);
+}
+
+
+
 
 %flex {
   display: flex;
