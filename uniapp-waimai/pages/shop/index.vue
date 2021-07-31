@@ -34,15 +34,17 @@
 			</view>
 		</view>
 		
-		<view class="shop-list">
-			123
-		</view>
+		<ShopList></ShopList>
 	</view>
 </template>
 
 <script>
+	import ShopList from "./components/ShopList.vue"
 	export default {
 		name: 'shop',
+		components: {
+			ShopList
+		},
 		data() {
 			return {
 				scrollTop: 0,
@@ -164,9 +166,6 @@
 		
 	}
 	
-	.shop-list {
-		margin-top: 8px;
-		background-color: #fff;
-	}
+
 }
 </style>

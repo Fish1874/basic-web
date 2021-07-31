@@ -24,6 +24,14 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
+.pick-up .box__center .content .tag {
+  padding: 0 4px;
+  margin-right: 8rpx;
+  height: 16px;
+  font-size: 12px;
+  color: #7452A3;
+  background-color: rgba(116, 82, 163, 0.1);
+}
 .pick-up .top .address, .pick-up .box__center, .pick-up .box, .pick-up .box__center .content {
   display: -webkit-box;
   display: -webkit-flex;
@@ -47,7 +55,7 @@
 }
 .pick-up .top {
   padding: 16px;
-  height: 95px;
+  height: 90px;
   box-sizing: border-box;
   background-color: #fff;
 }
@@ -131,14 +139,6 @@
   -webkit-box-pack: start;
   -webkit-justify-content: flex-start;
           justify-content: flex-start;
-}
-.pick-up .box__center .content .tag {
-  padding: 0 4px;
-  margin-right: 8rpx;
-  height: 16px;
-  font-size: 12px;
-  color: #7452A3;
-  background-color: rgba(116, 82, 163, 0.1);
 }
 .pick-up .box__center .bottom {
   font-size: 11px;

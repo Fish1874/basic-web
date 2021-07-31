@@ -136,8 +136,4 @@
   font-size: 12px;
   color: #7F8590;
 }
-.shop .shop-list {
-  margin-top: 8px;
-  background-color: #fff;
-}
 

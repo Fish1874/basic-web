@@ -1,0 +1,1 @@
+<view class="shop-list"><view class="left-area"><block wx:for="{{sort}}" wx:for-item="item" wx:for-index="index"><view data-event-opts="{{[['tap',[['e0',['$event']]]]]}}" data-event-params="{{({index})}}" class="cell" style="{{'background-color:'+(current==index?'#fff':'')+';'}}" bindtap="__e">{{item}}</view></block></view><view class="right-area">右侧区域</view></view>

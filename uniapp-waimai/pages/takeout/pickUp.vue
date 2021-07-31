@@ -104,7 +104,7 @@
 .pick-up {
 	.top {
 		padding: 16px;
-		height: 95px;
+		height: 90px;
 		box-sizing: border-box;
 		background-color: #fff;
 		
@@ -196,12 +196,7 @@
 				flex-wrap: wrap;
 				justify-content: flex-start;
 				.tag {
-					padding: 0 4px;
-					margin-right: 8rpx;
-					height: 16px;
-					font-size: 12px;
-					color: $bgColor;
-					background-color: rgba(116,82,163,.1);
+					@extend %tag;
 				}
 			}
 			

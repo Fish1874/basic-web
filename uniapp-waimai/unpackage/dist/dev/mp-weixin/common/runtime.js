@@ -105,11 +105,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"components/zhouWei-navBar/index":1,"components/search/index":1,"uni_modules/uni-popup/components/uni-popup/uni-popup":1,"components/food-list/index":1,"uni_modules/HM-filterDropdown/components/HM-filterDropdown/HM-filterDropdown":1};
+/******/ 		var cssChunks = {"components/zhouWei-navBar/index":1,"components/search/index":1,"uni_modules/uni-popup/components/uni-popup/uni-popup":1,"components/food-list/index":1,"uni_modules/HM-filterDropdown/components/HM-filterDropdown/HM-filterDropdown":1,"pages/shop/components/ShopList":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"components/zhouWei-navBar/index":"components/zhouWei-navBar/index","components/search/index":"components/search/index","uni_modules/uni-popup/components/uni-popup/uni-popup":"uni_modules/uni-popup/components/uni-popup/uni-popup","components/food-list/index":"components/food-list/index","uni_modules/HM-filterDropdown/components/HM-filterDropdown/HM-filterDropdown":"uni_modules/HM-filterDropdown/components/HM-filterDropdown/HM-filterDropdown","uni_modules/uni-transition/components/uni-transition/uni-transition":"uni_modules/uni-transition/components/uni-transition/uni-transition"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"components/zhouWei-navBar/index":"components/zhouWei-navBar/index","components/search/index":"components/search/index","uni_modules/uni-popup/components/uni-popup/uni-popup":"uni_modules/uni-popup/components/uni-popup/uni-popup","components/food-list/index":"components/food-list/index","uni_modules/HM-filterDropdown/components/HM-filterDropdown/HM-filterDropdown":"uni_modules/HM-filterDropdown/components/HM-filterDropdown/HM-filterDropdown","pages/shop/components/ShopList":"pages/shop/components/ShopList","uni_modules/uni-transition/components/uni-transition/uni-transition":"uni_modules/uni-transition/components/uni-transition/uni-transition"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {

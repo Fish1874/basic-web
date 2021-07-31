@@ -2,5 +2,7 @@
   "navigationStyle": "custom",
   "navigationBarTitleText": "店铺页",
   "enablePullDownRefresh": false,
-  "usingComponents": {}
+  "usingComponents": {
+    "shop-list": "/pages/shop/components/ShopList"
+  }
 }
