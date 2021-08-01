@@ -10,31 +10,34 @@
 			<view class="mask"></view>
 		</view>
 		
-		<view class="shop-area"><!-- 店铺名称 -->
-			<view class="shop-title">MAKI HOUSE 日式料理</view>
-			<view class="shop-photo">
-				<image src="~@/static/home/logo2.png" mode=""></image>
-			</view>
-			<view class="shop-score">
-				<view class="shop-score__fraction">
-					<image src="~@/static/icon/star.png" mode=""></image>
-					4.8分
+		<view class="sticky" style="position: sticky;top:64px;height: 158vw;">
+			
+			<view class="shop-area"><!-- 店铺名称 -->
+				<view class="shop-title">MAKI HOUSE 日式料理</view>
+				<view class="shop-photo">
+					<image src="~@/static/home/logo2.png" mode=""></image>
 				</view>
-				<view class="shop-score__tag">日料</view>
-			</view>
-			<view class="shop-describe">
-				<view class="shop-describe__left">
-					<text>起送 HK$100</text>
-					<text class="line">销量3.8w</text>
-					<text>评价1.2w</text>
+				<view class="shop-score">
+					<view class="shop-score__fraction">
+						<image src="~@/static/icon/star.png" mode=""></image>
+						4.8分
+					</view>
+					<view class="shop-score__tag">日料</view>
 				</view>
-				<view class="shop-describe__right">
-					<text>距您2.6km</text>
+				<view class="shop-describe">
+					<view class="shop-describe__left">
+						<text>起送 HK$100</text>
+						<text class="line">销量3.8w</text>
+						<text>评价1.2w</text>
+					</view>
+					<view class="shop-describe__right">
+						<text>距您2.6km</text>
+					</view>
 				</view>
 			</view>
+			
+			<ShopList></ShopList>
 		</view>
-		
-		<ShopList></ShopList>
 	</view>
 </template>
 
@@ -70,6 +73,7 @@
 		}
 	}
 	
+
 	.top {
 		position: relative;
 		width: 100%;
@@ -91,6 +95,11 @@
 		}
 	}
 
+	.sticky {
+		position: sticky;
+		top: 20px;
+	}
+	
 	.shop-area {
 		position: relative;
 		padding: 16px;

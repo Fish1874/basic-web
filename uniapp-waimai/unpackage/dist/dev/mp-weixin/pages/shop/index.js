@@ -130,7 +130,10 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var ShopList = function ShopList() {__webpack_require__.e(/*! require.ensure | pages/shop/components/ShopList */ "pages/shop/components/ShopList").then((function () {return resolve(__webpack_require__(/*! ./components/ShopList.vue */ 109));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var ShopList = function ShopList() {Promise.all(/*! require.ensure | pages/shop/components/ShopList */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/shop/components/ShopList")]).then((function () {return resolve(__webpack_require__(/*! ./components/ShopList.vue */ 109));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
 
 
 

@@ -54,7 +54,7 @@
 
 
 .food-list {
-	background-color: #F9FAFC;
+	background-color: $bgColor2;
 	.box {
 		@extend %flex;
 		padding: 8px 16px;

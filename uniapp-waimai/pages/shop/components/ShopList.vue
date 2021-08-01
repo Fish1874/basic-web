@@ -1,6 +1,6 @@
 <template>
 	<view class="shop-list">
-		<view class="left-area">
+		<view class="sort-area">
 			<view
 				class="cell" 
 				v-for="(item,index) of sort"
@@ -9,25 +9,99 @@
 				@click="current = index"
 			>{{item}}</view>
 		</view>
-		<view class="right-area">
-			右侧区域
+
+		<view class="food-area"><!-- 食品区域 -->
+			<view class="title">推荐</view>
+			<view
+				 class="box"
+				 v-for="(food, index) of foods"
+				 :key="index"
+			>
+				<view class="box__left">
+					<image :src="food.photo" mode="aspectFit"></image>
+				</view>
+
+				<view class="box__center">
+					<view class="box__center-title">{{food.title}}</view>
+					<view class="box__center-content">
+						<text v-show="!food.select">{{food.describe}}</text>
+					</view>
+					<view class="box__center-bottom">
+						<view class="money">
+							<text class="p1" v-show="food.discount"><text class="unit">HK$ </text>{{food.discount}}</text>
+							<text class="p2" v-show="food.original">HK$ {{food.original}}</text>
+						</view>
+					</view>
+				</view>
+
+				<view class="box__right">
+					<image @click="onAddFood(food)" src="~@/static/icon/ic_add.png" mode=""></image>
+				</view>
+			</view>	
+		</view>
+	
+		<view class="food-column"><!-- 商品栏 -->
+			<view class="food-column__icon"><image src="~@/static/shop/bulka.png" mode=""></image></view>
+			<view class="food-column__text">
+				<view class="t1">HK$<text>0.00</text></view>
+				<view class="t2">差HK$ 15.00 起送</view>
+			</view>
+			<view class="food-column__pay">
+				<button type="default">去结算</button>
+			</view>
 		</view>
 	</view>
 </template>
 
 <script>
+
 	export default {
 		name: 'ShopList',
 		data() {
 			return {
 				current: 0,
-				sort: ['推荐','进店必买'],
+				sort: ['推荐','进店必买','人气爆款','套餐','寿司','新鲜刺身','拉面','小食','酒水','元气饮料','新鲜蔬菜'],
+				foods: [
+					{
+						photo: require('@/static/food/pic1.png'),
+						title: "醋漬鮮鯖魚寿司",
+						describe: '份量：每份2件',
+						discount: 25,
+						original: 28
+					},
+					{
+						photo: require('@/static/food/pic2.png'),
+						title: "黄金鲔鱼寿司",
+						describe: '當天進貨 保證新鮮 口感細膩',
+						discount: 38.8, // 优惠价
+						original: 38    // 原价
+					},
+					{
+						photo: require('@/static/food/pic2.png'),
+						title: "黄金鲔鱼寿司",
+						describe: '當天進貨 保證新鮮 口感細膩',
+						discount: 38.8, // 优惠价
+						original: 38    // 原价
+					},
+					{
+						photo: require('@/static/food/pic2.png'),
+						title: "黄金鲔鱼寿司",
+						describe: '當天進貨 保證新鮮 口感細膩',
+						discount: 38.8, // 优惠价
+						original: 38    // 原价
+					},
+				]
 			};
+		},
+		methods: {
+			onAddFood(v) {
+				console.log(v)
+			}
 		}
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 $textColor:#A3A9B4;
 
@@ -35,12 +109,12 @@ $textColor:#A3A9B4;
 	@extend %flex;
 	margin-top: 8px;
 	height: calc(100vw - 11px);
-	background-color: #fff;
+	background-color: $bgColor2;
 	overflow: hidden;
-	.left-area {
+	.sort-area {
 		width: 80px;
 		overflow-y: auto;
-		background-color: #f0f0f0;
+		background-color: #F0F0F0;
 		.cell {
 			padding: 12px 16px;
 			font-size: 12px;
@@ -48,8 +122,139 @@ $textColor:#A3A9B4;
 			transition: ease-in-out .2s
 		}
 	}
-	.right-area {
-		flex:1
+	.food-area {
+		flex: 1;
+		width: calc(375px - 80px);
+		overflow-y: auto;
+		.title {
+			padding: 10px 8px;
+			font-size: 14px;
+			background-color: #fff;
+		}
+
+		.box {
+			@extend %flex;
+			padding: 8px 16px;
+			margin-bottom: 8px;
+			height: 80px;
+			background-color: #fff;
+			&__left {
+				margin-right: 8px;
+				image {
+					width: 80px;
+					height: 80px;
+				}
+			}
+			&__center {
+				@extend %flex-fd-w;
+				// justify-content: space-between;
+				margin-right: 4px;
+				width: 190px;
+				&-title {
+					@extend %text-overflow;
+					font-size: 16px;
+					font-weight: 600;
+				}
+				
+				&-content {
+					flex: 1;
+					@extend %text-wrap-overflow;
+					margin: 6px 0 0;
+					width: 140px;
+					color: #A3A9B4;
+					font-size: 12px;
+				}
+				
+				&-bottom {
+					@extend %flex;
+					flex-wrap: wrap;
+					justify-content: flex-start;
+					.money {
+						.p1 {
+							margin-right: 8px;
+							color: $prColor;
+							font-size: 16px;
+							font-weight: 600;
+							.unit {
+								font-size: 12px;
+								font-weight: 500;
+							}
+						}
+						.p2 {
+							color: #A3A9B4;
+							font-size: 12px;
+							text-decoration: line-through;
+						}
+					}
+				}
+				
+			}
+			&__right {
+				flex: 1;
+				position: relative;
+				image {
+					position: absolute;
+					top: 58px;
+					right: 8px;
+					width: 20px;
+					height: 20px;
+				}
+			}
+		}
+	}	
+
+	
+	.food-column {
+		@extend %flex;
+		position: fixed;
+		left: 50%;
+		bottom: 38px;
+		width: 343px;
+		height: 48px;
+		transform: translateX(-50%);
+		background: #222326;
+		border-radius: 24px;
+		box-shadow: 0px 4px 8px rgba(34, 35, 38, 0.16);
+		
+		&__icon {
+			position: relative;
+			margin-left: 15px;
+			width: 60px;
+			image {
+				position: absolute;
+				top: -30px;
+				width: 100%;
+				height: 74px;
+			}
+		}
+		&__text {
+			flex: 1;
+			padding: 4px 11px;
+			color: #fff;
+			opacity: .5;
+			.t1 {
+				font-size: 14px;
+				text {
+					font-size: 17px;
+				}
+			}
+			.t2 {
+				font-size: 12px;
+			}
+		}
+		&__pay {
+			width: 80px;
+			button {
+				width: 103%;
+				height: 100%;
+				line-height: 48px;
+				font-size: 14px;
+				color: #FFFFFF;
+				background: #7F8590;
+				border-radius: 0px 24px 24px 0px;
+			}
+		}
+		
 	}
 }
 </style>
