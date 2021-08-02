@@ -77,6 +77,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
+try {
+  components = {
+    uniPopup: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 88))
+    }
+  }
+} catch (e) {
+  if (
+    e.message.indexOf("Cannot find module") !== -1 &&
+    e.message.indexOf(".vue") !== -1
+  ) {
+    console.error(e.message)
+    console.error("1. 排查组件名称拼写是否正确")
+    console.error(
+      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
+    )
+    console.error(
+      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
+    )
+  } else {
+    throw e
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -180,6 +203,47 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 
 {
@@ -216,13 +280,60 @@ var _default =
         describe: '當天進貨 保證新鮮 口感細膩',
         discount: 38.8, // 优惠价
         original: 38 // 原价
-      }] };
+      }],
+
+
+      shopCartList: [
+      {
+        photo: __webpack_require__(/*! @/static/food/pic1.png */ 42),
+        title: "MAKI HOUSE 招牌壽司：日本北海甜蝦壽司",
+        discount: 25,
+        num: 2 },
+
+      {
+        photo: __webpack_require__(/*! @/static/food/pic1.png */ 42),
+        title: "MAKI HOUSE 招牌壽司：日本北海甜蝦壽司",
+        discount: 25,
+        num: 2 },
+
+      {
+        photo: __webpack_require__(/*! @/static/food/pic1.png */ 42),
+        title: "MAKI HOUSE 招牌壽司：日本北海甜蝦壽司",
+        discount: 25,
+        num: 2 },
+
+      {
+        photo: __webpack_require__(/*! @/static/food/pic1.png */ 42),
+        title: "MAKI HOUSE 招牌壽司：日本北海甜蝦壽司",
+        discount: 25,
+        num: 2 },
+
+      {
+        photo: __webpack_require__(/*! @/static/food/pic1.png */ 42),
+        title: "MAKI HOUSE 招牌壽司：日本北海甜蝦壽司",
+        discount: 25,
+        num: 2 },
+
+      {
+        photo: __webpack_require__(/*! @/static/food/pic1.png */ 42),
+        title: "MAKI HOUSE 招牌壽司：日本北海甜蝦壽司",
+        discount: 25,
+        num: 2 }] };
+
 
 
   },
   methods: {
     onAddFood: function onAddFood(v) {
       console.log(v);
+    },
+    // 显示购物车
+    onShopCart: function onShopCart() {
+      this.$refs.popup.open('bottom');
+    },
+    // 清除购物车
+    onClear: function onClear() {
+
     } } };exports.default = _default;
 
 /***/ }),
