@@ -114,12 +114,11 @@
 .content .area-wrap {
   position: relative;
   top: 170px;
-  height: 87vh;
   padding: 0 16px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+  box-sizing: border-box;
   background-color: #fff;
-  overflow-x: hidden;
 }
 .content .area-wrap .area {
   z-index: 99;
@@ -167,6 +166,7 @@
   margin-top: 28px;
   padding-bottom: 50px;
   width: 100%;
+  overflow: hidden;
 }
 .content .area-wrap .shop__box {
   width: 168px;

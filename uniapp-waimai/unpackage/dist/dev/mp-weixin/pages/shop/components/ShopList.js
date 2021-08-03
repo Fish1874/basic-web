@@ -104,17 +104,6 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  if (!_vm._isMounted) {
-    _vm.e0 = function($event, index) {
-      var _temp = arguments[arguments.length - 1].currentTarget.dataset,
-        _temp2 = _temp.eventParams || _temp["event-params"],
-        index = _temp2.index
-
-      var _temp, _temp2
-
-      _vm.current = index
-    }
-  }
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -244,6 +233,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
 var _default =
 
 {
@@ -254,6 +245,7 @@ var _default =
       sort: ['推荐', '进店必买', '人气爆款', '套餐', '寿司', '新鲜刺身', '拉面', '小食', '酒水', '元气饮料', '新鲜蔬菜'],
       foods: [
       {
+        id: 1,
         photo: __webpack_require__(/*! @/static/food/pic1.png */ 42),
         title: "醋漬鮮鯖魚寿司",
         describe: '份量：每份2件',
@@ -261,71 +253,39 @@ var _default =
         original: 28 },
 
       {
+        id: 2,
         photo: __webpack_require__(/*! @/static/food/pic2.png */ 43),
         title: "黄金鲔鱼寿司",
         describe: '當天進貨 保證新鮮 口感細膩',
-        discount: 38.8, // 优惠价
+        discount: 18.8, // 优惠价
         original: 38 // 原价
       },
       {
-        photo: __webpack_require__(/*! @/static/food/pic2.png */ 43),
+        id: 3,
+        photo: __webpack_require__(/*! @/static/food/pic3.png */ 132),
         title: "黄金鲔鱼寿司",
         describe: '當天進貨 保證新鮮 口感細膩',
-        discount: 38.8, // 优惠价
+        discount: 138.8, // 优惠价
         original: 38 // 原价
       },
       {
-        photo: __webpack_require__(/*! @/static/food/pic2.png */ 43),
+        id: 4,
+        photo: __webpack_require__(/*! @/static/food/pic4.png */ 133),
         title: "黄金鲔鱼寿司",
         describe: '當天進貨 保證新鮮 口感細膩',
-        discount: 38.8, // 优惠价
-        original: 38 // 原价
+        discount: 55, // 优惠价
+        original: 399 // 原价
       }],
 
 
-      shopCartList: [
-      {
-        photo: __webpack_require__(/*! @/static/food/pic1.png */ 42),
-        title: "MAKI HOUSE 招牌壽司：日本北海甜蝦壽司",
-        discount: 25,
-        num: 2 },
-
-      {
-        photo: __webpack_require__(/*! @/static/food/pic1.png */ 42),
-        title: "MAKI HOUSE 招牌壽司：日本北海甜蝦壽司",
-        discount: 25,
-        num: 2 },
-
-      {
-        photo: __webpack_require__(/*! @/static/food/pic1.png */ 42),
-        title: "MAKI HOUSE 招牌壽司：日本北海甜蝦壽司",
-        discount: 25,
-        num: 2 },
-
-      {
-        photo: __webpack_require__(/*! @/static/food/pic1.png */ 42),
-        title: "MAKI HOUSE 招牌壽司：日本北海甜蝦壽司",
-        discount: 25,
-        num: 2 },
-
-      {
-        photo: __webpack_require__(/*! @/static/food/pic1.png */ 42),
-        title: "MAKI HOUSE 招牌壽司：日本北海甜蝦壽司",
-        discount: 25,
-        num: 2 },
-
-      {
-        photo: __webpack_require__(/*! @/static/food/pic1.png */ 42),
-        title: "MAKI HOUSE 招牌壽司：日本北海甜蝦壽司",
-        discount: 25,
-        num: 2 }] };
-
-
+      shopCartList: [] };
 
   },
   methods: {
-    onAddFood: function onAddFood(v) {
-      console.log(v);
+    // 切换类别
+    onTabs: function onTabs(index) {
+      this.current = index;
+      this.foods = this.shuffle(this.foods);
     },
     // 显示购物车
     onShopCart: function onShopCart() {
@@ -333,7 +293,42 @@ var _default =
     },
     // 清除购物车
     onClear: function onClear() {
+      this.shopCartList = [];
+      this.$refs.popup.close('bottom');
+    },
+    // 加-减商品
+    onEditNum: function onEditNum(row, type, area) {
+      this.operateNum(row, type);
+      var index = this.shopCartList.findIndex(function (v) {return v.id == row.id;});
+      // 判断是否是最外层点击事件
+      if (area == 'external' && index == -1) {
+        this.shopCartList.push(row);
+      } else {
+        if (row.num == 0) {
+          this.shopCartList.splice(index, 1);
+        }
+      }
+    },
+    // 添加 num 字段
+    operateNum: function operateNum(row, type) {
+      if (!row.hasOwnProperty('num')) {this.$set(row, 'num', 1);}
+      if (type == 'minus' && row.num > 0) {
+        row.num--;
 
+      } else if (type == 'plus') {
+        row.num++;
+      }
+    },
+    // 随机排序
+    shuffle: function shuffle(arr) {
+      var len = arr.length;
+      for (var i = 0; i < len - 1; i++) {
+        var index = parseInt(Math.random() * (len - i));
+        var temp = arr[index];
+        arr[index] = arr[len - i - 1];
+        arr[len - i - 1] = temp;
+      }
+      return arr;
     } } };exports.default = _default;
 
 /***/ }),

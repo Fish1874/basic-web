@@ -6,7 +6,7 @@
 				v-for="(item,index) of sort"
 				:key="index + 'sort'"
 				:style="{backgroundColor: current == index ? '#fff': ''}"
-				@click="current = index"
+				@click="onTabs(index)"
 			>{{item}}</view>
 		</scroll-view>
 
@@ -35,7 +35,9 @@
 				</view>
 
 				<view class="box__right">
-					<image @click="onAddFood(food)" src="~@/static/icon/ic_add.png" mode=""></image>
+					<image :class="{'minus': food.num > 0 ? true : false}" @click="onEditNum(food, 'minus', 'external')" src="~@/static/icon/ic_subtract.png" mode=""></image>
+					<text v-show="food.num > 0">{{food.num}}</text>
+					<image @click="onEditNum(food, 'plus', 'external')" src="~@/static/icon/ic_add.png" mode=""></image>
 				</view>
 			</view>	
 		</scroll-view>
@@ -59,7 +61,7 @@
 				<view class="shop-cart__top">
 					<view class="text">已選商品</view>
 					<view class="clear" @click="onClear()">
-						<image src="../../../static/icon/ic_delete-white.png" mode=""></image>
+						<image src="~@/static/icon/ic_delete-white.png" mode=""></image>
 						<text>清空購物車</text>
 					</view>
 				</view>
@@ -80,9 +82,9 @@
 									<text class="p1"><text class="unit">HK$ </text>{{cart.discount}}</text>
 								</view>
 								<view class="calculator">
-									<image src="../../../static/icon/ic_subtract.png" mode=""></image>
-									<text>1</text>
-									<image src="../../../static/icon/ic_add.png" mode=""></image>
+									<image @click="onEditNum(cart, 'minus')" src="~@/static/icon/ic_subtract.png" mode=""></image>
+									<text>{{cart.num}}</text>
+									<image @click="onEditNum(cart, 'plus')" src="~@/static/icon/ic_add.png" mode=""></image>
 								</view>
 							</view>
 						</view>
@@ -104,6 +106,7 @@
 				sort: ['推荐','进店必买','人气爆款','套餐','寿司','新鲜刺身','拉面','小食','酒水','元气饮料','新鲜蔬菜'],
 				foods: [
 					{
+						id:1,
 						photo: require('@/static/food/pic1.png'),
 						title: "醋漬鮮鯖魚寿司",
 						describe: '份量：每份2件',
@@ -111,71 +114,39 @@
 						original: 28
 					},
 					{
+						id:2,
 						photo: require('@/static/food/pic2.png'),
 						title: "黄金鲔鱼寿司",
 						describe: '當天進貨 保證新鮮 口感細膩',
-						discount: 38.8, // 优惠价
+						discount: 18.8, // 优惠价
 						original: 38    // 原价
 					},
 					{
-						photo: require('@/static/food/pic2.png'),
+						id:3,
+						photo: require('@/static/food/pic3.png'),
 						title: "黄金鲔鱼寿司",
 						describe: '當天進貨 保證新鮮 口感細膩',
-						discount: 38.8, // 优惠价
+						discount: 138.8, // 优惠价
 						original: 38    // 原价
 					},
 					{
-						photo: require('@/static/food/pic2.png'),
+						id:4,
+						photo: require('@/static/food/pic4.png'),
 						title: "黄金鲔鱼寿司",
 						describe: '當天進貨 保證新鮮 口感細膩',
-						discount: 38.8, // 优惠价
-						original: 38    // 原价
+						discount: 55, // 优惠价
+						original: 399    // 原价
 					},
 				],
 				
-				shopCartList: [
-					{
-						photo: require('@/static/food/pic1.png'),
-						title: "MAKI HOUSE 招牌壽司：日本北海甜蝦壽司",
-						discount: 25,
-						num: 2
-					},
-					{
-						photo: require('@/static/food/pic1.png'),
-						title: "MAKI HOUSE 招牌壽司：日本北海甜蝦壽司",
-						discount: 25,
-						num: 2
-					},
-					{
-						photo: require('@/static/food/pic1.png'),
-						title: "MAKI HOUSE 招牌壽司：日本北海甜蝦壽司",
-						discount: 25,
-						num: 2
-					},
-					{
-						photo: require('@/static/food/pic1.png'),
-						title: "MAKI HOUSE 招牌壽司：日本北海甜蝦壽司",
-						discount: 25,
-						num: 2
-					},
-					{
-						photo: require('@/static/food/pic1.png'),
-						title: "MAKI HOUSE 招牌壽司：日本北海甜蝦壽司",
-						discount: 25,
-						num: 2
-					},
-					{
-						photo: require('@/static/food/pic1.png'),
-						title: "MAKI HOUSE 招牌壽司：日本北海甜蝦壽司",
-						discount: 25,
-						num: 2
-					},
-				],
+				shopCartList: [],
 			}
 		},
 		methods: {
-			onAddFood(v) {
-				console.log(v)
+			// 切换类别
+			onTabs(index) {
+				this.current = index
+				this.foods = this.shuffle(this.foods);
 			},
 			// 显示购物车
 			onShopCart() {
@@ -183,7 +154,42 @@
 			},
 			// 清除购物车
 			onClear() {
-				
+				this.shopCartList = [];
+				this.$refs.popup.close('bottom')
+			},
+			// 加-减商品
+			onEditNum(row, type, area) {
+				this.operateNum(row, type);
+				let index = this.shopCartList.findIndex(v => v.id == row.id);
+				// 判断是否是最外层点击事件
+				if(area == 'external' && index == -1) {
+					this.shopCartList.push(row)
+				} else {					
+					if(row.num == 0) {
+						this.shopCartList.splice(index, 1);
+					}
+				}
+			},
+			// 添加 num 字段
+			operateNum(row, type) {
+				if(!row.hasOwnProperty('num')) { this.$set(row, 'num', 1) }
+				if(type == 'minus' && row.num > 0) {
+					row.num--;
+					
+				} else if(type == 'plus') {
+					row.num++
+				}
+			},
+			// 随机排序
+			shuffle(arr) {
+			    var len = arr.length;
+			    for (var i = 0; i < len - 1; i++) {
+			        var index = parseInt(Math.random() * (len - i));
+			        var temp = arr[index];
+			        arr[index] = arr[len - i - 1];
+			        arr[len - i - 1] = temp;
+			    }
+			    return arr;
 			}
 		}
 	}
@@ -278,14 +284,24 @@ $textColor:#A3A9B4;
 				
 			}
 			&__right {
+				@extend %flex;
 				flex: 1;
 				position: relative;
 				image {
 					position: absolute;
-					top: 58px;
-					right: 8px;
+					top: 59px;
+					right: 0px;
 					width: 20px;
 					height: 20px;
+				}
+				text {
+					position: absolute;
+					top: 58px;
+					right: 25px;
+				}
+				.minus {
+					transform: translateX(-190%);
+					transition: ease-in-out .2s;
 				}
 			}
 		}
@@ -386,7 +402,7 @@ $textColor:#A3A9B4;
 					@extend %flex;
 					padding: 8px 16px;
 					margin-bottom: 8px;
-					height: 86px;
+					height: 80px;
 					background-color: #fff;
 					&__left {
 						margin-right: 8px;
@@ -397,9 +413,9 @@ $textColor:#A3A9B4;
 					}
 					&__center {
 						@extend %flex-fd-w;
-						// justify-content: space-between;
+						justify-content: space-between;
+						width: 100%;
 						margin-right: 4px;
-				
 						&-title {
 							@extend %text-wrap-overflow;
 							margin-bottom: 4px;
@@ -408,6 +424,8 @@ $textColor:#A3A9B4;
 						}
 						&-bottom {
 							@extend %flex-jc-sb;
+							width: 100%;
+							margin-bottom: 4px;
 							.money {
 								.p1 {
 									margin-right: 8px;

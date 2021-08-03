@@ -21,7 +21,7 @@
 			</swiper>
 		</view>
 		
-		<view class="area-wrap"><!-- 类型区域 -->
+		<scroll-view class="area-wrap" scroll-y><!-- 类型区域 -->
 			<view class="area">
 				<swiper :indicator-dots="true" indicator-active-color="#7452A3">
 					<swiper-item v-for="(item,index) of pages" :key="index">
@@ -38,7 +38,7 @@
 					<image :src="item.img" mode="scaleToFill"></image>
 				</view>
 			</view>
-		</view>
+		</scroll-view>
 		
 
 		<uni-popup ref="popup" type="right">
@@ -231,12 +231,11 @@
 		.area-wrap {
 			position: relative;
 			top: 170px;
-			height: 87vh;
 			padding: 0 16px;
 			border-top-left-radius: 20px;
 			border-top-right-radius: 20px;
+			box-sizing: border-box;
 			background-color: #fff;
-			overflow-x: hidden;
 			.area {
 				z-index: 99;
 				position: sticky;
@@ -279,6 +278,7 @@
 				margin-top: 28px;
 				padding-bottom: 50px;
 				width: 100%;
+				overflow: hidden;
 				// height: 200px;
 				&__box {
 					width: 168px;
