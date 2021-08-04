@@ -16,6 +16,7 @@
 				 class="box"
 				 v-for="(food, index) of foods"
 				 :key="index"
+				 @click="onSelect(food)"
 			>
 				<view class="box__left">
 					<image :src="food.photo" mode="aspectFit"></image>
@@ -35,14 +36,14 @@
 				</view>
 
 				<view class="box__right">
-					<image :class="{'minus': food.num > 0 ? true : false}" @click="onEditNum(food, 'minus', 'external')" src="~@/static/icon/ic_subtract.png" mode=""></image>
+					<image :class="{'minus': food.num > 0 ? true : false}" @click.native.stop="onEditNum(food, 'minus', 'external')" src="~@/static/icon/ic_subtract.png" mode=""></image>
 					<text v-show="food.num > 0">{{food.num}}</text>
-					<image @click="onEditNum(food, 'plus', 'external')" src="~@/static/icon/ic_add.png" mode=""></image>
+					<image @click.native.stop="onEditNum(food, 'plus', 'external')" src="~@/static/icon/ic_add.png" mode=""></image>
 				</view>
 			</view>	
 		</scroll-view>
 	
-		<view class="food-column"><!-- 商品栏 -->
+		<view class="food-column" v-if="showFoodColumn"><!-- 结算栏 -->
 			<view class="food-column__show" @click="onShopCart()">
 				<view class="food-column__icon"><image src="~@/static/shop/bulka.png" mode=""></image></view>
 				<view class="food-column__text">
@@ -55,6 +56,51 @@
 			</view>
 		</view>
 	
+		<uni-popup ref="singlePopup" type="bottom" @maskClick="onCloseSinglePup">
+			<view class="select-food-wrap">
+				<view class="select__top">
+					<view class="select__top--photo">
+						<image :src="selectFood.photo" mode="aspectFit"></image>
+					</view>
+
+					<view class="select__top__center">
+						<view class="select__top__center-title">{{selectFood.title}}</view>
+						<view class="select__top__center-content">
+							<text>{{selectFood.describe}}</text>
+						</view>
+						<view class="select__top__center-bottom">
+							<view class="money">
+								<text class="p1" v-show="selectFood.discount"><text class="unit">HK$ </text>{{selectFood.discount}}</text>
+								<text class="p2" v-show="selectFood.original">HK$ {{selectFood.original}}</text>
+							</view>
+						</view>
+					</view>
+				</view>
+				
+				<view class="select__list">
+					<view
+						class="select__list--box"
+						v-for="(item,index) of selectFood.options"
+						:key="index + 'options'"
+					>
+						<view class="header">
+							<text class="text">选项{{index | filterNum }}</text>
+							<text class="line"></text>
+						</view>
+						<view class="content">
+							<view class="content-box"
+								v-for="(select,index) of item"
+								:key="index + 'select'"
+								:class="{active: selectcurrent === select.id}"
+								@click="selectcurrent = select.id"
+							>{{select.name}}</view>
+						</view>
+					</view>
+				</view>
+				
+				<button class="select__btn" type="default" @click="onConfirm">確認選擇</button>
+			</view>
+		</uni-popup>
 	
 		<uni-popup ref="popup" type="bottom"><!-- 购物车 -->
 			<view class="shop-cart-wrap">
@@ -103,6 +149,8 @@
 		data() {
 			return {
 				current: 0,
+				selectcurrent: 1,
+				showFoodColumn: true,
 				sort: ['推荐','进店必买','人气爆款','套餐','寿司','新鲜刺身','拉面','小食','酒水','元气饮料','新鲜蔬菜'],
 				foods: [
 					{
@@ -140,6 +188,9 @@
 				],
 				
 				shopCartList: [],
+				
+				// 暂存选中的食品
+				selectFood: {},
 			}
 		},
 		methods: {
@@ -157,13 +208,41 @@
 				this.shopCartList = [];
 				this.$refs.popup.close('bottom')
 			},
+			// 单个商品-选择规格
+			onSelect(row) {
+				this.showFoodColumn = false;
+				this.$refs.singlePopup.open('bottom');
+				this.selectFood = {
+					...row,
+					options: [
+						[{id: 1, name:'龍蝦'},{id: 2, name:'臘味'},{id: 3, name:'牛腩'},{id: 4, name:'雞排'},{id: 5, name:'鸡蛋'}],
+						[{id: 6, name:'龍蝦'},{id: 7, name:'臘味'},{id: 8, name:'牛腩'},{id: 9, name:'雞排'},{id: 10, name:'鸡蛋'}],
+					]
+				};
+			},
+			// 单个商品-遮罩层事件
+			onCloseSinglePup() {
+				this.$refs.singlePopup.close('bottom');
+				setTimeout(()=>{this.showFoodColumn = true},200);
+			},
+			// 确认选择
+			onConfirm() {
+				/* 
+				 * 存在bug，
+				 * 1.当我选完规格后，累加器不会累加
+				 * 2.当我选完规格后，点累加器，结算弹出层里面的不会增加！
+				 */
+				this.selectFood.specification = this.selectcurrent; //商品规格
+				this.onEditNum(this.selectFood, 'plus', 'external');
+				this.onCloseSinglePup();
+			},
 			// 加-减商品
 			onEditNum(row, type, area) {
 				this.operateNum(row, type);
 				let index = this.shopCartList.findIndex(v => v.id == row.id);
 				// 判断是否是最外层点击事件
-				if(area == 'external' && index == -1) {
-					this.shopCartList.push(row)
+				if (area == 'external' && index == -1) {
+					this.shopCartList.push(row);
 				} else {					
 					if(row.num == 0) {
 						this.shopCartList.splice(index, 1);
@@ -175,7 +254,6 @@
 				if(!row.hasOwnProperty('num')) { this.$set(row, 'num', 1) }
 				if(type == 'minus' && row.num > 0) {
 					row.num--;
-					
 				} else if(type == 'plus') {
 					row.num++
 				}
@@ -190,6 +268,14 @@
 			        arr[len - i - 1] = temp;
 			    }
 			    return arr;
+			}
+		},
+		filters: {
+			filterNum(v) {
+				let baseFont = ['一','二','三','四','五','六','七'];
+				for (let s of baseFont) {
+					return baseFont[v]
+				};
 			}
 		}
 	}
@@ -207,6 +293,7 @@ $textColor:#A3A9B4;
 	overflow: hidden;
 	.sort-area {
 		width: 80px;
+		padding-bottom: 85px;
 		overflow-y: auto;
 		background-color: #F0F0F0;
 		.cell {
@@ -219,6 +306,7 @@ $textColor:#A3A9B4;
 	.food-area {
 		flex: 1;
 		width: calc(375px - 80px);
+		padding-bottom: 65px;
 		overflow-y: auto;
 		.title {
 			padding: 10px 8px;
@@ -313,7 +401,7 @@ $textColor:#A3A9B4;
 		z-index: 999;
 		position: fixed;
 		left: 50%;
-		bottom: 38px;
+		bottom: 18px;
 		width: 343px;
 		height: 48px;
 		transform: translateX(-50%);
@@ -455,6 +543,133 @@ $textColor:#A3A9B4;
 					}
 				}
 			}
+		}
+	}
+	
+	// 商品规格
+	.select-food-wrap {
+		width: 100%;
+		height: 50vh;
+		padding-bottom: 100px;
+		background-color: #fff;
+		.select__top {
+			@extend %flex;
+			padding: 16px;
+			margin-bottom: 8px;
+			height: 96px;
+			background-color: #fff;
+			&--photo {
+				margin-right: 12px;
+				image {
+					width: 80px;
+					height: 80px;
+				}
+			}
+			&__center {
+				@extend %flex-fd-w;
+				flex: 1;
+				margin-right: 4px;
+				width: 190px;
+				&-title {
+					@extend %text-overflow;
+					margin-bottom: 6px;
+					font-size: 16px;
+					font-weight: 600;
+				}
+				
+				&-content {
+					flex: 1;
+					@extend %text-wrap-overflow;
+					margin: 6px 0 0;
+					color: #A3A9B4;
+					font-size: 12px;
+				}
+				
+				&-bottom {
+					@extend %flex;
+					flex-wrap: wrap;
+					justify-content: flex-start;
+					.money {
+						.p1 {
+							margin-right: 8px;
+							color: $prColor;
+							font-size: 16px;
+							font-weight: 600;
+							.unit {
+								font-size: 12px;
+								font-weight: 500;
+							}
+						}
+						.p2 {
+							color: #A3A9B4;
+							font-size: 12px;
+							text-decoration: line-through;
+						}
+					}
+				}
+				
+			}
+		}
+	
+		.select__list {
+			margin-top: 12px;
+			padding: 0 16px;
+			&--box {
+				.header {
+					position: relative;
+					padding: 0 16px;
+					margin-bottom: 8px;
+					box-sizing: border-box;
+					text-align: center;
+					.text {
+						z-index: 2;
+						position: relative;
+						padding: 0 12px;
+						color: #A3A9B4;
+						background-color: #fff;
+					}
+					.line {
+						z-index: 1;
+						position: absolute;
+						top: 50%;
+						left: 0;
+						display: inline-block;
+						width: 100%;
+						height: 1px;
+						border-bottom: 1px dashed #E5E5E5;
+					}
+				}
+				
+				.content {
+					@extend %flex;
+					justify-content: flex-start;
+					flex-wrap: wrap;
+					&-box {
+						padding: 8px 24px;
+						margin-right: 8px;
+						margin-bottom: 8px;
+						font-size: 14px;
+						color: #7F8590;
+						background-color: #F9FAFC;
+					}
+					.active {
+						color: #F9FAFC;
+						background: #222326;
+					}
+				}
+			}
+		}
+		
+		.select__btn {
+			position: fixed;
+			bottom: 8px;
+			width: 90%;
+			margin: 0 16px;
+			padding: 8px 0;
+			box-sizing: border-box;
+			font-size: 14px;
+			color: #FFFFFF;
+			background: #7355BE;
 		}
 	}
 }

@@ -10,7 +10,7 @@
 			<view class="mask"></view>
 		</view>
 		
-		<view class="sticky" style="position: sticky;top:64px;height: 158vw;">
+		<view class="sticky" style="position: sticky;top:64px;">
 			
 			<view class="shop-area"><!-- 店铺名称 -->
 				<view class="shop-title">MAKI HOUSE 日式料理</view>
