@@ -64,7 +64,7 @@
   overflow: hidden;
 }
 .shop-list .sort-area.data-v-86341ee6 {
-  width: 80px;
+  width: 160rpx;
   padding-bottom: 85px;
   overflow-y: auto;
   background-color: #F0F0F0;
@@ -86,7 +86,7 @@
 }
 .shop-list .food-area .title.data-v-86341ee6 {
   padding: 10px 8px;
-  font-size: 14px;
+  font-size: 14rpx;
   background-color: #fff;
 }
 .shop-list .food-area .box.data-v-86341ee6 {
@@ -99,8 +99,8 @@
   margin-right: 8px;
 }
 .shop-list .food-area .box__left image.data-v-86341ee6 {
-  width: 80px;
-  height: 80px;
+  width: 160rpx;
+  height: 160rpx;
 }
 .shop-list .food-area .box__center.data-v-86341ee6 {
   margin-right: 4px;
@@ -151,13 +151,13 @@
   position: absolute;
   top: 59px;
   right: 0px;
-  width: 20px;
-  height: 20px;
+  width: 40rpx;
+  height: 40rpx;
 }
 .shop-list .food-area .box__right text.data-v-86341ee6 {
   position: absolute;
   top: 58px;
-  right: 25px;
+  right: 50rpx;
 }
 .shop-list .food-area .box__right .minus.data-v-86341ee6 {
   -webkit-transform: translateX(-190%);
@@ -170,7 +170,7 @@
   position: fixed;
   left: 50%;
   bottom: 18px;
-  width: 343px;
+  width: 686rpx;
   height: 48px;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
@@ -212,7 +212,7 @@
   font-size: 12px;
 }
 .shop-list .food-column__pay.data-v-86341ee6 {
-  width: 80px;
+  width: 160rpx;
 }
 .shop-list .food-column__pay button.data-v-86341ee6 {
   width: 103%;
@@ -220,7 +220,7 @@
   line-height: 48px;
   font-size: 14px;
   color: #FFFFFF;
-  background: #7F8590;
+  background-color: #7F8590;
   border-radius: 0px 24px 24px 0px;
 }
 .shop-list .shop-cart-wrap.data-v-86341ee6 {
@@ -312,7 +312,7 @@
 .shop-list .select-food-wrap .select__top.data-v-86341ee6 {
   padding: 16px;
   margin-bottom: 8px;
-  height: 96px;
+  height: 192rpx;
   background-color: #fff;
 }
 .shop-list .select-food-wrap .select__top--photo.data-v-86341ee6 {
@@ -367,6 +367,8 @@
 .shop-list .select-food-wrap .select__list.data-v-86341ee6 {
   margin-top: 12px;
   padding: 0 16px;
+  height: 33vh;
+  box-sizing: border-box;
 }
 .shop-list .select-food-wrap .select__list--box .header.data-v-86341ee6 {
   position: relative;
@@ -416,7 +418,7 @@
   bottom: 8px;
   width: 90%;
   margin: 0 16px;
-  padding: 8px 0;
+  padding: 8rpx 0;
   box-sizing: border-box;
   font-size: 14px;
   color: #FFFFFF;

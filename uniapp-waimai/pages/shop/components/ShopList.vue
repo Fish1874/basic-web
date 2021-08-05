@@ -45,14 +45,14 @@
 	
 		<view class="food-column" v-if="showFoodColumn"><!-- 结算栏 -->
 			<view class="food-column__show" @click="onShopCart()">
-				<view class="food-column__icon"><image src="~@/static/shop/bulka.png" mode=""></image></view>
+				<view class="food-column__icon"><image :src="cartPhoto" mode=""></image></view>
 				<view class="food-column__text">
 					<view class="t1">HK$<text>0.00</text></view>
 					<view class="t2">差HK$ 15.00 起送</view>
 				</view>
 			</view>
 			<view class="food-column__pay">
-				<button type="default">去结算</button>
+				<button :style="{'backgroundColor': shopCartList.length ? '#7355BE' : '#7F8590'}" type="default">去结算</button>
 			</view>
 		</view>
 	
@@ -77,7 +77,7 @@
 					</view>
 				</view>
 				
-				<view class="select__list">
+				<scroll-view class="select__list" scroll-y>
 					<view
 						class="select__list--box"
 						v-for="(item,index) of selectFood.options"
@@ -96,13 +96,13 @@
 							>{{select.name}}</view>
 						</view>
 					</view>
-				</view>
+				</scroll-view>
 				
 				<button class="select__btn" type="default" @click="onConfirm">確認選擇</button>
 			</view>
 		</uni-popup>
 	
-		<uni-popup ref="popup" type="bottom"><!-- 购物车 -->
+		<uni-popup ref="popup" type="bottom" @change="onPayPupChange"><!-- 购物车 -->
 			<view class="shop-cart-wrap">
 				<view class="shop-cart__top">
 					<view class="text">已選商品</view>
@@ -191,6 +191,8 @@
 				
 				// 暂存选中的食品
 				selectFood: {},
+				isPayCart: false, // 监听结算车弹出层-显示隐藏
+				cartPhoto: require('@/static/shop/bulka.png')
 			}
 		},
 		methods: {
@@ -201,24 +203,28 @@
 			},
 			// 显示购物车
 			onShopCart() {
-				this.$refs.popup.open('bottom')
+				this.$refs.popup.open('bottom');
+			},
+			// 结算车监听事件
+			onPayPupChange(e) {
+				this.isPayCart = e.show;
 			},
 			// 清除购物车
 			onClear() {
+				this.shopCartList.forEach(v=> delete v.num);
 				this.shopCartList = [];
-				this.$refs.popup.close('bottom')
+				this.selectFood = {};
+				this.$refs.popup.close('bottom');
 			},
 			// 单个商品-选择规格
 			onSelect(row) {
 				this.showFoodColumn = false;
 				this.$refs.singlePopup.open('bottom');
-				this.selectFood = {
-					...row,
-					options: [
-						[{id: 1, name:'龍蝦'},{id: 2, name:'臘味'},{id: 3, name:'牛腩'},{id: 4, name:'雞排'},{id: 5, name:'鸡蛋'}],
-						[{id: 6, name:'龍蝦'},{id: 7, name:'臘味'},{id: 8, name:'牛腩'},{id: 9, name:'雞排'},{id: 10, name:'鸡蛋'}],
-					]
-				};
+				row.options = [
+					[{id: 1, name:'龍蝦'},{id: 2, name:'臘味'},{id: 3, name:'牛腩'},{id: 4, name:'雞排'},{id: 5, name:'鸡蛋'}],
+					[{id: 6, name:'龍蝦'},{id: 7, name:'臘味'},{id: 8, name:'牛腩'},{id: 9, name:'雞排'},{id: 10, name:'鸡蛋'}]
+				]
+				this.selectFood = row;
 			},
 			// 单个商品-遮罩层事件
 			onCloseSinglePup() {
@@ -227,11 +233,6 @@
 			},
 			// 确认选择
 			onConfirm() {
-				/* 
-				 * 存在bug，
-				 * 1.当我选完规格后，累加器不会累加
-				 * 2.当我选完规格后，点累加器，结算弹出层里面的不会增加！
-				 */
 				this.selectFood.specification = this.selectcurrent; //商品规格
 				this.onEditNum(this.selectFood, 'plus', 'external');
 				this.onCloseSinglePup();
@@ -251,7 +252,7 @@
 			},
 			// 添加 num 字段
 			operateNum(row, type) {
-				if(!row.hasOwnProperty('num')) { this.$set(row, 'num', 1) }
+				if(!row.hasOwnProperty('num')) { this.$set(row, 'num', 0) }
 				if(type == 'minus' && row.num > 0) {
 					row.num--;
 				} else if(type == 'plus') {
@@ -277,6 +278,31 @@
 					return baseFont[v]
 				};
 			}
+		},
+		watch: {
+			shopCartList: {
+				deep: true,
+				handler(data) {
+					if(!data.length && !this.isPayCart) {
+						this.cartPhoto = require('@/static/shop/bulka.png')
+					} else if(data.length && !this.isPayCart)  {
+						this.cartPhoto = require('@/static/shop/bulka-close.png')
+					}
+				}
+			},
+			isPayCart(v) {
+				// 盒子图片的三种情况需要改善一下，可以写个fillter.js
+				// 在里面处理一些逻辑！！！
+				if(this.shopCartList.length && v) {
+					this.cartPhoto = require('@/static/shop/bulka-open.png')
+				} else if(this.shopCartList.length && !v) {
+					this.cartPhoto = require('@/static/shop/bulka-close.png')
+				} else if(!this.shopCartList.length && v) {
+					this.cartPhoto = require('@/static/shop/bulka.png')
+				} else if(!this.shopCartList.length && !v) {
+					this.cartPhoto = require('@/static/shop/bulka.png')
+				}
+			}
 		}
 	}
 </script>
@@ -292,14 +318,14 @@ $textColor:#A3A9B4;
 	background-color: $bgColor2;
 	overflow: hidden;
 	.sort-area {
-		width: 80px;
+		width: 160rpx;
 		padding-bottom: 85px;
 		overflow-y: auto;
 		background-color: #F0F0F0;
 		.cell {
 			padding: 12px 16px;
 			font-size: 12px;
-			color: $textColor;			
+			color: $textColor;
 			transition: ease-in-out .2s
 		}
 	}	
@@ -310,7 +336,7 @@ $textColor:#A3A9B4;
 		overflow-y: auto;
 		.title {
 			padding: 10px 8px;
-			font-size: 14px;
+			font-size: 14rpx;
 			background-color: #fff;
 		}
 
@@ -323,8 +349,8 @@ $textColor:#A3A9B4;
 			&__left {
 				margin-right: 8px;
 				image {
-					width: 80px;
-					height: 80px;
+					width: 160rpx;
+					height: 160rpx;
 				}
 			}
 			&__center {
@@ -379,13 +405,13 @@ $textColor:#A3A9B4;
 					position: absolute;
 					top: 59px;
 					right: 0px;
-					width: 20px;
-					height: 20px;
+					width: 40rpx;
+					height: 40rpx;
 				}
 				text {
 					position: absolute;
 					top: 58px;
-					right: 25px;
+					right: 50rpx;
 				}
 				.minus {
 					transform: translateX(-190%);
@@ -402,7 +428,7 @@ $textColor:#A3A9B4;
 		position: fixed;
 		left: 50%;
 		bottom: 18px;
-		width: 343px;
+		width: 686rpx;
 		height: 48px;
 		transform: translateX(-50%);
 		background: #222326;
@@ -440,14 +466,14 @@ $textColor:#A3A9B4;
 			}
 		}
 		&__pay {
-			width: 80px;
+			width: 160rpx;
 			button {
 				width: 103%;
 				height: 100%;
 				line-height: 48px;
 				font-size: 14px;
 				color: #FFFFFF;
-				background: #7F8590;
+				background-color: #7F8590;
 				border-radius: 0px 24px 24px 0px;
 			}
 		}
@@ -556,7 +582,7 @@ $textColor:#A3A9B4;
 			@extend %flex;
 			padding: 16px;
 			margin-bottom: 8px;
-			height: 96px;
+			height: 192rpx;
 			background-color: #fff;
 			&--photo {
 				margin-right: 12px;
@@ -614,6 +640,8 @@ $textColor:#A3A9B4;
 		.select__list {
 			margin-top: 12px;
 			padding: 0 16px;
+			height: 33vh;
+			box-sizing: border-box;
 			&--box {
 				.header {
 					position: relative;
@@ -665,7 +693,7 @@ $textColor:#A3A9B4;
 			bottom: 8px;
 			width: 90%;
 			margin: 0 16px;
-			padding: 8px 0;
+			padding: 8rpx 0;
 			box-sizing: border-box;
 			font-size: 14px;
 			color: #FFFFFF;
