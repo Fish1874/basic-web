@@ -37,16 +37,21 @@
 			</view>
 			
 			<ShopList></ShopList>
+			
+			<ShopDetail></ShopDetail>
+
 		</view>
 	</view>
 </template>
 
 <script>
 	import ShopList from "./components/ShopList.vue"
+	import ShopDetail from "./components/ShopDetail.vue"
 	export default {
 		name: 'shop',
 		components: {
-			ShopList
+			ShopList,
+			ShopDetail
 		},
 		data() {
 			return {
