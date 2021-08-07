@@ -12,7 +12,7 @@
 		
 		<view class="sticky" style="position: sticky;top:64px;">
 			
-			<view class="shop-area"><!-- 店铺名称 -->
+			<view class="shop-area" @click="onShowDetail"><!-- 店铺名称 -->
 				<view class="shop-title">MAKI HOUSE 日式料理</view>
 				<view class="shop-photo">
 					<image src="~@/static/home/logo2.png" mode=""></image>
@@ -38,9 +38,12 @@
 			
 			<ShopList></ShopList>
 			
-			<ShopDetail></ShopDetail>
 
 		</view>
+		
+		<uni-popup ref="detailPopup" type="right">
+			<ShopDetail @close="$refs.detailPopup.close()"></ShopDetail>
+		</uni-popup>
 	</view>
 </template>
 
@@ -61,6 +64,9 @@
 		methods: {
 			onBlack() {
 				uni.navigateBack({})
+			},
+			onShowDetail() {
+				this.$refs.detailPopup.open('right');
 			}
 		}
 	}

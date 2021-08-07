@@ -139,11 +139,11 @@
 			</view>
 		</uni-popup>
 	
+
 	</view>
 </template>
 
 <script>
-
 	export default {
 		name: 'ShopList',
 		data() {
