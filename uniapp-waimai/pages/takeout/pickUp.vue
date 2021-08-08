@@ -1,6 +1,10 @@
 <template>
 	<view class="pick-up">
-		
+		<view class="header">
+			<image src="~@/static/icon/ic_back_white.png" @click="onBack" mode=""></image>
+			<text>外卖自提</text>
+			<image src="" mode=""></image>
+		</view>
 		<view class="top">
 			<view class="address"><!-- 定位 -->
 				<image src="~@/static/icon/ic_nav_location_in.png" mode=""></image>
@@ -75,9 +79,12 @@
 			goShop(shop) {
 				uni.navigateTo({url: '/pages/shop/index'});
 			},
-			confirm() {
-				
+			onBack() {
+				// switchTab是跳转到pages.json有配置的页面 
+				uni.switchTab({url: '/pages/home/index'});
 			},
+			// 分类选项确定
+			confirm() {},
 		},
 		filters: {
 			filterNums(val) {
@@ -101,7 +108,24 @@
 
 <style lang="scss">
 
+$iconSize: 20px;
+
 .pick-up {
+	/* #ifdef MP-WEIXIN */
+	padding-top: 60px;
+	/* #endif */
+	.header {
+		@extend %flex-jc-sb, %flex-ai-c;
+		padding: 0 16px;
+		height: 48px;
+		color: #fff;
+		background-color: #222326;
+		image {
+			width: $iconSize;
+			height: $iconSize;
+		}
+	}
+	
 	.top {
 		padding: 16px;
 		height: 90px;
@@ -138,6 +162,9 @@
 				top:90px;
 				/deep/ .mask {
 					top: 90px;
+					/* #ifdef MP-WEIXIN */
+					top: 160px;
+					/* #endif */
 				}
 				/deep/ .nav .first-menu.on,
 				/deep/ .sub-menu-list.not-first .sub-menu.on,
@@ -162,6 +189,9 @@
 			/* #ifdef MP-WEIXIN */
 			.HMfilterDropdown {
 				top: 45px;
+				/* #ifdef MP-WEIXIN */
+				top: 154px;
+				/* #endif */
 			}
 			/* #endif */
 		}

@@ -2050,7 +2050,7 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 114:
+/***/ 121:
 /*!*****************************************************************************!*\
   !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/food/pic3.png ***!
   \*****************************************************************************/
@@ -2061,7 +2061,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAYAAACL
 
 /***/ }),
 
-/***/ 115:
+/***/ 122:
 /*!*****************************************************************************!*\
   !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/food/pic4.png ***!
   \*****************************************************************************/
@@ -2072,7 +2072,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAYAAACL
 
 /***/ }),
 
-/***/ 116:
+/***/ 123:
 /*!******************************************************************************!*\
   !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/shop/bulka.png ***!
   \******************************************************************************/
@@ -2083,7 +2083,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAACUCAYAAABY
 
 /***/ }),
 
-/***/ 117:
+/***/ 124:
 /*!************************************************************************************!*\
   !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/shop/bulka-close.png ***!
   \************************************************************************************/
@@ -2094,7 +2094,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAACUCAYAAABY
 
 /***/ }),
 
-/***/ 118:
+/***/ 125:
 /*!***********************************************************************************!*\
   !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/static/shop/bulka-open.png ***!
   \***********************************************************************************/
@@ -2105,7 +2105,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAACUCAYAAABY
 
 /***/ }),
 
-/***/ 126:
+/***/ 140:
 /*!********************************************************************************************************************************!*\
   !*** C:/Users/wilson/Desktop/每天必做JS巩固上传/uniapp-waimai/uni_modules/uni-transition/components/uni-transition/createAnimation.js ***!
   \********************************************************************************************************************************/

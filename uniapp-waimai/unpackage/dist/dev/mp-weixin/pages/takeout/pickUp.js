@@ -96,7 +96,7 @@ var components
 try {
   components = {
     HMFilterDropdown: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/HM-filterDropdown/components/HM-filterDropdown/HM-filterDropdown */ "uni_modules/HM-filterDropdown/components/HM-filterDropdown/HM-filterDropdown").then(__webpack_require__.bind(null, /*! @/uni_modules/HM-filterDropdown/components/HM-filterDropdown/HM-filterDropdown.vue */ 102))
+      return __webpack_require__.e(/*! import() | uni_modules/HM-filterDropdown/components/HM-filterDropdown/HM-filterDropdown */ "uni_modules/HM-filterDropdown/components/HM-filterDropdown/HM-filterDropdown").then(__webpack_require__.bind(null, /*! @/uni_modules/HM-filterDropdown/components/HM-filterDropdown/HM-filterDropdown.vue */ 109))
     }
   }
 } catch (e) {
@@ -221,6 +221,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
 var _data = _interopRequireDefault(__webpack_require__(/*! @/mixin/data */ 66));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
 //
@@ -263,11 +267,14 @@ var _data = _interopRequireDefault(__webpack_require__(/*! @/mixin/data */ 66));
 //
 //
 //
+//
+//
+//
+//
 var _default = { name: 'PickUp', mixins: [_data.default], data: function data() {return { // 下拉菜单
-      defaultSelected: [], shops: [{ title: '和茶 WòoTea', photo: __webpack_require__(/*! @/static/home/logo3.png */ 69), tags: ['甜品', '小吃'], startPrice: '100', sell: '38000', score: '12000', distance: '500' }, { title: '水清鴨白粵菜樓', photo: __webpack_require__(/*! @/static/home/logo4.png */ 70), tags: ['粤菜', '特色清水鸭'], startPrice: '100', sell: '11500', score: '2000', distance: '1200' }] };}, methods: { goShop: function goShop(shop) {uni.navigateTo({ url: '/pages/shop/index' });}, confirm: function confirm() {} }, filters: { filterNums: function filterNums(val) {var text = '';if (val >= 10000) {text = "".concat(val / 10000, "w");} else if (val >= 1000) {
-        text = "".concat(val / 1000, "k");
-      } else
-      {
+      defaultSelected: [], shops: [{ title: '和茶 WòoTea', photo: __webpack_require__(/*! @/static/home/logo3.png */ 69), tags: ['甜品', '小吃'], startPrice: '100', sell: '38000', score: '12000', distance: '500' }, { title: '水清鴨白粵菜樓', photo: __webpack_require__(/*! @/static/home/logo4.png */ 70), tags: ['粤菜', '特色清水鸭'], startPrice: '100', sell: '11500', score: '2000', distance: '1200' }] };}, methods: { goShop: function goShop(shop) {uni.navigateTo({ url: '/pages/shop/index' });}, onBack: function onBack() {// switchTab是跳转到pages.json有配置的页面 
+      uni.switchTab({ url: '/pages/home/index' });}, // 分类选项确定
+    confirm: function confirm() {} }, filters: { filterNums: function filterNums(val) {var text = '';if (val >= 10000) {text = "".concat(val / 10000, "w");} else if (val >= 1000) {text = "".concat(val / 1000, "k");} else {
         text = val;
       }
       return text;

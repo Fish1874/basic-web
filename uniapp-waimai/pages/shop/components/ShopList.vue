@@ -283,6 +283,7 @@
 			shopCartList: {
 				deep: true,
 				handler(data) {
+					if(!data.length) {this.$refs.popup.close('bottom')};
 					if(!data.length && !this.isPayCart) {
 						this.cartPhoto = require('@/static/shop/bulka.png')
 					} else if(data.length && !this.isPayCart)  {
@@ -291,16 +292,25 @@
 				}
 			},
 			isPayCart(v) {
-				// 盒子图片的三种情况需要改善一下，可以写个fillter.js
-				// 在里面处理一些逻辑！！！
-				if(this.shopCartList.length && v) {
-					this.cartPhoto = require('@/static/shop/bulka-open.png')
-				} else if(this.shopCartList.length && !v) {
-					this.cartPhoto = require('@/static/shop/bulka-close.png')
-				} else if(!this.shopCartList.length && v) {
-					this.cartPhoto = require('@/static/shop/bulka.png')
-				} else if(!this.shopCartList.length && !v) {
-					this.cartPhoto = require('@/static/shop/bulka.png')
+				// 判断购物车有无物品————显示不同图片
+				// 	- 有
+				// 		a. 购物车有无被打开
+				// 	- 无
+				// 		a.购物车有无被打开
+				
+				let imgMap = {
+					noGoods: require('@/static/shop/bulka.png'), 
+					goodShopOpen: require('@/static/shop/bulka-open.png'),
+					goodShopClose: require('@/static/shop/bulka-close.png')
+				};
+				if(this.shopCartList.length) {
+					if (v) {
+						this.cartPhoto = imgMap.goodShopOpen;
+					} else {
+						this.cartPhoto = imgMap.goodShopClose;
+					}
+				} else {
+					this.cartPhoto = imgMap.noGoods;
 				}
 			}
 		}

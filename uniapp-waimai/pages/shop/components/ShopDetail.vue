@@ -38,6 +38,20 @@
 		
 		<view class="shop__photo">
 			<view class="shop__photo-title">店鋪相册</view>
+			<scroll-view scroll-y style="height: 80%;">
+				<view class="shop__photo-content">
+					<view class="item">
+						<image src="~@/static/shop/shop1.png" mode="widthFix"></image>
+					</view>
+					<view class="item">
+						<image src="~@/static/shop/shop2.png" mode="widthFix"></image>
+					</view>
+					<view class="item">
+						<image src="~@/static/shop/shop3.png" mode="widthFix"></image>
+					</view>
+
+				</view>
+			</scroll-view>
 		</view>
 	</view>
 </template>
@@ -64,11 +78,14 @@
 			onBlack() {
 				this.$emit('close');
 			}
+		},
+		mounted() {
+
 		}
 	}
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
 .shop-detail {
 	width: 100vw;
@@ -162,12 +179,25 @@
 	.shop__photo {
 		margin: 8px 0;
 		padding: 12px 16px;
-		height: 100%;
+		height: 50vh;
+		overflow: hidden;
 		background-color: #fff;
 		&-title {
 			margin-bottom: 12px;
 			color: #222326;
 			font-size: 16px;
+		}
+		&-content {
+			@extend %flex;
+			flex-wrap: wrap;
+			.item {
+					width: 50%;
+				image {
+					width: 95%;
+					height: auto;
+				}				
+			}
+			
 		}
 	}
 }

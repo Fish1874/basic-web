@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
+    "v-tabs": "/components/v-tabs/v-tabs",
     "food-list": "/components/food-list/index"
   }
 }

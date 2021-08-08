@@ -63,7 +63,7 @@
 		},
 		methods: {
 			onBlack() {
-				uni.navigateBack({})
+				uni.navigateBack({}) // 返回上一页
 			},
 			onShowDetail() {
 				this.$refs.detailPopup.open('right');

@@ -41,7 +41,7 @@
 		</scroll-view>
 		
 
-		<uni-popup ref="popup" type="right">
+		<uni-popup ref="searchPop" type="right">
 			<search-page @close="onClose"></search-page>
 		</uni-popup>
 
@@ -113,10 +113,10 @@
 		methods: {
 			
 			onShowPopup() {
-				this.$refs.popup.open('right');
+				this.$refs.searchPop.open('right');
 			},
 			onClose() {
-				this.$refs.popup.close();
+				this.$refs.searchPop.close();
 			},
 			// icon跳转到对应的页面
 			toIcon(item) {

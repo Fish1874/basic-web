@@ -35,10 +35,10 @@
             "path" : "pages/takeOut/pickUp",
             "style" :                                                                                    
             {
+				"navigationStyle": "custom",
                 "navigationBarTitleText": "外卖自提",
                 "enablePullDownRefresh": false
             }
-            
         },
 		{
 			"path" : "pages/shop/index",

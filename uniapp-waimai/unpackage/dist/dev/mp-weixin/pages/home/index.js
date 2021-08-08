@@ -273,10 +273,10 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
 
     onShowPopup: function onShowPopup() {
-      this.$refs.popup.open('right');
+      this.$refs.searchPop.open('right');
     },
     onClose: function onClose() {
-      this.$refs.popup.close();
+      this.$refs.searchPop.close();
     },
     // icon跳转到对应的页面
     toIcon: function toIcon(item) {
