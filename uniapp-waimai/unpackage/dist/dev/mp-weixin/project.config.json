@@ -6,12 +6,12 @@
   "setting": {
     "urlCheck": false,
     "es6": true,
-    "minified": false,
+    "minified": true,
     "postcss": false
   },
   "compileType": "miniprogram",
   "libVersion": "",
-  "appid": "wxfb553647326c2afc",
+  "appid": "touristappid",
   "projectname": "basic-project",
   "condition": {
     "search": {

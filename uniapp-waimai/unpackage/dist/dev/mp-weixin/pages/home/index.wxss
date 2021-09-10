@@ -24,7 +24,7 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.content .top-nav, .content .top-nav .location, .content .top-nav .search, .content .area-wrap .area swiper swiper-item .box, .content .area-wrap .area swiper swiper-item, .content .area-wrap .shop {
+.content .top-nav, .content .top-nav .location, .content .top-nav .search, .content .content .area swiper swiper-item .box, .content .content .area swiper swiper-item, .content .content .shop {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -34,7 +34,7 @@
   -webkit-justify-content: space-between;
           justify-content: space-between;
 }
-.content .top-nav, .content .top-nav .location, .content .top-nav .search, .content .area-wrap .area swiper swiper-item .box {
+.content .top-nav, .content .top-nav .location, .content .top-nav .search, .content .content .area swiper swiper-item .box {
   -webkit-box-align: center;
   -webkit-align-items: center;
           align-items: center;
@@ -60,7 +60,7 @@
 }
 .content .top-nav .location-text {
   margin: 0 4px;
-  width: 216rpx;
+  max-width: 216rpx;
   font-size: 18px;
   font-weight: 600;
 }
@@ -110,36 +110,36 @@
 }
 .content .banner-wrap swiper image {
   width: 100%;
+  height: auto;
 }
 .content .area-wrap {
+  z-index: 5;
   position: relative;
   top: 170px;
+}
+.content .content {
   padding: 0 16px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   box-sizing: border-box;
   background-color: #fff;
 }
-.content .area-wrap .area {
-  z-index: 99;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0px;
+.content .content .area {
   padding: 22px 0 0;
   height: 150px;
   background: #fff;
 }
-.content .area-wrap .area swiper {
+.content .content .area swiper {
   width: 100%;
   height: 106%;
 }
-.content .area-wrap .area swiper swiper-item {
+.content .content .area swiper swiper-item {
   -webkit-flex-wrap: wrap;
           flex-wrap: wrap;
   box-sizing: border-box;
   height: 90%;
 }
-.content .area-wrap .area swiper swiper-item .box {
+.content .content .area swiper swiper-item .box {
   -webkit-justify-content: space-around;
           justify-content: space-around;
   -webkit-box-orient: vertical;
@@ -149,32 +149,32 @@
   width: 25%;
   height: 58px;
 }
-.content .area-wrap .area swiper swiper-item .box image {
+.content .content .area swiper swiper-item .box image {
   width: 32px;
   height: 32px;
 }
-.content .area-wrap .area swiper swiper-item .box text {
+.content .content .area swiper swiper-item .box text {
   color: #7F8590;
   font-size: 14px;
   letter-spacing: 1px;
 }
-.content .area-wrap .shop {
+.content .content .shop {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
   -webkit-flex-wrap: wrap;
           flex-wrap: wrap;
-  -webkit-justify-content: space-around;
-          justify-content: space-around;
   margin-top: 28px;
-  padding-bottom: 50px;
-  width: 100%;
-  overflow: hidden;
+  padding-bottom: 5px;
+  height: 55vh;
+  overflow-y: auto;
 }
-.content .area-wrap .shop__box {
-  width: 168px;
-  height: 108px;
+.content .content .shop__box {
+  width: 49%;
   margin-bottom: 8px;
 }
-.content .area-wrap .shop__box image {
+.content .content .shop__box image {
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 

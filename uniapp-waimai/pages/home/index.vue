@@ -3,8 +3,8 @@
 
 		<view class="top-nav">
 			<view class="location">
-				<text class="iconfont icon-map"></text>	
-				<view class="location-text">汇合东平大厦</view>
+				<text class="iconfont icon-map"></text>
+				<view class="location-text">北京大厦</view>
 				<text class="iconfont icon-arrow-right"></text>
 			</view>
 			<view class="search" @click="onShowPopup">
@@ -12,34 +12,37 @@
 				<text class="text">发现更多美食</text>
 			</view>
 		</view>
-		
+
 		<view class="banner-wrap"><!-- 轮播图 -->
 			<swiper :indicator-dots="true" indicator-color="#999" indicator-active-color="#000" :autoplay="false" :interval="3000" :duration="1000" circular="true">
 				<swiper-item v-for = "item of images" :key = "item.id">
-					<image :src="item.img" mode=""></image>
+					<image :src="item.img" mode="widthFix"></image>
 				</swiper-item>
 			</swiper>
 		</view>
-		
+
 		<scroll-view class="area-wrap" scroll-y><!-- 类型区域 -->
-			<view class="area">
-				<swiper :indicator-dots="true" indicator-active-color="#7452A3">
-					<swiper-item v-for="(item,index) of pages" :key="index">
-						<view class="box" v-for="(list,i) of item" :key="i" @click="toIcon(list)">
-							<image :src="list.icon"></image>
-							<text>{{list.text}}</text>
-						</view>
-					</swiper-item>
-				</swiper>
-			</view>
-			
-			<view class="shop"><!-- 推荐区 -->
-				<view class="shop__box" v-for="(item,index) of shops" :key="index">
-					<image :src="item.img" mode="scaleToFill"></image>
+			<view class="content">
+				<view class="area">
+					<swiper :indicator-dots="true" indicator-active-color="#7452A3">
+						<swiper-item v-for="(item,index) of pages" :key="index">
+							<view class="box" v-for="(list,i) of item" :key="i" @click="toIcon(list)">
+								<image :src="list.icon"></image>
+								<text>{{list.text}}</text>
+							</view>
+						</swiper-item>
+					</swiper>
+				</view>
+				
+				<scroll-view scroll-y><!-- 推荐区 -->
+				</scroll-view>
+				<view class="shop">
+					<view class="shop__box" v-for="(item,index) of shops" :key="item.id">
+						<image :src="item.img" mode="widthFix"></image>
+					</view>
 				</view>
 			</view>
 		</scroll-view>
-		
 
 		<uni-popup ref="searchPop" type="right">
 			<search-page @close="onClose"></search-page>
@@ -73,12 +76,12 @@
 					{icon:require('@/static/icon/ic_lightning.png'), text: '闪电秒抢'},
 				],
 				shops: [
-					{img: require('@/static/home/banner1.jpg')},
-					{img: require('@/static/home/banner2.jpg')},
-					{img: require('@/static/home/banner3.jpg')},
-					{img: require('@/static/home/banner4.png')},
-					{img: require('@/static/home/banner4.png')},
-					{img: require('@/static/home/banner4.png')},
+					{id: 1,img: require('@/static/home/banner1.jpg')},
+					{id: 2,img: require('@/static/home/banner2.jpg')},
+					{id: 3,img: require('@/static/home/banner3.jpg')},
+					{id: 4,img: require('@/static/home/banner4.png')},
+					{id: 5,img: require('@/static/home/banner4.png')},
+					{id: 6,img: require('@/static/home/banner4.png')},
 				],
 				iconArea: new Map([
 					['附近团购', ''],
@@ -106,12 +109,12 @@
 		onUnload() {//---- 监听页面销毁
 			console.log('onUnload')
 		},
-		onTabItemTap() {// 
+		onTabItemTap() {//
 			console.log('每次点击当前页的TAB时显示！')
 		},
 
 		methods: {
-			
+
 			onShowPopup() {
 				this.$refs.searchPop.open('right');
 			},
@@ -166,7 +169,7 @@
 					&-text {
 						@extend %text-overflow;
 						margin: 0 4px;
-						width: 216rpx;
+						max-width: 216rpx;
 						font-size: 18px;
 						font-weight: 600;
 					}
@@ -176,7 +179,7 @@
 					.icon-arrow-right {
 						font-size: 12px;
 					}
-					
+
 				}
 				.search {
 					// flex: 1;
@@ -214,32 +217,33 @@
 			position: fixed;
 			top: 0;
 			width: 100%;
-		
+
 			swiper {
 				height: 240px;
 				image {
 					width: 100%;
+					height: auto;
 				}
 			}
 			// #ifdef H5
 			.uni-swiper .uni-swiper-dots-horizontal {
 				bottom: 30px;
 			}
-			// #endif		
+			// #endif
 		}
-		
+
 		.area-wrap {
+			z-index: 5;
 			position: relative;
 			top: 170px;
+		}
+		.content {
 			padding: 0 16px;
 			border-top-left-radius: 20px;
 			border-top-right-radius: 20px;
 			box-sizing: border-box;
 			background-color: #fff;
 			.area {
-				z-index: 99;
-				position: sticky;
-				top: 0px;
 				padding: 22px 0 0;
 				height: 150px;
 				background: #fff;
@@ -270,28 +274,27 @@
 					}
 				}
 			}
-			
+
 			.shop {
 				@extend %flex;
+				justify-content: space-between;
 				flex-wrap: wrap;
-				justify-content: space-around;
 				margin-top: 28px;
-				padding-bottom: 50px;
-				width: 100%;
-				overflow: hidden;
-				// height: 200px;
+				padding-bottom: 5px;
+				height: 55vh;
+				overflow-y: auto;
+				// -webkit-overflow-scrolling:touch
 				&__box {
-					width: 168px;
-					height: 108px;
+					width: 49%;
 					margin-bottom: 8px;
 					image {
 						width: 100%;
-						height: 100%;
+						height: auto;
 					}
 				}
 			}
 		}
-		
+
 
 	}
 </style>

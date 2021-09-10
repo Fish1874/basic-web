@@ -210,6 +210,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
 {
   components: {
     SearchPage: SearchPage },
@@ -233,12 +236,12 @@ __webpack_require__.r(__webpack_exports__);
       { icon: __webpack_require__(/*! @/static/icon/ic_lightning.png */ 27), text: '闪电秒抢' }],
 
       shops: [
-      { img: __webpack_require__(/*! @/static/home/banner1.jpg */ 17) },
-      { img: __webpack_require__(/*! @/static/home/banner2.jpg */ 18) },
-      { img: __webpack_require__(/*! @/static/home/banner3.jpg */ 19) },
-      { img: __webpack_require__(/*! @/static/home/banner4.png */ 28) },
-      { img: __webpack_require__(/*! @/static/home/banner4.png */ 28) },
-      { img: __webpack_require__(/*! @/static/home/banner4.png */ 28) }],
+      { id: 1, img: __webpack_require__(/*! @/static/home/banner1.jpg */ 17) },
+      { id: 2, img: __webpack_require__(/*! @/static/home/banner2.jpg */ 18) },
+      { id: 3, img: __webpack_require__(/*! @/static/home/banner3.jpg */ 19) },
+      { id: 4, img: __webpack_require__(/*! @/static/home/banner4.png */ 28) },
+      { id: 5, img: __webpack_require__(/*! @/static/home/banner4.png */ 28) },
+      { id: 6, img: __webpack_require__(/*! @/static/home/banner4.png */ 28) }],
 
       iconArea: new Map([
       ['附近团购', ''],
@@ -266,7 +269,7 @@ __webpack_require__.r(__webpack_exports__);
   onUnload: function onUnload() {//---- 监听页面销毁
     console.log('onUnload');
   },
-  onTabItemTap: function onTabItemTap() {// 
+  onTabItemTap: function onTabItemTap() {//
     console.log('每次点击当前页的TAB时显示！');
   },
 
