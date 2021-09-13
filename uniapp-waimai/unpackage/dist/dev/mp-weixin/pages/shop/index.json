@@ -3,8 +3,6 @@
   "navigationBarTitleText": "店铺页",
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "uni-popup": "/uni_modules/uni-popup/components/uni-popup/uni-popup",
-    "shop-list": "/pages/shop/components/ShopList",
-    "shop-detail": "/pages/shop/components/ShopDetail"
+    "shop-list": "/pages/shop/components/ShopList"
   }
 }

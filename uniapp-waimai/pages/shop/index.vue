@@ -2,7 +2,7 @@
 	<view class="shop">
 		<nav-bar :scrollTop="scrollTop" type="transparent" fontColor="#FFF">
 			<view class="black" slot="left" @click="onBlack" style="color: red;">
-				<image src="../../static/icon/ic_back_white.png" mode=""></image>
+				<image src="@/static/icon/ic_back_white.png" mode=""></image>
 			</view>
 		</nav-bar>
 		<view class="top">
@@ -41,20 +41,18 @@
 
 		</view>
 		
-		<uni-popup ref="detailPopup" type="right">
+		<!-- <uni-popup ref="detailPopup" type="right">
 			<ShopDetail @close="$refs.detailPopup.close()"></ShopDetail>
-		</uni-popup>
+		</uni-popup> -->
 	</view>
 </template>
 
 <script>
 	import ShopList from "./components/ShopList.vue"
-	import ShopDetail from "./components/ShopDetail.vue"
 	export default {
 		name: 'shop',
 		components: {
 			ShopList,
-			ShopDetail
 		},
 		data() {
 			return {
@@ -66,7 +64,10 @@
 				uni.navigateBack({}) // 返回上一页
 			},
 			onShowDetail() {
-				this.$refs.detailPopup.open('right');
+				// this.$refs.detailPopup.open('right');
+				uni.navigateTo({
+					url: '/pages/shop/shopDetail'
+				});
 			}
 		}
 	}

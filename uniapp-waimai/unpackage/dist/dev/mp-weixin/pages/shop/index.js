@@ -93,38 +93,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components
-try {
-  components = {
-    uniPopup: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 88))
-    }
-  }
-} catch (e) {
-  if (
-    e.message.indexOf("Cannot find module") !== -1 &&
-    e.message.indexOf(".vue") !== -1
-  ) {
-    console.error(e.message)
-    console.error("1. 排查组件名称拼写是否正确")
-    console.error(
-      "2. 排查组件是否符合 easycom 规范，文档：https://uniapp.dcloud.net.cn/collocation/pages?id=easycom"
-    )
-    console.error(
-      "3. 若组件不符合 easycom 规范，需手动引入，并在 components 中注册该组件"
-    )
-  } else {
-    throw e
-  }
-}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  if (!_vm._isMounted) {
-    _vm.e0 = function($event) {
-      return _vm.$refs.detailPopup.close()
-    }
-  }
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -158,8 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var ShopList = function ShopList() {Promise.all(/*! require.ensure | pages/shop/components/ShopList */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/shop/components/ShopList")]).then((function () {return resolve(__webpack_require__(/*! ./components/ShopList.vue */ 116));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var ShopDetail = function ShopDetail() {Promise.all(/*! require.ensure | pages/shop/components/ShopDetail */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/shop/components/ShopDetail")]).then((function () {return resolve(__webpack_require__(/*! ./components/ShopDetail.vue */ 128));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
-
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var ShopList = function ShopList() {Promise.all(/*! require.ensure | pages/shop/components/ShopList */[__webpack_require__.e("common/vendor"), __webpack_require__.e("pages/shop/components/ShopList")]).then((function () {return resolve(__webpack_require__(/*! ./components/ShopList.vue */ 128));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -213,8 +184,7 @@ __webpack_require__.r(__webpack_exports__);
 {
   name: 'shop',
   components: {
-    ShopList: ShopList,
-    ShopDetail: ShopDetail },
+    ShopList: ShopList },
 
   data: function data() {
     return {
@@ -226,7 +196,10 @@ __webpack_require__.r(__webpack_exports__);
       uni.navigateBack({}); // 返回上一页
     },
     onShowDetail: function onShowDetail() {
-      this.$refs.detailPopup.open('right');
+      // this.$refs.detailPopup.open('right');
+      uni.navigateTo({
+        url: '/pages/shop/shopDetail' });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

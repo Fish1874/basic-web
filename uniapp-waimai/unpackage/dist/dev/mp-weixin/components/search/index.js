@@ -80,7 +80,7 @@ var components
 try {
   components = {
     vTabs: function() {
-      return __webpack_require__.e(/*! import() | components/v-tabs/v-tabs */ "components/v-tabs/v-tabs").then(__webpack_require__.bind(null, /*! @/components/v-tabs/v-tabs.vue */ 95))
+      return __webpack_require__.e(/*! import() | components/v-tabs/v-tabs */ "components/v-tabs/v-tabs").then(__webpack_require__.bind(null, /*! @/components/v-tabs/v-tabs.vue */ 107))
     }
   }
 } catch (e) {
@@ -137,7 +137,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var FoodList = function FoodList() {__webpack_require__.e(/*! require.ensure | components/food-list/index */ "components/food-list/index").then((function () {return resolve(__webpack_require__(/*! @/components/food-list */ 102));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var FoodList = function FoodList() {__webpack_require__.e(/*! require.ensure | components/food-list/index */ "components/food-list/index").then((function () {return resolve(__webpack_require__(/*! @/components/food-list */ 114));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 

@@ -1,9 +1,9 @@
 <template>
 	<view class="shop-detail">
-		<view class="header">
+		<!-- <view class="header">
 			<image @click="onBlack" src="~@/static/icon/ic_back_white.png" mode=""></image>
 			<text>商家信息</text>
-		</view>
+		</view> -->
 		
 		<view class="shop__top">
 			<view class="shop__top--photo">
@@ -38,27 +38,20 @@
 		
 		<view class="shop__photo">
 			<view class="shop__photo-title">店鋪相册</view>
-			<scroll-view scroll-y style="height: 80%;">
+			<!-- <scroll-view scroll-y style="height: 275px;"> -->
 				<view class="shop__photo-content">
-					<view class="item">
-						<image src="~@/static/shop/shop1.png" mode="widthFix"></image>
+					<view class="item" v-for="(item, index) of imgs" :key="item.id">
+						<image :src="item.img" mode="widthFix" @tap="previewImg(index)"></image>
 					</view>
-					<view class="item">
-						<image src="~@/static/shop/shop2.png" mode="widthFix"></image>
-					</view>
-					<view class="item">
-						<image src="~@/static/shop/shop3.png" mode="widthFix"></image>
-					</view>
-
 				</view>
-			</scroll-view>
+			<!-- </scroll-view> -->
 		</view>
 	</view>
 </template>
 
 <script>
 	export default {
-		name:'ShopDetail',
+		name:'shopDetail',
 		data() {
 			return {
 				detail: {
@@ -71,16 +64,29 @@
 						address: '广州越秀区先烈中路80号'
 					}
 				},
-				tags: ['日料', '铁板烧']
+				tags: ['日料', '铁板烧'],
+				imgs: [
+					{id: 1, img: require('@/static/shop/shop1.png')},
+					{id: 2, img: require('@/static/shop/shop2.png')},
+					{id: 3, img: require('@/static/shop/shop3.png')},
+					{id: 4, img: require('@/static/shop/shop4.png')}
+				],
 			};
 		},
 		methods: {
 			onBlack() {
 				this.$emit('close');
+			},
+			// 图片预览
+			previewImg(index) {
+				let photoList = this.imgs.map(row => row.img)
+				uni.previewImage({
+					current: index,
+					urls: photoList
+				});
 			}
 		},
 		mounted() {
-
 		}
 	}
 </script>
@@ -88,8 +94,8 @@
 <style lang="scss">
 
 .shop-detail {
-	width: 100vw;
-	height: 100vh;
+	// width: 100vw;
+	// height: 100vh;
 	background-color: $bgColor2;
 	
 	.header {
@@ -112,7 +118,7 @@
 		@extend %flex;
 		padding: 16px;
 		margin-bottom: 8px;
-		height: 192rpx;
+		// height: 192rpx;
 		background-color: #fff;
 		&--photo {
 			margin-right: 12px;
@@ -179,8 +185,8 @@
 	.shop__photo {
 		margin: 8px 0;
 		padding: 12px 16px;
-		height: 50vh;
-		overflow: hidden;
+		// height: 50vh;
+		// overflow: hidden;
 		background-color: #fff;
 		&-title {
 			margin-bottom: 12px;
@@ -188,12 +194,13 @@
 			font-size: 16px;
 		}
 		&-content {
-			@extend %flex;
-			flex-wrap: wrap;
+			column-count: 2;
+			column-gap: 0;
 			.item {
-					width: 50%;
+				padding: 0 2px;
+				// width: 100%;
 				image {
-					width: 95%;
+					width: 100%;
 					height: auto;
 				}				
 			}

@@ -85,7 +85,7 @@
 				],
 				iconArea: new Map([
 					['附近团购', ''],
-					['外卖自提', '/pages/takeOut/pickUp'],
+					['外卖自提', '/pages/takeaWay/index'],
 					['堂食点餐', ''],
 					['跑腿代购', ''],
 					['商品百货', ''],
@@ -93,24 +93,6 @@
 					['闪电秒抢', ''],
 				])
 			}
-		},
-		onLoad() {//---- 监听页面加载
-			console.log('onload')
-		},
-		onShow() {//----- 监听页面显示
-			console.log('onShow')
-		},
-		onReady() {//---- 监听页面初次渲染完成
-			console.log('onReady')
-		},
-		onHide() {//---- 监听页面隐藏
-			console.log('onHide')
-		},
-		onUnload() {//---- 监听页面销毁
-			console.log('onUnload')
-		},
-		onTabItemTap() {//
-			console.log('每次点击当前页的TAB时显示！')
 		},
 
 		methods: {
@@ -123,7 +105,6 @@
 			},
 			// icon跳转到对应的页面
 			toIcon(item) {
-				console.log(item.text);
 				let url = this.iconArea.get(item.text);
 				uni.navigateTo({
 					url

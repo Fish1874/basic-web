@@ -4,8 +4,9 @@
     "pages/takeMeal/index",
     "pages/order/index",
     "pages/user/index",
-    "pages/takeOut/pickUp",
-    "pages/shop/index"
+    "pages/takeaWay/index",
+    "pages/shop/index",
+    "pages/shop/shopDetail"
   ],
   "subPackages": [],
   "window": {
@@ -48,6 +49,5 @@
   },
   "usingComponents": {
     "nav-bar": "/components/zhouWei-navBar/index"
-  },
-  "sitemapLocation": "sitemap27.json"
+  }
 }

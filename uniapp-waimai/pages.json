@@ -32,14 +32,14 @@
             }
         },
 		{
-            "path" : "pages/takeOut/pickUp",
-            "style" :                                                                                    
-            {
+			"path" : "pages/takeaWay/index",
+			"style" : 
+			{
 				"navigationStyle": "custom",
-                "navigationBarTitleText": "外卖自提",
-                "enablePullDownRefresh": false
-            }
-        },
+				"navigationBarTitleText": "外卖自提",
+				"enablePullDownRefresh": false
+			}
+		},
 		{
 			"path" : "pages/shop/index",
 			"style" :                                                                                    
@@ -48,7 +48,15 @@
 				"navigationBarTitleText": "店铺页",
 				"enablePullDownRefresh": false
 			}
-			
+		},
+		{
+			"path" : "pages/shop/shopDetail",
+			"style" :                                                                                    
+			{
+				// "navigationStyle": "custom",
+				"navigationBarTitleText": "店铺详情",
+				"enablePullDownRefresh": false
+			}
 		}
     ],
 	"globalStyle": {

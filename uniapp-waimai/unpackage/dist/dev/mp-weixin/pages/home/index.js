@@ -103,7 +103,7 @@ var components
 try {
   components = {
     uniPopup: function() {
-      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 88))
+      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 100))
     }
   }
 } catch (e) {
@@ -245,7 +245,7 @@ __webpack_require__.r(__webpack_exports__);
 
       iconArea: new Map([
       ['附近团购', ''],
-      ['外卖自提', '/pages/takeOut/pickUp'],
+      ['外卖自提', '/pages/takeaWay/index'],
       ['堂食点餐', ''],
       ['跑腿代购', ''],
       ['商品百货', ''],
@@ -253,24 +253,6 @@ __webpack_require__.r(__webpack_exports__);
       ['闪电秒抢', '']]) };
 
 
-  },
-  onLoad: function onLoad() {//---- 监听页面加载
-    console.log('onload');
-  },
-  onShow: function onShow() {//----- 监听页面显示
-    console.log('onShow');
-  },
-  onReady: function onReady() {//---- 监听页面初次渲染完成
-    console.log('onReady');
-  },
-  onHide: function onHide() {//---- 监听页面隐藏
-    console.log('onHide');
-  },
-  onUnload: function onUnload() {//---- 监听页面销毁
-    console.log('onUnload');
-  },
-  onTabItemTap: function onTabItemTap() {//
-    console.log('每次点击当前页的TAB时显示！');
   },
 
   methods: {
@@ -283,7 +265,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     // icon跳转到对应的页面
     toIcon: function toIcon(item) {
-      console.log(item.text);
       var url = this.iconArea.get(item.text);
       uni.navigateTo({
         url: url });
