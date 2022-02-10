@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>手写vue2原理</title>
+</head>
+<body>
+    <div id="app">
+        <h2>数据劫持 + 发布订阅模式，（不兼容低版本，因为核心是用es5的 Object.defineProperty）</h2>
+        <p>{{a}}</p>
+        <p>{{ b.b }}</p>
+    </div>
+</body>
+<script src="./mvvm.js"></script>
+<script>
+    
+    let vue = new MyVue({
+        el: '#app',
+        data: {
+            a: '李四',
+            b: { b: '张三丰' }
+        }
+    })
+    console.log(vue)
+</script>
+
+</html>
