@@ -70,6 +70,7 @@ function replace(fragment, vm) { // 循环node节点，替换数据内容
 
 // 观察对象，给对象的每个属性：设置属性特征 Object.defineproperty！
 function Observe(data) { // 这里是主要数据劫持
+    console.log(data,'初始化')
     let dep = new Dep();
     for (let key in data) {
         let val = data[key];
@@ -77,13 +78,13 @@ function Observe(data) { // 这里是主要数据劫持
         Object.defineProperty(data, key, {
             enumerable: true, // 允许枚举
             get () { // 一旦取值默认就会调用get方法
-                Dep.target && dep.addSub(Dep.target) // 一旦Dep.target有值就添加到watcher里面
+                Dep.target && dep.addSub(Dep.target)  // 用于收集依赖
                 return val;
             },
             set (newVal) {
                 if (val === newVal) return; // 如果新值和旧值一样，就忽略。
                 val = newVal;
-                Observe(newVal) // 给新值也设置属性特征
+                observe(newVal) // 给新值也设置属性特征
                 dep.notify(); // 执行所有被订阅的方法
             }
         });
