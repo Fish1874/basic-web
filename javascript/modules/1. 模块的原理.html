@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Asynchronous Module Definition (异步模块定义)</title>
+</head>
+<body>
+    <div>
+        模块的核心有三点：
+        <ul>
+            <li>定一个模块</li>
+            <li>添加模块的依赖</li>
+            <li>导出模块</li>
+        </ul>
+    </div>
+</body>
+
+<script>
+    /* AMD:
+     *	1. 模块的名称，
+     *	2. 需要用到的依赖，
+     * 	3. 返回值
+     *  	 - 如果是对象，则对象本身就是模块的导出值
+     *		 - 如果是函数，则返回一个对象
+     */
+    const module = (function () {
+        const moduleList = {}; // 一个容器，用来管理（存储）我们定义的模块。
+        
+        /*
+         * @params name {string} 模块的名称
+         * @params modules {Array<string>} 模块的依赖
+         * @params action {function} 模块的功能（行为）
+         **/
+        // 帮我们定义个模块
+        function define ( name, modules, action ) {
+            // 将模块的依赖拿出来
+            modules.map((m, i) => {
+                modules[i] = moduleList[m] // 替换为相对应的功能, 比如模块的依赖是one： ['one'] ==> [{min: f, max: f}]
+            })
+            moduleList[name] = action.apply(null, modules); // 只会初始化一次！
+            console.log('所有的模块: ',moduleList)
+        }
+        return { define }
+    })()
+    
+    /* count模块
+     * 有一个功能，返回数组最大值。
+     **/
+    module.define('count', [], function () {
+        return {
+            min(arr, key) {
+                return arr.sort((a,b) => a[key] - b[key])[0];
+            },
+            max(arr, key) {
+                return arr.sort((a,b) => b[key] - a[key])[0];
+            }
+        }
+    })
+    
+
+    module.define('one', ['count'], function (count) {
+        // console.log('one模块内的功能函数：', one)
+        let shopCart = [
+            {name:'iphone',price: 6999},
+            {name:'iwatch',price: 3999}
+        ]
+        const maxCommodity = count.max(shopCart, 'price') // 借用了 one模块中的max函数
+        console.log('最贵的商品：', maxCommodity)
+    })
+
+</script>
+</html>
