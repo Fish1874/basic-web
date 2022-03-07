@@ -47,16 +47,17 @@ class Yu {
             onRejected = () => this.value;
         }
 
+        // 2. 将当前返回的promise保存到一个变量中
         let promise = new Yu((resolve, reject) => {
             if (this.status === Yu.PENDING) {
                 this.afterMethods.push({
                     onAfterFulfilled: (value) => {
                         let result = onFulfilled(value)
-                        this.isPromise(result, resolve, reject, promise)
+                        this.isPromise(result, resolve, reject, promise) // 2.1 传递进去
                     },
                     onAfterRejected: (value) => {
                         let result = onRejected(value)
-                        this.isPromise(result, resolve, reject, promise)
+                        this.isPromise(result, resolve, reject, promise) // 2.1 传递进去
                     }
                 })
             }
@@ -64,13 +65,13 @@ class Yu {
             if (this.status === Yu.FULFILLED) {
                 setTimeout(() => {
                     let result = onFulfilled(this.value)
-                    this.isPromise(result, resolve, reject, promise)
+                    this.isPromise(result, resolve, reject, promise) // 2.1 传递进去
                 })
             }
             if (this.status === Yu.REJECTED) {
                 setTimeout(() => {
                     let result = onRejected(this.value)
-                    this.isPromise(result, resolve, reject, promise)
+                    this.isPromise(result, resolve, reject, promise) // 2.1 传递进去
                 })
             }
         })
@@ -78,8 +79,18 @@ class Yu {
         return promise
     }
 
+    // 1. 解决冗余的代码，将不变的提取出来，变化的数据则作为参数传入
     isPromise(result, resolve, reject, currentPromise) {
+        // 2. 判断当前的是不是返回当前的promise
         if (result == currentPromise) {
+            /*
+             * let promise = new Promise((resolve,reject) => {
+             *      resolve('解决')
+             * })
+             * let aaa = promise.then( value => {
+             *      return aaa; // 错误，不允许返回aaa
+             * })
+             **/
             throw new TypeError('不允许在后执行的代码中返回promise')
         }
 

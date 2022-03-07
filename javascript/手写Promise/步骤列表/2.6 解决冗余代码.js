@@ -47,16 +47,16 @@ class Yu {
             onRejected = () => this.value;
         }
 
-        let promise = new Yu((resolve, reject) => {
+        return new Yu((resolve, reject) => {
             if (this.status === Yu.PENDING) {
                 this.afterMethods.push({
                     onAfterFulfilled: (value) => {
                         let result = onFulfilled(value)
-                        this.isPromise(result, resolve, reject, promise)
+                        this.isPromise(result, resolve, reject)
                     },
                     onAfterRejected: (value) => {
                         let result = onRejected(value)
-                        this.isPromise(result, resolve, reject, promise)
+                        this.isPromise(result, resolve, reject)
                     }
                 })
             }
@@ -64,25 +64,20 @@ class Yu {
             if (this.status === Yu.FULFILLED) {
                 setTimeout(() => {
                     let result = onFulfilled(this.value)
-                    this.isPromise(result, resolve, reject, promise)
+                    this.isPromise(result, resolve, reject)
                 })
             }
             if (this.status === Yu.REJECTED) {
                 setTimeout(() => {
                     let result = onRejected(this.value)
-                    this.isPromise(result, resolve, reject, promise)
+                    this.isPromise(result, resolve, reject)
                 })
             }
         })
-
-        return promise
     }
 
-    isPromise(result, resolve, reject, currentPromise) {
-        if (result == currentPromise) {
-            throw new TypeError('不允许在后执行的代码中返回promise')
-        }
-
+    // 1. 解决冗余的代码，将不变的提取出来，变化的数据则作为参数传入
+    isPromise(result, resolve, reject) {
         try {
             if (result instanceof Yu) {
                 result.then(resolve, reject)
