@@ -93,6 +93,8 @@ class Yu {
             reject(err)
         }
     }
+
+    // 1. 添加Promise.resolve方法，快速返回一个promise对象
     static resolve(value) {
         return new Yu((resolve, reject) => {
             if (value instanceof Yu) {
@@ -102,18 +104,22 @@ class Yu {
             }
         })
     }
+    // 2. 添加Promise.reject方法
     static reject(value) {
         return new Yu((resolve, reject) => {
             reject(value)
         })
     }
+
+    // 3. 添加Promise.all方法
     static all(promises) {
-        const resolves = [];
+        const resolves = []; // 3.1 保存成功状态的promise
         return new Yu((resolve, reject) => {
             promises.forEach(promise => {
                 promise.then(
                     value => {
                         resolves.push(value);
+                        // 3.2 只有当传入的promise全部都返回成功状态，才返回成功
                         if (resolves.length == promises.length) {
                             resolve(resolves)
                         }
@@ -125,8 +131,11 @@ class Yu {
             })
         })
     }
+
+    // 4. 添加 Promise.race方法
     static race(promises) {
         return new Yu((resolve, reject) => {
+            // 哪个快，返回哪个！
             promises.map(promise => {
                 promise.then(
                     value => {
@@ -151,8 +160,23 @@ class Yu {
  *    c.每个then处理的成功/失败，都是基于上一次then的callback。
  *    d.支持穿透传递数据
  *
+ *
  * 注意：
  *  1.then里面的回调函数是要放在宏任务队列中的！它可不是同步任务！
  *  2. 如果 改变状态的方法 被放到了 setTimeout里，则延后再执行then内的方法！
  **/
-new Yu((resolve, reject) => resolve('解决')).then( value => console.log(value))
+new Yu((resolve, reject) => {
+    setTimeout(() => {
+        resolve('解决')
+    }, 500)
+}).then( value => {
+    return new Yu( (resolve, reject) => {
+        // resolve('成功')
+        reject('拒绝')
+    })
+}).then(value => {
+    console.log('第二个then内成功: ', value)
+}, reason => {
+    console.log('第二个then内拒绝:', reason)
+})
+console.log('我第一个打印')
